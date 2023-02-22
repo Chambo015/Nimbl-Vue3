@@ -8,22 +8,12 @@ module.exports = {
         'eslint:recommended',
         '@vue/eslint-config-typescript',
         'prettier',
-        // '@vue/eslint-config-prettier',
+        //'@vue/eslint-config-prettier',
     ],
     parserOptions: {
         ecmaVersion: 'latest',
     },
     rules: {
-        // 'prettier/prettier': [
-        //     'warn',
-        //     {
-        //         singleQuote: true,
-        //         tabWidth: 4,
-        //         bracketSpacing: true,
-        //         bracketSameLine: true,
-        //         printWidth: 120,
-        //         endOfLine: 'auto',
-        //     },
-        // ],
+        '@typescript-eslint/no-unused-vars': ['warn', {args: 'none'}],
     },
 };

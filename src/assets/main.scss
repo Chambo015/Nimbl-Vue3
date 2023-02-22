@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    body {
+        @apply bg-[#1E1E1E] min-h-screen font-tt-octosquares text-white;
+    }
+}
+
+.r {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        background: linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%);
+        height: min(3px, 1%);
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
