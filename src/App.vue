@@ -1,8 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
     <div
-        class="min-h-screen bg-gradient-main">
+        class="bg-gradient-main">
         <RouterView />
     </div>
 </template>

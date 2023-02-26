@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '@/views/ViewNotFound.vue';
 import LayoutHome from '@/layouts/LayoutHome.vue';
 
+
 const router = createRouter({
     history: createWebHistory(), // Способ сохранения истории переходов по маршрутам
     routes: [
@@ -15,7 +16,12 @@ const router = createRouter({
                 {
                     path: '',
                     name: 'content',
-                    component: () => import('@/views/ViewHome.vue')
+                    component: () => import('../views/ViewHome.vue')
+                },
+                {
+                    path: '/video/:id',
+                    name: 'video',
+                    component: () => import('../views/ViewVideo.vue')
                 },
                 {
                     path: '/:pathMatch(.*)*',
@@ -27,7 +33,7 @@ const router = createRouter({
         {
             path: '/login',
             name: 'login',
-            component: () => import('@/views/ViewLogin.vue')
+            component: () => import('../views/ViewLogin.vue')
         }
     ],
 });

@@ -4,9 +4,9 @@ import TheNavigation from '@/components/TheNavigation.vue';
 </script>
 
 <template>
-    <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col h-screen overflow-hidden">
         <header><TheHeader /></header>
-        <main class="flex-grow"><RouterView /></main>
-        <footer class="mt-auto"><TheNavigation /></footer>
+        <main class="flex-grow overflow-hidden"><RouterView /></main>
+        <footer class="mt-auto fixed inset-x-0 bottom-0"><TheNavigation /></footer>
     </div>
 </template>

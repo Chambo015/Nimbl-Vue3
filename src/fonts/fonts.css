@@ -162,7 +162,7 @@
         url('TTOctosquaresVariable.woff2') format('woff2'),
         url('TTOctosquaresVariable.woff') format('woff'),
         url('TTOctosquaresVariable.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: italic;
 }
 
@@ -174,7 +174,7 @@
         url('TTOctosquares-Regular.woff2') format('woff2'),
         url('TTOctosquares-Regular.woff') format('woff'),
         url('TTOctosquares-Regular.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -222,7 +222,7 @@
         url('TTOctosquares-Italic.woff2') format('woff2'),
         url('TTOctosquares-Italic.woff') format('woff'),
         url('TTOctosquares-Italic.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: italic;
 }
 

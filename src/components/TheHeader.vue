@@ -6,7 +6,7 @@ import { IconChevron, IconSearch, IconBell } from './icons';
     <div class="grid w-full items-center grid-cols-12 gap-5 bg-gradient-header px-[22px]">
         <div class="flex col-span-4 items-center gap-2">
             <img src="/logo.png" alt="logo" loading="lazy" class="h-14 object-contain" />
-            <span class="bg-gradient-text bg-clip-text font-ethnocentric text-2xl text-transparent">NIMBL</span>
+            <span class="font-ethnocentric text-2xl gradient-text">NIMBL</span>
         </div>
         <div class="col-span-4 relative">
             <IconSearch class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-6 w-5 text-white/50"/>

@@ -1,5 +1,5 @@
 <template>
-    <nav class="flex bg-gradient-nav backdrop-blur-md">
+    <nav class="flex bg-gradient-nav backdrop-blur-md" aria-orientation="horizontal">
         <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow" :to="route.slug" >
             <template #icon="iconProps">
                 <component :is="route.asyncIcon" :class="iconProps.class" />

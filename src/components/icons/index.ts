@@ -6,6 +6,11 @@ import IconLogo from './IconLogo.vue';
 import IconSearch from './IconSearch.vue';
 import IconChevron from './IconChevron.vue';
 import IconBell from './IconBell.vue';
+import IconEye from './IconEye.vue';
+import IconClock from './IconClock.vue';
+import IconVideoGallery from './IconVideoGallery.vue';
+import IconComments from './IconComments.vue';
+import IconFutures from './IconFutures.vue';
 
 
 export {
@@ -16,5 +21,10 @@ export {
     IconLogo,
     IconSearch,
     IconChevron,
-    IconBell
+    IconBell,
+    IconEye,
+    IconClock,
+    IconVideoGallery,
+    IconComments,
+    IconFutures
 }
