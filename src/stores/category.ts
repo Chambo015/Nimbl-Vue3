@@ -1,16 +1,18 @@
+import { defineStore } from 'pinia';
+
 interface CategoryI {
     id: number,
     title: string,
     img: string
 }
 
-export interface CategoryModuleI {
-    category: CategoryI[];
+interface Store {
+    categoryList: CategoryI[];
 }
 
- const categoryModule = {
-    state: (): CategoryModuleI =>( {
-        category: [
+export const useCategoryStore = defineStore('category', {
+    state: (): Store =>( {
+        categoryList: [
             {
                 id: 1,
                 title: 'Crypto News',
@@ -33,6 +35,4 @@ export interface CategoryModuleI {
             }
         ],
     })
-}
-
- export default categoryModule
+})

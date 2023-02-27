@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { VideoI } from '@/types';
 import { computed, type PropType } from 'vue';
-import { cropImage, randomNumber } from '@/utils';
+import {  randomNumber } from '@/utils';
 
 import * as Icon from '@/components/icons';
 import { useRouter } from 'vue-router';
-import videosModule from '@/store/modules/videos';
 
 const props = defineProps({
     video: {

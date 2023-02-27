@@ -3,17 +3,15 @@ import AppTabList from './AppTabList.vue';
 import AppTabListItem from './AppTabListItem.vue';
 import AppButton from './AppButton.vue';
 
-import { useStore } from 'vuex';
-import { key } from '../store';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 import type { RangeType } from '@/types';
 import { IconChevron } from '@/components/icons';
-import { cropImage } from '@/utils';
+import { useChannelStore } from '@/stores/channels';
+import { storeToRefs } from 'pinia';
 
-const store = useStore(key);
-
-const channels = computed(() => store.state.channels.channels);
+const channelStore = useChannelStore()
+const {channelList} = storeToRefs(channelStore)
 
 const activeRange = ref<RangeType>('1d');
 const rangeArray: RangeType[] = ['1d', '1w', '1m', '3m'];
@@ -21,12 +19,12 @@ const setActiveRange = (range: RangeType) => {
     activeRange.value = range;
 };
 
-const handleLoadImg = async (e: any) => {
+/* const handleLoadImg = async (e: any) => {
     const image = e.target as HTMLImageElement;
     const canvas = await cropImage(image.src, 1);
 
     image.src = canvas.toDataURL();
-};
+}; */
 </script>
 
 <template>
@@ -59,7 +57,7 @@ const handleLoadImg = async (e: any) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(channel, idx) in channels" :key="channel.id" class="cursor-pointer [&_td]:py-2 hover:bg-gradient-active-tab will-change-[background-image]">
+                    <tr v-for="(channel, idx) in channelList" :key="channel.id" class="cursor-pointer [&_td]:py-2 hover:bg-gradient-active-tab will-change-[background-image]">
                         <td class="text-center px-1">{{idx+1}}</td>
                         <td>
                             <div class="flex gap-2 items-center">

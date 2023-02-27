@@ -1,12 +1,13 @@
 import type { ChannelI } from '@/types';
+import { defineStore } from 'pinia';
 
-export interface ChannelsModuleI {
-    channels: ChannelI[];
+interface Store {
+    channelList: ChannelI[];
 }
 
- const channelsModule = {
-    state: (): ChannelsModuleI =>( {
-        channels: [
+export const useChannelStore = defineStore('channel', {
+    state: (): Store =>( {
+        channelList: [
             {
                 id: 1,
                 name: 'BlueWard2',
@@ -65,6 +66,4 @@ export interface ChannelsModuleI {
             },
         ],
     })
-}
-
- export default channelsModule
+})

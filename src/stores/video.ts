@@ -1,12 +1,13 @@
-import type { VideoI } from '@/types';
+import type { VideoI } from '@/types'
+import { defineStore } from 'pinia'
 
-export interface VideosModuleI {
-    videos: VideoI[];
-}
-
- const videosModule = {
-    state: (): VideosModuleI =>( {
-        videos: [
+interface State {
+    videoList: VideoI[]
+  }
+ 
+export const useVideoStore = defineStore('video', {
+    state:(): State => ({
+        videoList: [
             {
                 id: 1,
                 title: 'Gary Vee Explains How He Made $90 Million on NFTs & Why They’ll Change the World',
@@ -106,13 +107,8 @@ export interface VideosModuleI {
         ]
     }),
     getters: {
-        getVideoById: (state: VideosModuleI) => (id: number) => {
-            return state.videos.find(video => video.id === id)
-          }
+        getVideoById(state) {
+            return (id: number): VideoI | undefined => state.videoList.find(video => video.id === id) 
+        }
     }
-}
-
- export default videosModule
-
-
-
+})

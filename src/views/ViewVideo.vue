@@ -1,29 +1,44 @@
 <script setup lang="ts">
 import AppVideoPlayer from '@/components/AppVideoPlayer.vue';
-import { key } from '@/store';
-import { computed } from '@vue/reactivity';
+import { useVideoStore } from '@/stores/video';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useStore } from 'vuex';
 
-const route = useRoute()
-const idParams = computed(() => parseInt(route.params.id as string))
+const route = useRoute();
+const idParams = computed(() => parseInt(route.params.id as string));
 
-const store = useStore(key);
-const video = computed(() => store.getters.getVideoById);
+const videoStore = useVideoStore();
+const video = computed(() => videoStore.getVideoById(idParams.value));
 </script>
 
 <template>
-    <div class="grid w-full h-full grid-cols-12 gap-5 py-5 overflow-hidden">
-        <div class="col-span-8 pl-5">
-            <AppVideoPlayer class="aspect-video max-h-[65vh] h-auto w-auto" />
-            <div class="w-full p-4 bg-[rgba(192,192,192,0.1);]"></div>
+    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
+        <div class="video-scrollbar col-span-8 overflow-scroll pl-5 pb-height-navigation">
+            <AppVideoPlayer class="aspect-video h-auto w-auto" />
+            <div class="w-full bg-[rgba(192,192,192,0.1);] p-4">
+                <h1 class="truncate text-[22px]">{{ video?.title }}</h1>
+                <div>
+                    <div>100k views</div>
+                    <div>4 hours ago</div>
+                    <div>
+                        <div class="before:content-['#']">ETH-NFT</div>
+                        <div class="before:content-['#']">ETH-NFT</div>
+                        <div class="before:content-['#']">ETH-NFT</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-span-4">
-            
-        </div>
+        <div class="col-span-4"></div>
     </div>
 </template>
 
-<style scoped>
-
+<style scoped lang="scss">
+.video-scrollbar {
+    &::-webkit-scrollbar {
+        width: px;
+    }
+    &::-webkit-scrollbar-thumb {
+            background: transparent;
+     }
+}
 </style>
