@@ -13,7 +13,7 @@ const {videoList} = storeToRefs(videoStore)
 
 <template>
     <div
-        class="mr-[5px] grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-5 overflow-y-scroll pr-[10px] pb-height-navigation">
+        class="grid grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-5 ">
         <AppVideoGridItem v-for="video in videoList" :video="video" :key="video.id" />
     </div>
 </template>

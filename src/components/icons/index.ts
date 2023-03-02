@@ -11,6 +11,9 @@ import IconClock from './IconClock.vue';
 import IconVideoGallery from './IconVideoGallery.vue';
 import IconComments from './IconComments.vue';
 import IconFutures from './IconFutures.vue';
+import IconHeadDiamond from './IconHeadDiamond.vue';
+import IconConfetti from './IconConfetti.vue';
+import IconLike from './IconLike.vue';
 
 
 export {
@@ -26,5 +29,8 @@ export {
     IconClock,
     IconVideoGallery,
     IconComments,
-    IconFutures
+    IconFutures,
+    IconHeadDiamond,
+    IconConfetti,
+    IconLike
 }

@@ -7,8 +7,8 @@ const emit = defineEmits<{
 
 </script>
 <template>
-    <div role="tablist" aria-orientation="horizontal" aria class="bg-gradient-tab-list inline-flex">
-        <slot :on-change="(tab: any) => emit('changeTab', tab)"  />
+    <div role="tablist" aria-orientation="horizontal" aria class=" inline-flex bg-gradient-tab-list " v-bind="$attrs">
+        <slot :on-change="(tab: any) => emit('changeTab', tab)" />
     </div>
 </template>
 

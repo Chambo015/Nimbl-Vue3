@@ -36,7 +36,7 @@ const setActiveTabCategory = (tab: TabCategoryType): void => {
         </div>
         <div class="col-span-8 h-full flex flex-col overflow-hidden">
             <AppCategory class="pr-5 mb-10" />
-            <AppVideoGrid />
+            <AppVideoGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
         </div> 
     </div>
 </template>

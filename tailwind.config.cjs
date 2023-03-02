@@ -16,6 +16,8 @@ module.exports = {
                     'linear-gradient(269.89deg, rgba(45, 167, 179, 0.5) -8.41%, rgba(24, 57, 156, 0.5) 64.31%, rgba(100, 34, 104, 0.5) 113.62%)',
                 'gradient-tab-list':
                     'linear-gradient(90.7deg, rgba(135, 68, 174, 0.553) -59.08%, rgba(98, 223, 255, 0.35) 112.63%)',
+                'gradient-tab-list-mute':
+                    'linear-gradient(269.91deg, rgba(4, 223, 243, 0.17) -28.06%, rgba(56, 105, 254, 0.17) 55.29%, rgba(206, 15, 219, 0.17) 127%)',
                 'gradient-active-tab':
                     'linear-gradient(124.24deg, rgba(135, 68, 174, 0.504) -55.1%, rgba(98, 223, 255, 0.364) 115.67%)',
                 'gradient-header':
@@ -23,10 +25,13 @@ module.exports = {
                 'gradient-text': 'linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%)',
             },
             colors: {
-                'default-glass': 'rgba(51, 51, 51, 0.5)'
+                'default-glass': 'rgba(51, 51, 51, 0.5)',
+                'light-glass': 'rgba(192, 192, 192, 0.1)',
+                'light-glass-mute': 'rgba(217, 217, 217, 0.1)',
             },
             spacing: {
-                'height-navigation': '60px'
+                'height-navigation': '60px',
+                'width-sidebar-community': '5rem'
             }
         },
     },

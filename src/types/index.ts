@@ -1,5 +1,6 @@
 export type TabCategoryType = 'Top' | 'Trending' | 'Rising' | 'WatchList';
 
+export type RangeType = '1d' | '1w' | '1m' | '3m'
 export interface ChannelI {
     id: number;
     name: string;
@@ -18,4 +19,14 @@ export interface VideoI {
     poster: string,
 }
 
-export type RangeType = '1d' | '1w' | '1m' | '3m'
+export interface PostI {
+    id: number,
+    author: {
+        name: string,
+        avatar: string,
+    },
+    text: string,
+    attachImg?: string,
+    likeCount: number,
+    createdDate: number // 2h ago
+}

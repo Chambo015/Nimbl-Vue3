@@ -1,40 +1,50 @@
 <template>
     <nav class="flex bg-gradient-nav backdrop-blur-md" aria-orientation="horizontal">
-        <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow" :to="route.slug" >
+        <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow" :to="route.slug" :is-active="isActiveRoute(route.name, route.children)" >
             <template #icon="iconProps">
-                <component :is="route.asyncIcon" :class="iconProps.class" />
+                <component :is="route.icon" :class="iconProps.class" />
             </template>
             <template #default>{{ capitalize(route.name) }}</template>
         </TheNavigationItem>
     </nav>
 </template>
 <script setup lang="ts">
-import { reactive, shallowRef } from 'vue';
+import { computed, reactive, shallowRef } from 'vue';
 import { capitalize } from '@/utils'
 import TheNavigationItem from './TheNavigationItem.vue';
 import {IconContent, IconCommunity, IconMarketplace, IconSettings} from './icons';
+import { useRoute } from 'vue-router';
 
 
 const routers = reactive([
     {
         slug: '/',
         name: 'content',
-        asyncIcon: shallowRef(IconContent)
+        children: [
+            'video'
+        ],
+        icon: shallowRef(IconContent)
     },
     {
         slug: '/community',
         name: 'community',
-        asyncIcon: shallowRef(IconCommunity)
+        icon: shallowRef(IconCommunity)
     },
     {
         slug: '/marketplace',
         name: 'marketplace',
-        asyncIcon: shallowRef(IconMarketplace)
+        icon: shallowRef(IconMarketplace)
     },
     {
         slug: '/settings',
         name: 'settings',
-        asyncIcon: shallowRef(IconSettings)
+        icon: shallowRef(IconSettings)
     }
 ])
+
+const route = useRoute()
+const isActiveRoute = (name: string, children?: string[]): boolean => {
+    return name === route.name || (children ? children.includes(route.name as string) : false)
+}
+
 </script>

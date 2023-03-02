@@ -2,7 +2,7 @@
     <div>
         <video class="object-fill" controls loop >
             <source
-                src="https://storage.googleapis.com/nimbl/NFTs%20and%20the%20%2413B%20marketplace%2C%20explained.mp4"
+                src="https://storage.googleapis.com/nimbl_next/NFTs%20and%20the%20%2413B%20marketplace%2C%20explained.mp4"
                 type="video/mp4" />
         </video>
     </div>

@@ -43,7 +43,7 @@ const setActiveRange = (range: RangeType) => {
             <AppButton class="h-11"
                 ><span class="mr-2">All Categories</span> <IconChevron class="w-4 translate-x-2"
             /></AppButton>
-            <AppButton class="ml-auto h-11">View all</AppButton>
+            <AppButton class="ml-auto">View all</AppButton>
         </div>
         <div class="overflow-x-hidden overflow-y-auto mt-3 pb-height-navigation">
             <table class="w-full border-spacing-0">

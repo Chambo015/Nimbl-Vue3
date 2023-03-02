@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 interface State {
     videoList: VideoI[]
-  }
+}
  
 export const useVideoStore = defineStore('video', {
     state:(): State => ({
