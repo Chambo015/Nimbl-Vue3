@@ -27,11 +27,18 @@ const baseUrl = import.meta.env.BASE_URL
     <!-- pl-[calc(theme(spacing.width-sidebar-community)+5px)]  -->
     <div class="relative h-full w-full flex items-start overflow-hidden">
         <!-- ASIDE -->
-        <aside class="w-width-sidebar-community absolute inset-y-0 left-0 z-20 bg-light-glass backdrop-blur-sm pb-height-navigation will-change-[width] delay-300 hover:w-52 transition-[width] duration-500 hover:duration-300 hover:delay-[0ms] pt-5 overflow-x-hidden ">
-            <div class="flex flex-col pl-4">
-                <div v-for="channel in [...channelList, ...channelList, ...channelList]" @click="() => showChat = !showChat" :key="channel.id" class="py-4 flex items-center gap-5 cursor-pointer">
-                    <img :src="channel.avatar" alt="avatar" width="45" height="45" class="object-cover rounded-full w-11 h-11 block flex-shrink-0" >
-                    <div>{{  channel.name }}</div>
+        <aside class="group w-width-sidebar-community absolute inset-y-0 left-0 z-20 bg-light-glass backdrop-blur-sm pb-height-navigation will-change-[width] delay-300 hover:w-[380px] transition-[width] duration-500 hover:duration-300 hover:delay-[0ms] pt-5 overflow-x-hidden">
+            <div class="flex flex-col gap-6">
+                <div v-for="channel in [...channelList, ...channelList, ...channelList]" @click="() => showChat = !showChat" :key="channel.id" class="px-4 flex items-center cursor-pointer overflow-hidden">
+                    <img :src="channel.avatar" alt="avatar" width="44" height="44" class="object-cover rounded-full w-11 h-11 block flex-shrink-0 mr-4" >
+                    <div class="flex flex-col overflow-hidden justify-between self-stretch">
+                        <span class="text-sm">{{  channel.name }}</span>
+                        <span class="truncate text-xs">Lorem ipsum dolor sitf amet consectetur adipisicing elit.</span>
+                    </div>
+                    <div class="flex flex-col text-xs overflow-hidden self-start flex-shrink-0 items-end gap-1 ">
+                        <span>12:04p.m</span>
+                        <span class="bg-gradient-tab-list px-1">144</span>
+                    </div>
                 </div>
             </div>
         </aside>
