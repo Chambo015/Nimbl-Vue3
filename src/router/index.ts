@@ -5,7 +5,7 @@ import LayoutHome from '@/layouts/LayoutHome.vue';
 
 
 const router = createRouter({
-    history: createWebHistory("/Nimbl-Vue3/"), // Способ сохранения истории переходов по маршрутам
+    history: createWebHistory(import.meta.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
     routes: [
         // Определяем маршруты
         {
