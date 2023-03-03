@@ -14,7 +14,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '100k',
                 price: 134,
                 total: 238,
-                avatar: '/img/users/1.png',
+                avatar: './img/users/1.png',
             },
             {
                 id: 2,
@@ -22,7 +22,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '90k',
                 price: 110,
                 total: 200,
-                avatar: '/img/users/2.png',
+                avatar: './img/users/2.png',
             },
             {
                 id: 3,
@@ -30,7 +30,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '78k',
                 price: 92,
                 total: 189,
-                avatar: '/img/users/3.png',
+                avatar: './img/users/3.png',
             },
             {
                 id: 4,
@@ -38,7 +38,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '53k',
                 price: 86,
                 total: 167,
-                avatar: '/img/users/4.png',
+                avatar: './img/users/4.png',
             },
             {
                 id: 5,
@@ -46,7 +46,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '48k',
                 price: 74,
                 total: 126,
-                avatar: '/img/users/5.png',
+                avatar: './img/users/5.png',
             },
             {
                 id: 6,
@@ -54,7 +54,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '51k',
                 price: 76,
                 total: 142,
-                avatar: '/img/users/6.png',
+                avatar: './img/users/6.png',
             },
             {
                 id: 7,
@@ -62,7 +62,7 @@ export const useChannelStore = defineStore('channel', {
                 subscribers: '30k',
                 price: 59,
                 total: 102,
-                avatar: '/img/users/7.png',
+                avatar: './img/users/7.png',
             },
         ],
     })
