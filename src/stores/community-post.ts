@@ -15,7 +15,7 @@ export const usePostStore = defineStore('post', {
                     avatar: '/img/users/1.png',
                 },
                 text: 'It is buyin time! Reading about people grabbing multi-figures monthly as incomes in investments even in this crazy days',
-                attachImg: '/fakeImg/video-14.jpg',
+                attachImg: '/img/video-card/1.jpg',
                 likeCount: 158,
                 createdDate: new Date(Date.now() - (2* 60 * 60 * 1000)).getTime(), // 2h ago
             },

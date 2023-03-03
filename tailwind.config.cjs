@@ -61,6 +61,11 @@ module.exports = {
                     left: '0',
                     right: '0',
                 },
+                '.bg-custom-center': {
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'auto 100%'
+                }
             });
         }),
         // eslint-disable-next-line no-undef

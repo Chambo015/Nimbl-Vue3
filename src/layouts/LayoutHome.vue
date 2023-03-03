@@ -7,6 +7,6 @@ import TheNavigation from '@/components/TheNavigation.vue';
     <div class="flex flex-col h-screen overflow-hidden">
         <header><TheHeader /></header>
         <main class="flex-grow overflow-hidden"><RouterView /></main>
-        <footer class="mt-auto fixed inset-x-0 bottom-0"><TheNavigation /></footer>
+        <footer class="mt-auto fixed z-[999999] inset-x-0 bottom-0"><TheNavigation /></footer>
     </div>
 </template>
