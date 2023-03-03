@@ -5,7 +5,7 @@ import LayoutHome from '@/layouts/LayoutHome.vue';
 
 
 const router = createRouter({
-    history: createWebHistory(), // Способ сохранения истории переходов по маршрутам
+    history: createWebHistory(process.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
     routes: [
         // Определяем маршруты
         {
