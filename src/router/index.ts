@@ -34,6 +34,11 @@ const router = createRouter({
                     component: () => import('../views/ViewChannel.vue')
                 },
                 {
+                    path: '/settings',
+                    name: 'settings',
+                    component: () => import('../views/ViewSettings.vue')
+                },
+                {
                     path: '/:pathMatch(.*)*',
                     name: 'noteFound',
                     component: NotFound,

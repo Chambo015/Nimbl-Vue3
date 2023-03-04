@@ -2,6 +2,7 @@
 import AppButton from '@/components/AppButton.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
+import AppVideoGrid from '@/components/AppVideoGrid.vue';
 import AppVideoPlayer from '@/components/AppVideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
 import { usePostStore } from '@/stores/community-post';
@@ -17,6 +18,12 @@ type ContentTabsTypes = 'content' | 'token';
 const activeContentTab = ref<ContentTabsTypes>('content');
 const setActiveContentTab = (tab: ContentTabsTypes) => {
     activeContentTab.value = tab;
+};
+
+const tabVideoArr = ['Most watched', 'Recent videos', 'Playlists'];
+const activeTabVideo = ref('Most watched');
+const setActiveTabVideo = (tab: string): void => {
+    activeTabVideo.value = tab;
 };
 
 const dataStats =  ref({
@@ -37,9 +44,10 @@ const baseUrl = import.meta.env.BASE_URL;
 <template>
     <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
         <!-- Left Side -->
-        <section class="col-span-4 pl-5">
+        <section class="col-span-4 pl-5 overflow-hidden h-full flex flex-col">
             <AppVideoPlayer />
-            <div class="mt-5 bg-light-glass p-5 backdrop-blur-sm">
+            <div class="mt-5 bg-light-glass p-5 backdrop-blur-sm overflow-hidden flex flex-col">
+                <!--  -->
                 <section class="mb-8">
                     <div class="mb-4 flex items-center gap-5 text-lg">
                         <img :src="baseUrl + 'img/users/11.png'"
@@ -69,8 +77,10 @@ const baseUrl = import.meta.env.BASE_URL;
                         </div>
                     </footer>
                 </section>
+                <!--  -->
                 <h4 class="mb-5 text-xl font-semibold">Announcements</h4>
-                <section class="space-y-3 ">
+                <!-- Posts -->
+                <section class="space-y-3 overflow-y-scroll pb-7">
                     <article v-for="post in postList" :key="post.id" class="bg-light-glass-mute flex p-5 ">
                     <img :src="post.author.avatar" alt="avatar" width="32" height="32" class="w-8 h-8 object-cover rounded-full mr-3 sticky top-1">
                     <div class="flex flex-col w-[500px]">
@@ -94,13 +104,14 @@ const baseUrl = import.meta.env.BASE_URL;
                             </div>
                         </footer>
                     </div>
-                </article>
+                    </article>
                 </section>
+                <!--  -->
             </div>
         </section>
         <!--  -->
         <!-- Right Side -->
-        <section class="col-span-8">
+        <section class="col-span-8 overflow-hidden flex flex-col h-full">
              <!-- header Content -->
             <head class="w-full grid grid-cols-8 gap-5 pr-5 mb-5">
                 <AppTabList class="h-14 !bg-gradient-tab-list-mute col-span-4" @change-tab="setActiveContentTab" v-slot="{ onChange }">
@@ -119,7 +130,7 @@ const baseUrl = import.meta.env.BASE_URL;
             </head>
             <!--   -->
             <!-- Stats & Chart section  -->
-            <section class="w-full grid grid-cols-8 gap-5 pr-5">
+            <section class="w-full grid grid-cols-8 gap-5 pr-5 mb-5">
                 <div class="col-span-4 grid grid-cols-3 gap-2">
                     <div v-for="(value, key) in dataStats" :key="key" class="py-3 flex items-center justify-center flex-col backdrop-blur-sm bg-light-glass">
                         <div class="font-ethnocentric gradient-text text-lg">{{value.toLocaleString('ru')}}</div> 
@@ -131,6 +142,21 @@ const baseUrl = import.meta.env.BASE_URL;
                 </div>
             </section>
             <!--  -->
+            <!-- Tabs Video -->
+            <div class="pr-5 mb-5">
+                <AppTabList class="h-14 !bg-gradient-tab-list-mute w-full " @change-tab="setActiveTabVideo" v-slot="{ onChange }">
+                        <AppTabListItem 
+                            v-for="tab in tabVideoArr"
+                            :key="tab"
+                            :value="tab" 
+                            :active-value="activeTabVideo" 
+                            @click="() => onChange(tab)">
+                                <span class="text-xl font leading-none">{{tab}}</span>
+                        </AppTabListItem>
+                </AppTabList>
+            </div>
+            <!--  -->
+            <AppVideoGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
         </section>
     </div>
 </template>
