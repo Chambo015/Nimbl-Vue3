@@ -12,6 +12,11 @@ import { useRoute } from 'vue-router';
 
 type SidebarTabsTypes = 'videos' | 'comments' | 'trade';
 
+const activeSidebarTab = ref<SidebarTabsTypes>('videos');
+const setActiveSidebarTab = (tab: SidebarTabsTypes) => {
+    activeSidebarTab.value = tab;
+};
+
 const route = useRoute();
 const idParams = computed(() => parseInt(route.params.id as string));
 
@@ -19,10 +24,6 @@ const videoStore = useVideoStore();
 const { videoList } = storeToRefs(videoStore);
 const video = computed(() => videoStore.getVideoById(idParams.value));
 
-const activeSidebarTab = ref<SidebarTabsTypes>('videos');
-const setActiveSidebarTab = (tab: SidebarTabsTypes) => {
-    activeSidebarTab.value = tab;
-};
 
 const views = computed(() => randomNumber(90000, 999999));
 </script>

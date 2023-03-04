@@ -29,6 +29,11 @@ const router = createRouter({
                     component: () => import('../views/ViewCommunity.vue')
                 },
                 {
+                    path: '/channel',
+                    name: 'channel',
+                    component: () => import('../views/ViewChannel.vue')
+                },
+                {
                     path: '/:pathMatch(.*)*',
                     name: 'noteFound',
                     component: NotFound,

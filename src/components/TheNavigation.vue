@@ -9,7 +9,7 @@
     </nav>
 </template>
 <script setup lang="ts">
-import { computed, reactive, shallowRef } from 'vue';
+import { reactive, shallowRef } from 'vue';
 import { capitalize } from '@/utils'
 import TheNavigationItem from './TheNavigationItem.vue';
 import {IconContent, IconCommunity, IconMarketplace, IconSettings} from './icons';
@@ -21,7 +21,8 @@ const routers = reactive([
         slug: '/',
         name: 'content',
         children: [
-            'video'
+            'video',
+            'channel'
         ],
         icon: shallowRef(IconContent)
     },

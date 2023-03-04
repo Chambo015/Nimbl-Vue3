@@ -25,15 +25,15 @@ const baseUrl = import.meta.env.BASE_URL
 
 <template>
     <!-- pl-[calc(theme(spacing.width-sidebar-community)+5px)]  -->
-    <div class="relative h-full w-full flex items-start overflow-hidden">
+    <div v-auto-animate="{ duration: 500 }" class="relative h-full w-full flex items-start overflow-hidden justify-end">
         <!-- ASIDE -->
-        <aside class="group w-width-sidebar-community absolute inset-y-0 left-0 z-20 bg-light-glass backdrop-blur-sm pb-height-navigation will-change-[width] delay-300 hover:w-[380px] transition-[width] duration-500 hover:duration-300 hover:delay-[0ms] pt-5 overflow-x-hidden">
+        <aside key="aside" class="group peer/aside  w-width-sidebar-community absolute inset-y-0 left-0 z-20 bg-light-glass backdrop-blur-sm pb-height-navigation will-change-[width] delay-300 hover:w-[380px] transition-[width] duration-500 hover:duration-300 hover:delay-[150ms] pt-5 overflow-x-hidden">
             <div class="flex flex-col gap-6">
                 <div v-for="channel in [...channelList, ...channelList, ...channelList]" @click="() => showChat = !showChat" :key="channel.id" class="px-4 flex items-center cursor-pointer overflow-hidden">
                     <img :src="channel.avatar" alt="avatar" width="44" height="44" class="object-cover rounded-full w-11 h-11 block flex-shrink-0 mr-4" >
                     <div class="flex flex-col overflow-hidden justify-between self-stretch">
                         <span class="text-sm">{{  channel.name }}</span>
-                        <span class="truncate text-xs">Lorem ipsum dolor sitf amet consectetur adipisicing elit.</span>
+                        <span class="truncate text-sm">Reading about people grabbing multi-figures monthly as incomes in investments even in this crazy</span>
                     </div>
                     <div class="flex flex-col text-xs overflow-hidden self-start flex-shrink-0 items-end gap-1 ">
                         <span>12:04p.m</span>
@@ -44,26 +44,26 @@ const baseUrl = import.meta.env.BASE_URL
         </aside>
         <!--  -->
 
-        <!-- Chat -->
-        <section v-if="showChat" class="flex-grow bg-light-glass self-stretch ml-[calc(theme(spacing.width-sidebar-community)+15px)] mb-[calc(theme(spacing.height-navigation)+theme(spacing.3))] mr-5 mt-3 px-5 pt-5">
+        <!-- Chat --> <!-- ml-[calc(theme(spacing.width-sidebar-community)+15px)] -->
+        <section key="chat" v-if="showChat" class=" flex-grow peer-hover/aside:ml-[calc(380px+15px)] peer-hover/aside:delay-[150ms] will-change-[margin-lef] ml-[calc(theme(spacing.width-sidebar-community)+15px)] transition-all delay-500 duration-300 bg-light-glass self-stretch  mb-[calc(theme(spacing.height-navigation)+theme(spacing.3))] mr-5 mt-3 px-5 pt-5">
             <header class="grid grid-cols-3 gap-1 mb-5">
-                <div class="row-span-2 col-span-1 bg-light-glass flex gap-3 justify-center py-2 items-center">
+                <div class="row-span-2 col-span-1 bg-light-glass flex gap-3 justify-center p-2 items-center">
                     <img :src="baseUrl + '/img/users/10.png'" alt="avatar" class="w-16 h-16 object-cover block">
                     <div>
                         <h3 class="text-2xl font-semibold mb-1">Bankless</h3>
                         <div>Community Size: <span class="font-ethnocentric gradient-text">4.2k</span></div>
                     </div>
                 </div>
-                <div class="bg-light-glass py-2 flex items-center justify-center">
+                <div class="bg-light-glass p-2 flex items-center justify-center">
                    <p> Floor Price: <span class="font-ethnocentric gradient-text">20 NMBL</span></p>
                 </div>
-                <div class="bg-light-glass py-2 flex items-center justify-center">
+                <div class="bg-light-glass p-2 flex items-center justify-center">
                     <p>Volume: <span class="font-ethnocentric gradient-text">34 NMBL</span></p>
                 </div>
-                <div class="bg-light-glass py-2 flex items-center justify-center">
+                <div class="bg-light-glass p-2 flex items-center justify-center">
                     <p>Floor Price: <span class="font-ethnocentric gradient-text">20 NMBL</span></p>
                 </div>
-                <div class="bg-light-glass py-2 flex items-center justify-center ">
+                <div class="bg-light-glass p-2 flex items-center justify-center ">
                     <p>Volume: <span class="font-ethnocentric gradient-text">40 NMBL</span></p>
                 </div>
             </header>
@@ -80,17 +80,17 @@ const baseUrl = import.meta.env.BASE_URL
         </section>
         <!--  -->
 
-        <!-- Posts -->
-        <div class="relative flex-shrink-0 h-full pr-5 mr-1 mt-3 flex justify-center items-start overflow-y-scroll pb-[calc(theme(spacing.height-navigation)+theme(spacing.6))]" :class="{'flex-grow': !showChat}">
+        <!-- Posts --> <!-- :class="{'flex-grow': !showChat}" -->
+        <div key="posts" class="relative flex-shrink-0 h-full pr-5 mr-1 mt-3 flex justify-center items-start overflow-y-scroll pb-[calc(theme(spacing.height-navigation)+theme(spacing.6))]" :class="[{'flex-grow': !showChat}]">
 
-            <section v-if="!showChat" class="w-[250px]  sticky top-3 -ml-[calc(250px+20px)] mr-5 ">
-                <div v-for="category in categoryList" :key="category.id" class="flex items-center justify-center w-full h-[110px] mb-6 cursor-pointer bg-custom-center hover:bg-[length:auto_105%] transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
+            <section key="category" v-if="!showChat" class="w-[250px] sticky top-3 -ml-[calc(250px+20px)] mr-5 ">
+                <div v-for="category in categoryList" :key="category.id" class="flex items-center justify-center w-full h-[110px] mb-6 cursor-pointer bg-custom-center hover:bg-[length:auto_105%] hover:shadow-md  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
                     <span class="text-xl font-bold">{{ category.title }}</span>
                 </div>
             </section>
 
 
-            <section class="bg-light-glass p-5 space-y-3  ">
+            <section key="postInside" class="bg-light-glass p-5 space-y-3">
                 <article v-for="post in [...postList,...postList]" :key="post.id" class="bg-light-glass-mute flex p-5 ">
                     <img :src="post.author.avatar" alt="avatar" width="40" height="40" class="w-10 h-10 object-cover rounded-full mr-3 sticky top-1">
                     <div class="flex flex-col w-[500px]">

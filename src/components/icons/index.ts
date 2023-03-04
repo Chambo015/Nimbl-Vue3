@@ -14,6 +14,8 @@ import IconFutures from './IconFutures.vue';
 import IconHeadDiamond from './IconHeadDiamond.vue';
 import IconConfetti from './IconConfetti.vue';
 import IconLike from './IconLike.vue';
+import IconCalendar from './IconCalendar.vue';
+import IconLocationDot from './IconLocationDot.vue';
 
 
 export {
@@ -32,5 +34,7 @@ export {
     IconFutures,
     IconHeadDiamond,
     IconConfetti,
-    IconLike
+    IconLike,
+    IconCalendar,
+    IconLocationDot
 }
