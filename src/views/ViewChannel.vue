@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue';
-import AppChartArea from '@/components/AppChartArea.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoPlayer from '@/components/AppVideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
 import { usePostStore } from '@/stores/community-post';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { defineAsyncComponent, ref } from 'vue';
+
+const AppChartArea = defineAsyncComponent(() =>
+  import('@/components/AppChartArea.vue')
+)
 
 type ContentTabsTypes = 'content' | 'token';
 
