@@ -3,6 +3,7 @@ import AppButton from '@/components/AppButton.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
+import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
 import { usePostStore } from '@/stores/community-post';
 import { storeToRefs } from 'pinia';
@@ -44,7 +45,7 @@ const baseUrl = import.meta.env.BASE_URL;
     <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
         <!-- Left Side -->
         <section class="col-span-4 pl-5 overflow-hidden h-full flex flex-col">
-            <AppVideoPlayer />
+            <VideoPlayer />
             <div class="mt-5 bg-light-glass p-5 backdrop-blur-sm overflow-hidden flex flex-col">
                 <!--  -->
                 <section class="mb-8">

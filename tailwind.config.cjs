@@ -3,6 +3,7 @@
 const plugin = require('tailwindcss/plugin');
 // eslint-disable-next-line no-undef
 module.exports = {
+    darkMode: 'class',
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
         extend: {
@@ -28,6 +29,8 @@ module.exports = {
                 'default-glass': 'rgba(51, 51, 51, 0.5)',
                 'light-glass': 'rgba(192, 192, 192, 0.1)',
                 'light-glass-mute': 'rgba(217, 217, 217, 0.1)',
+                'dark-glass': 'rgba(17, 17, 17, 0.7)',
+                'dark-violet': '#22202F'
             },
             spacing: {
                 'height-navigation': '60px',
