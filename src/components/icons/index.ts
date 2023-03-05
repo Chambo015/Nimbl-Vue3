@@ -20,6 +20,7 @@ import IconPlay from './IconPlay.vue';
 import IconPause from './IconPause.vue';
 import IconFullScreenOff from './IconFullScreenOff.vue';
 import IconFullScreenOn from './IconFullScreenOn.vue';
+import IconLogout from './IconLogout.vue';
 
 
 export {
@@ -44,5 +45,6 @@ export {
     IconPlay,
     IconPause,
     IconFullScreenOff,
-    IconFullScreenOn
+    IconFullScreenOn,
+    IconLogout
 }

@@ -3,7 +3,7 @@ import { useChannelStore } from '@/stores/channels';
 import { usePostStore } from '@/stores/community-post';
 import { storeToRefs } from 'pinia';
 
-import {IconConfetti, IconHeadDiamond, IconLike} from '@/components/icons'
+import {IconConfetti, IconHeadDiamond, IconLike, IconLogout} from '@/components/icons'
 import { useCategoryStore } from '@/stores/category';
 import { ref } from 'vue';
 
@@ -29,7 +29,7 @@ const baseUrl = import.meta.env.BASE_URL
         <!-- ASIDE -->
         <aside key="aside" class="group peer/aside  w-width-sidebar-community absolute inset-y-0 left-0 z-20 bg-light-glass backdrop-blur-sm pb-height-navigation will-change-[width] delay-300 hover:w-[380px] transition-[width] duration-500 hover:duration-300 hover:delay-[150ms] pt-5 overflow-x-hidden">
             <div class="flex flex-col gap-6">
-                <div v-for="channel in [...channelList, ...channelList, ...channelList]" @click="() => showChat = !showChat" :key="channel.id" class="px-4 flex items-center cursor-pointer overflow-hidden">
+                <div v-for="channel in [...channelList, ...channelList, ...channelList]" @click="() => showChat = true" :key="channel.id" class="px-4 flex items-center cursor-pointer overflow-hidden">
                     <img :src="channel.avatar" alt="avatar" width="44" height="44" class="object-cover rounded-full w-11 h-11 block flex-shrink-0 mr-4" >
                     <div class="flex flex-col overflow-hidden justify-between self-stretch">
                         <span class="text-sm">{{  channel.name }}</span>
@@ -46,25 +46,28 @@ const baseUrl = import.meta.env.BASE_URL
 
         <!-- Chat --> <!-- ml-[calc(theme(spacing.width-sidebar-community)+15px)] -->
         <section key="chat" v-if="showChat" class=" flex-grow peer-hover/aside:ml-[calc(380px+15px)] peer-hover/aside:delay-[150ms] will-change-[margin-lef] ml-[calc(theme(spacing.width-sidebar-community)+15px)] transition-all delay-500 duration-300 bg-light-glass self-stretch  mb-[calc(theme(spacing.height-navigation)+theme(spacing.3))] mr-5 mt-3 px-5 pt-5">
-            <header class="grid grid-cols-3 gap-1 mb-5">
-                <div class="row-span-2 col-span-1 bg-light-glass flex gap-3 justify-center p-2 items-center">
+            <header class="grid grid-cols-[repeat(3,minmax(0,1fr))_50px] gap-1 mb-5">
+                <div class="row-span-2 col-span-1 col-start-1 bg-light-glass flex gap-3 justify-center p-2 items-center">
                     <img :src="baseUrl + '/img/users/10.png'" alt="avatar" class="w-16 h-16 object-cover block">
                     <div>
                         <h3 class="text-2xl font-semibold mb-1">Bankless</h3>
                         <div>Community Size: <span class="font-ethnocentric gradient-text">4.2k</span></div>
                     </div>
                 </div>
-                <div class="bg-light-glass p-2 flex items-center justify-center">
+                <div class="bg-light-glass p-2 col-start-2 flex items-center justify-center">
                    <p> Floor Price: <span class="font-ethnocentric gradient-text">20 NMBL</span></p>
                 </div>
                 <div class="bg-light-glass p-2 flex items-center justify-center">
                     <p>Volume: <span class="font-ethnocentric gradient-text">34 NMBL</span></p>
                 </div>
-                <div class="bg-light-glass p-2 flex items-center justify-center">
+                <div class="bg-light-glass p-2 flex items-center col-start-2 justify-center">
                     <p>Floor Price: <span class="font-ethnocentric gradient-text">20 NMBL</span></p>
                 </div>
                 <div class="bg-light-glass p-2 flex items-center justify-center ">
                     <p>Volume: <span class="font-ethnocentric gradient-text">40 NMBL</span></p>
+                </div>
+                <div class="bg-light-glass col-start-4 row-span-2 row-start-1 cursor-pointer flex justify-center items-center" @click="showChat = false">
+                    <IconLogout class="w-[80%] stroke-white text-transparent"/>
                 </div>
             </header>
             <div class="space-y-5">

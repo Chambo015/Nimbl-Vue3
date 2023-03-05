@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useFullscreen, useMediaControls } from '@vueuse/core'
 import Controls from './VideoPlayerControls'
 import { IconPlay, IconPause, IconFullScreenOn, IconFullScreenOff } from '../icons';
