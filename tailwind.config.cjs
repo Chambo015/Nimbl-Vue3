@@ -26,6 +26,7 @@ module.exports = {
                 'gradient-text': 'linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%)',
             },
             colors: {
+                'light-blue': '#53A2FF',
                 'default-glass': 'rgba(51, 51, 51, 0.5)',
                 'light-glass': 'rgba(192, 192, 192, 0.1)',
                 'light-glass-mute': 'rgba(217, 217, 217, 0.1)',

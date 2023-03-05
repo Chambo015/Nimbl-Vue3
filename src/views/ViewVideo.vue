@@ -63,7 +63,7 @@ const views = computed(() => randomNumber(90000, 999999));
         </div>
         <div class="col-span-4 flex flex-col overflow-hidden">
             <div class="mb-5 flex pr-5">
-                <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute" @change-tab="setActiveSidebarTab" v-slot="{ onChange }">
+                <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="setActiveSidebarTab" v-slot="{ onChange }">
                     <AppTabListItem value="videos" :active-value="activeSidebarTab" @click="() => onChange('videos')">
                         <IconVideoGallery class="mr-4 h-6 w-6 translate-y-[2px]" />
                         <span class="text-xl leading-none">Videos</span>

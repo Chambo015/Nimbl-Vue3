@@ -106,13 +106,13 @@ const baseUrl = import.meta.env.BASE_URL
                             <img :src="post.attachImg" alt="attach_img" class="w-full h-auto aspect-video block">
                         </div>
                         <footer class="flex gap-4 text-white/50">
-                            <div class="inline-flex items-center text-xs gap-1  hover:text-white transition-colors cursor-pointer">
+                            <div class="inline-flex items-center text-xs gap-1  hover:text-light-blue transition-colors cursor-pointer">
                                 <IconLike class="w-5 h-5" /> <div>{{ post.likeCount }}</div>
                             </div>
-                            <div class="inline-flex items-center text-xs gap-1  hover:text-white transition-colors cursor-pointer">
+                            <div class="inline-flex items-center text-xs gap-1  hover:text-light-blue transition-colors cursor-pointer">
                                 <IconConfetti class="w-5 h-5" /> <div>1480</div>
                             </div>
-                            <div class="inline-flex items-center text-xs gap-1  hover:text-white transition-colors cursor-pointer">
+                            <div class="inline-flex items-center text-xs gap-1  hover:text-light-blue transition-colors cursor-pointer">
                                 <IconHeadDiamond class="w-5 h-5" /> <div>4250</div>
                             </div>
                             <div class="ml-auto">

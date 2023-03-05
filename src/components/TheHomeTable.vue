@@ -40,7 +40,7 @@ const setActiveRange = (range: RangeType) => {
                     ><span class="text-sm">{{ tab }}</span>
                 </AppTabListItem>
             </AppTabList>
-            <AppButton class="h-11"
+            <AppButton class="h-11 self-center"
                 ><span class="mr-2">All Categories</span> <IconChevron class="w-4 translate-x-2"
             /></AppButton>
             <AppButton class="ml-auto">View all</AppButton>

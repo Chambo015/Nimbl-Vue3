@@ -2,7 +2,7 @@
 
 </script>
 <template>
-    <div>
+    <div class="min-h-screen">
         Login page
     </div>
 </template>

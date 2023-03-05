@@ -53,9 +53,9 @@ const views = computed(() => randomNumber(90000, 999999));
                     class="mr-2 h-8 w-8 rounded-full object-cover" />
                 <RouterLink to="/channel" class="text-[white]/80 hover:text-white" @click.stop="() => {}">{{ video.channel }}</RouterLink>
             </div>
-            <div class="ml-auto">
-                <div class="mb-1 text-right leading-none">Floor Price:</div>
-                <div class="gradient-text text-right font-ethnocentric text-[15px] leading-none">
+            <div class="ml-auto flex flex-col justify-center">
+                <div class="text-right leading-none">Floor Price:</div>
+                <div class="gradient-text text-right font-ethnocentric ">
                     {{ video.price }} NMBL
                 </div>
             </div>

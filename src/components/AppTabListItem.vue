@@ -15,7 +15,7 @@ const isActive = computed(() => {
         role="tab"
         :class="[
             'relative flex flex-grow cursor-pointer items-center justify-center p-3',
-            isActive ? 'bg-gradient-active-tab  after:bottom-line' : 'hover:bg-black/10',
+            isActive ? 'bg-gradient-active-tab  after:bottom-line dark:bg-none dark:bg-light-glass-mute' : 'hover:bg-black/10',
         ]">
         <slot />
     </div>

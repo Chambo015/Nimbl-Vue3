@@ -24,12 +24,12 @@ const toggleDark = useToggle(isDark)
             <IconBell notification class="h-6" />
             <Popover class="relative">
                 <PopoverButton> <img src="/img/users/1.png" width="45" height="45" alt="user avatar" class="rounded-full ring"></PopoverButton>
-                <PopoverPanel class="absolute z-10 right-0 bg-gradient-header backdrop-blur-md p-3 min-w-[150px]">
-                <ul>
+                <PopoverPanel class="absolute z-10 right-0 bg-gradient-header  backdrop-blur-md p-3 min-w-[150px] dark:bg-none dark:bg-dark-glass">
+                <ul >
                     <li class="text-white/50">Theme
-                        <ul class="pl-4 text-white whitespace-nowrap">
-                            <li @click="toggleDark()" >Dark</li>
-                            <li>Light</li>
+                        <ul class="pl-4 text-white whitespace-nowrap [&_li]:cursor-pointer">
+                            <li @click="toggleDark(true)" >Dark</li>
+                            <li @click="toggleDark(false)">Light</li>
                             <li>Theme +</li>
                         </ul>
                     </li>

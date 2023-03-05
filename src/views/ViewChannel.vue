@@ -114,7 +114,7 @@ const baseUrl = import.meta.env.BASE_URL;
         <section class="col-span-8 overflow-hidden flex flex-col h-full">
              <!-- header Content -->
             <head class="w-full grid grid-cols-8 gap-5 pr-5 mb-5">
-                <AppTabList class="h-14 !bg-gradient-tab-list-mute col-span-4" @change-tab="setActiveContentTab" v-slot="{ onChange }">
+                <AppTabList class="h-14 !bg-gradient-tab-list-mute col-span-4 dark:!bg-none" @change-tab="setActiveContentTab" v-slot="{ onChange }">
                     <AppTabListItem value="content" :active-value="activeContentTab" @click="() => onChange('content')">
                         <IconVideoGallery class="mr-4 h-6 w-6 translate-y-[2px]" />
                         <span class="text-xl leading-none">Content</span>
@@ -144,7 +144,7 @@ const baseUrl = import.meta.env.BASE_URL;
             <!--  -->
             <!-- Tabs Video -->
             <div class="pr-5 mb-5">
-                <AppTabList class="h-14 !bg-gradient-tab-list-mute w-full " @change-tab="setActiveTabVideo" v-slot="{ onChange }">
+                <AppTabList class="h-14 !bg-gradient-tab-list-mute w-full dark:!bg-none" @change-tab="setActiveTabVideo" v-slot="{ onChange }">
                         <AppTabListItem 
                             v-for="tab in tabVideoArr"
                             :key="tab"
