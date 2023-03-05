@@ -24,23 +24,34 @@ const settingsTabsArray: SettingsTabsType[] = [
 
 const activeSettingsTab = ref<SettingsTabsType>('ACCOUNT');
 
+const currency = ref<'USD' | 'EUR' | 'CNY'>('USD')
 
-const data = reactive({
+interface IDataSettings {
+    [key: string]: {
+        [key: string] : {
+            [key: string]: {
+                [key: string]: boolean
+            }
+        }
+    }
+}
+
+const data = reactive<IDataSettings>({
     NOTIFICATIONS: {
-        GENERAL_NOTIFICATIONS: {
-            BROWSER_NOTIFICATIONS: {
-                'Get in-browser push notifications': true,
+        'General notifications': {
+            'Browser notifications': {
+                'Get in-browser push notifications': false,
             },
-            CHANNEL_NOTIFICATIONS: {
+            'Channel notifications': {
                 'Get new follower updates': true,
                 'Get new comment updates': false,
             },
-            OTHER_NOTIFICATIONS: {
+           'Other notifications': {
                 'Get occasional update notifications from Nimbl': true,
             },
         },
-        WALLET_NOTIFICATIONS : {
-            PURCHASE_NOTIFICATIONS: {
+        'Wallet notifications' : {
+            'Purchase notifications': {
                 'Get item sold updates': true,
                 'Get bid activity updates': true,
                 'Get price change updates': true,
@@ -50,11 +61,45 @@ const data = reactive({
                 'Get successful purchase updates': true,
             }
         },
-        MARKETPLACE_NOTIFICATIONS: {
-            UPDATES: {
+        'Marketplace notifications': {
+            'Updates': {
                 'Get trending channels digest': true,
                 'Get favorite channel updates': false
             }
+        }
+    },
+    LIKES_AND_PREFERENCES: {
+        VIDEO_PLAYER_PREFERENCES: {
+            VIDEO_QUALITY: {
+                'Watch videos in High Quality': true,
+                'Use Data Saving mode while using mobile data': true,
+            },
+            SUBTITLES: {
+                'Always show subtitles': true,
+            },
+            COMMENTS: {
+                'Show comments in the lower left corner': true,
+            },
+        },
+        MARKETPLACE_PREFERENCES : {
+            SETTING_1: {
+                'Setting 1 description': true,
+            }
+        }
+
+    },
+    SECURITY_AND_PRIVACY: {
+        PROFILE_CONDIFENTIALITY: {
+            PLAYLISTS: {
+                'Display saved playlists': true,
+                'Display created playlists': true,
+            },
+            FAVORITE_CHANNELS: {
+                'Display favorite channels': false,
+            },
+            HISTORY: {
+                'Save watched history': true,
+            },
         }
     }
 })
@@ -83,7 +128,7 @@ const data = reactive({
                 <!-- Account -->
                 <template v-if="activeSettingsTab === 'ACCOUNT'">
                     <TheSettings.Title>Account</TheSettings.Title>
-                    <section class="mb-8 flex justify-between border-b border-[#7077e5] pb-8">
+                    <section class="account_form mb-8 flex justify-between border-b border-[#7077e5] pb-8">
                         <form class="flex w-[460px] flex-col p-2">
                             <label for="Username">Username</label>
                             <input id="Username" type="text" placeholder="Enter username" />
@@ -140,7 +185,78 @@ const data = reactive({
                 <!--  -->
                 <!-- Notifications -->
                 <template v-else-if="activeSettingsTab === 'NOTIFICATIONS'">
-
+                    <TheSettings.Title>Notifications</TheSettings.Title>
+                    <p class="mb-8 text-sm">Select notifications you would like to receive</p>
+                    <template v-for="(subData, subTitle) in data['NOTIFICATIONS']" :key="subTitle">
+                        <TheSettings.SubTitle>{{subTitle}}</TheSettings.SubTitle>
+                        <TheSettings.List>
+                            <template v-for="(listData, key) in subData" :key="key">
+                                <TheSettings.Key>{{key}}</TheSettings.Key>
+                                <div  class="text-sm">
+                                    <TheSettings.Checkbox v-for="(checked, label) in listData" :key="label" v-model:checked="data.NOTIFICATIONS[subTitle][key][label]">{{label}}</TheSettings.Checkbox>
+                                </div>
+                            </template>
+                        </TheSettings.List>
+                        <TheSettings.Divider />
+                    </template>
+                </template>
+                <!--  -->
+                <!-- LIKES_AND_PREFERENCES -->
+                <template v-else-if="activeSettingsTab === 'LIKES_AND_PREFERENCES'">
+                    <TheSettings.Title>Likes and preferences</TheSettings.Title>
+                    <template v-for="(subData, subTitle) in data['LIKES_AND_PREFERENCES']" :key="subTitle">
+                        <TheSettings.SubTitle>{{subTitle}}</TheSettings.SubTitle>
+                        <TheSettings.List>
+                            <template v-for="(listData, key) in subData" :key="key">
+                                <TheSettings.Key>{{key}}</TheSettings.Key>
+                                <div  class="text-sm">
+                                    <TheSettings.Checkbox v-for="(checked, label) in listData" :key="label" 
+                                    v-model:checked="data['LIKES_AND_PREFERENCES'][subTitle][key][label]">{{label}}</TheSettings.Checkbox>
+                                </div>
+                            </template>
+                        </TheSettings.List>
+                        <TheSettings.Divider />
+                    </template>
+                </template>
+                <!--  -->
+                <!-- SECURITY_AND_PRIVACY -->
+                <template v-else-if="activeSettingsTab === 'SECURITY_AND_PRIVACY'">
+                    <TheSettings.Title>SECURITY_AND_PRIVACY</TheSettings.Title>
+                    <template v-for="(subData, subTitle) in data['SECURITY_AND_PRIVACY']" :key="subTitle">
+                        <TheSettings.SubTitle>{{subTitle}}</TheSettings.SubTitle>
+                        <TheSettings.List>
+                            <template v-for="(listData, key) in subData" :key="key">
+                                <TheSettings.Key>{{key}}</TheSettings.Key>
+                                <div  class="text-sm">
+                                    <TheSettings.Checkbox v-for="(checked, label) in listData" :key="label" 
+                                    v-model:checked="data['SECURITY_AND_PRIVACY'][subTitle][key][label]">{{label}}</TheSettings.Checkbox>
+                                </div>
+                            </template>
+                        </TheSettings.List>
+                        <TheSettings.Divider />
+                    </template>
+                </template>
+                <!--  -->
+                   <!-- Account -->
+                   <template v-else-if="activeSettingsTab === 'WALLET'">
+                    <TheSettings.Title>Wallet</TheSettings.Title>
+                    <TheSettings.SubTitle>Financial settings</TheSettings.SubTitle>
+                    <TheSettings.List>
+                        <TheSettings.Key>Currency conversion</TheSettings.Key>
+                        <div className={style.settings_list__value}>
+                            <select v-model="currency" class="py-2 px-4 text-white bg-[#293c61] text-sm">
+                                <option value="USD">USD - United States Dollar</option>
+                                <option value="EUR">EUR - Euro Countries</option>
+                                <option value="CNY">CNY - Chinese yuan</option>
+                            </select>
+                        </div>
+                        <TheSettings.Key>Wallet integration</TheSettings.Key>
+                        <div class="text-sm">
+                            <p>You are not connected to your MetaMask account.</p>
+                            <p>By integrating MetaMask you will be able to have a wallet</p>
+                            <p class="cursor-pointer text-[#6bb8ff]">Connect to your account</p>
+                        </div>
+                    </TheSettings.List>
                 </template>
                 <!--  -->
             </div>
@@ -156,17 +272,20 @@ const data = reactive({
     width: 100%;
     height: 100%;
 
-    label {
+    .account_form {
+        label {
         @apply mb-2 text-sm font-bold;
-    }
+        }
 
-    input,
-    textarea {
-        @apply mb-4 resize-y border border-none bg-light-glass py-2 px-3 text-sm text-white;
-    }
+        input,
+        textarea {
+            @apply mb-4 resize-y border border-none bg-light-glass py-2 px-3 text-sm text-white;
+        }
 
-    button {
-        @apply cursor-pointer border-none py-2 px-4 text-sm text-white;
+        button {
+            @apply cursor-pointer border-none py-2 px-4 text-sm text-white;
+        }
     }
+ 
 }
 </style>
