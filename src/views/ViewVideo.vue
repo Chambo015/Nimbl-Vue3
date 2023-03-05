@@ -56,7 +56,7 @@ const views = computed(() => randomNumber(90000, 999999));
                         </div>
                     </div>
                     <div class="ml-auto mr-32 text-xl">
-                        <AppButton class="mr-5">Subscribe</AppButton> <AppButton>Channel page</AppButton>
+                        <AppButton class="mr-5">Subscribe</AppButton> <AppButton @click="$router.push({name: 'channel'})">Channel page</AppButton>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@ const views = computed(() => randomNumber(90000, 999999));
                         <div class="mb-5 line-clamp-2">{{ video.title }}</div>
                         <div class="flex mt-auto items-center gap-2">
                             <img :src="video.avatar" class="block h-6 w-6 rounded-full object-cover" alt="avatar" />
-                            <div class="text-white/50">{{ video.channel }}</div>
+                            <div @click="$router.push({name: 'channel'})" class="text-white/50">{{ video.channel }}</div>
                         </div>
                         <div class="flex items-center gap-6 pt-[5px]">
                             <div class="inline-flex items-center">

@@ -125,7 +125,7 @@ const baseUrl = import.meta.env.BASE_URL;
                     </AppTabListItem>
                 </AppTabList>
                 <div class="col-span-4 flex justify-end">
-                    <AppButton>Channels community</AppButton>
+                    <AppButton @click="$router.push({name: 'community'})">Channels community</AppButton>
                 </div>               
             </head>
             <!--   -->
