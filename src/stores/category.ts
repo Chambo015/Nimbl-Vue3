@@ -16,7 +16,7 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 1,
                 title: 'Crypto News',
-                img: import.meta.env.BASE_URL +'/img/category/category-2.png',
+                img: '/img/category/crypto-news.png',
             },
             {
                 id: 2,

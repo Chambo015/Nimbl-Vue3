@@ -24,6 +24,7 @@ module.exports = {
                 'gradient-header':
                     'linear-gradient(269.89deg, rgba(45, 167, 179, 0.5) -8.41%, rgba(24, 57, 156, 0.5) 64.31%, rgba(100, 34, 104, 0.5) 113.62%)',
                 'gradient-text': 'linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%)',
+                'gradient-metamask-btn': 'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90.05deg, #6C71F7 -17.07%, rgba(151, 36, 164, 0.900001) 75.94%, rgba(234, 0, 154, 0.8) 145.22%)'
             },
             colors: {
                 'light-blue': '#53A2FF',

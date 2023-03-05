@@ -38,3 +38,9 @@ export interface PostI {
     likeCount: number,
     createdDate: number // 2h ago
 }
+
+
+export interface IUser {
+    username: string,
+    password: string
+}

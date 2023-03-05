@@ -1,10 +1,24 @@
 <script setup lang="ts">
-import { IconChevron, IconSearch, IconBell } from './icons';
+import { useMetamask } from '@/composables/useMetamask';
+import { IconChevron, IconSearch, IconBell, IconLogout } from './icons';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { useDark, useToggle } from '@vueuse/core'
+import { useUserStore } from '@/stores/user';
+import { useRouter } from 'vue-router';
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+
+const router = useRouter()
+
+const { logoutMetaMask, account} = useMetamask()
+const userStore = useUserStore();
+
+const logout = ()  => {
+    logoutMetaMask()
+    userStore.logout()
+    router.push({name: 'login'})
+}
 </script>
 
 <template>
@@ -40,6 +54,8 @@ const toggleDark = useToggle(isDark)
                         </ul>
                     </li>
                 </ul>
+                <p class="text-sm text-light-blue truncate w-[100px] mt-2">{{ account }}</p>
+                <div @click="logout" class="cursor-pointer mt-3 inline-flex items-center gap-1"><IconLogout class="h-5 stroke-white text-transparent translate-y-[1px]" /> <span class="leading-none">Logout</span></div>
                 </PopoverPanel>
             </Popover>
         </div>

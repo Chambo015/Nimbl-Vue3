@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 
 import NotFound from '@/views/ViewNotFound.vue';
 import LayoutHome from '@/layouts/LayoutHome.vue';
 
 
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
+    history: createWebHashHistory(import.meta.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
     routes: [
         // Определяем маршруты
         {
@@ -57,5 +57,13 @@ const router = createRouter({
         }
     ],
 });
+
+router.beforeEach((to, from) => {
+    const isAuthenticated = localStorage.getItem('user') || localStorage.getItem('metaMaskAccount') 
+    if (to.name !== 'login' && !isAuthenticated) {
+        return { name : 'login'} // Не авторизован
+    } 
+    return true // Авторизован
+})
 
 export default router;
