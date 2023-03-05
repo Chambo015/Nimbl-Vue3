@@ -2,13 +2,16 @@
 import { useMetamask } from '@/composables/useMetamask';
 import { IconChevron, IconSearch, IconBell, IconLogout } from './icons';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark, useFullscreen, useToggle } from '@vueuse/core'
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 import { useBlobsStore } from '@/stores/blobs';
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+
+
+const { toggle: toggleFullscreen } = useFullscreen(document.documentElement)
 
 const router = useRouter()
 
@@ -41,7 +44,7 @@ const logout = ()  => {
             <IconBell notification class="h-6" />
             <Popover class="relative">
                 <PopoverButton> <img src="/img/users/1.png" width="45" height="45" alt="user avatar" class="rounded-full ring"></PopoverButton>
-                <PopoverPanel class="absolute z-10 right-0 bg-gradient-header  backdrop-blur-md p-3 min-w-[150px] dark:bg-none dark:bg-dark-glass">
+                <PopoverPanel class="absolute z-10 right-0 bg-gradient-header  backdrop-blur-md py-3 px-5 min-w-[150px] dark:bg-none dark:bg-dark-glass">
                 <ul >
                     <li class="text-white/50">Theme
                         <ul class="pl-4 text-white whitespace-nowrap [&_li]:cursor-pointer">
@@ -51,9 +54,9 @@ const logout = ()  => {
                         </ul>
                     </li>
                     <li class="text-white/50">Settings
-                        <ul class="pl-4 text-white whitespace-nowrap">
+                        <ul class="pl-4 text-white whitespace-nowrap [&_li]:cursor-pointer">
                             <li>Sound</li>
-                            <li>Fullscreen</li>
+                            <li @click="toggleFullscreen">Fullscreen</li>
                         </ul>
                     </li>
                 </ul>
