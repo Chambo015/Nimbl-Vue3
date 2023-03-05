@@ -3,7 +3,6 @@ import AppButton from '@/components/AppButton.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
-import AppVideoPlayer from '@/components/AppVideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
 import { usePostStore } from '@/stores/community-post';
 import { storeToRefs } from 'pinia';

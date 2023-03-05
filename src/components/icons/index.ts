@@ -16,6 +16,10 @@ import IconConfetti from './IconConfetti.vue';
 import IconLike from './IconLike.vue';
 import IconCalendar from './IconCalendar.vue';
 import IconLocationDot from './IconLocationDot.vue';
+import IconPlay from './IconPlay.vue';
+import IconPause from './IconPause.vue';
+import IconFullScreenOff from './IconFullScreenOff.vue';
+import IconFullScreenOn from './IconFullScreenOn.vue';
 
 
 export {
@@ -36,5 +40,9 @@ export {
     IconConfetti,
     IconLike,
     IconCalendar,
-    IconLocationDot
+    IconLocationDot,
+    IconPlay,
+    IconPause,
+    IconFullScreenOff,
+    IconFullScreenOn
 }

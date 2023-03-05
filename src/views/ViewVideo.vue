@@ -2,13 +2,13 @@
 import AppButton from '@/components/AppButton.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
-import AppVideoPlayer from '@/components/AppVideoPlayer.vue';
 import { IconClock, IconComments, IconEye, IconFutures, IconVideoGallery } from '@/components/icons';
 import { useVideoStore } from '@/stores/video';
 import { randomNumber } from '@/utils';
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue'
 
 type SidebarTabsTypes = 'videos' | 'comments' | 'trade';
 
@@ -31,7 +31,7 @@ const views = computed(() => randomNumber(90000, 999999));
 <template>
     <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
         <div class="video-scrollbar col-span-8 overflow-scroll pl-5 pb-height-navigation flex flex-col">
-            <AppVideoPlayer class="aspect-video max-h-[65vh] w-auto self-center" />
+            <VideoPlayer class="aspect-video min-h-[65vh] w-auto self-center" />
             <div class="w-full p-4">
                 <h1 class="mb-4 truncate text-2xl">{{ video?.title }}</h1>
                 <div class="mb-4 flex items-center text-lg">
