@@ -42,19 +42,19 @@ const submitHandler = () => {
     }
 }
 
-const {connectMetaMask, isLoading, errorMsg, errorConnect, account} = useMetamask()
+const {connectMetaMask, isLoading, errorMsg, errorConnect} = useMetamask()
 
 </script>
 <template>
-    <div class="min-h-screen grid grid-cols-2 overflow-hidden">
+    <div class="min-h-screen grid grid-cols-2 overflow-hidden relative z-50">
         <!-- Left Side -->
             <div class="col-span-1 flex flex-col">
-                <div class="bg-light-glass backdrop-blur-sm w-full flex-grow mb-3 flex flex-col justify-center items-center">
+                <div class="bg-light-glass backdrop-blur-sm w-full flex-grow mb-3 flex flex-col justify-center items-center relative z-40">
                     <!-- Logo -->
                     <div class="flex items-center gap-2 mb-10">
-                        <div class="relative">
-                            <div class="bg-gradient-tab-list-mute rounded-full animate-ping absolute inline-flex h-full w-full"></div>
-                            <img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain " />
+                        <div class="relative flex items-center justify-center">
+                            <div class="bg-gradient-tab-list-mute rounded-full animate-ping absolute inline-flex h-[60%] w-[60%]"></div>
+                            <img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain opacity-90" />
                         </div>
                         <span class="font-ethnocentric text-4xl gradient-text">NIMBL</span>
                     </div>
@@ -92,7 +92,9 @@ const {connectMetaMask, isLoading, errorMsg, errorConnect, account} = useMetamas
         <!--  -->
         <!-- Right Side -->
         <div class="col-span-1 relative">
-            <img src="/preview.png" alt="logo" loading="lazy" class="h-full object-contain w-full absolute  translate-x-[20%]" />
+            <img src="/img/login/image1.png" alt="logo" loading="lazy" class="absolute -left-[17%] z-[2]" />
+            <img src="/img/login/image3.png" alt="logo" loading="lazy" class="absolute -right-[10%] bottom-0 z-[2]" />
+            <img src="/img/login/image2.png" alt="logo" loading="lazy" class="absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-1/2 h-[80%] " />
         </div>
         <!--  -->
     </div>

@@ -5,11 +5,14 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { useDark, useToggle } from '@vueuse/core'
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
+import { useBlobsStore } from '@/stores/blobs';
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 
 const router = useRouter()
+
+const blobs =  useBlobsStore()
 
 const { logoutMetaMask, account} = useMetamask()
 const userStore = useUserStore();
@@ -22,8 +25,8 @@ const logout = ()  => {
 </script>
 
 <template>
-    <div class="grid w-full items-center grid-cols-12 gap-5 bg-gradient-header dark:bg-dark-glass dark:bg-none px-[22px]">
-        <div class="flex col-span-4 items-center gap-2">
+    <div class="grid w-full items-center grid-cols-12 gap-5 bg-gradient-header dark:bg-dark-glass dark:bg-none px-[22px] relative z-50">
+        <div class="flex col-span-4 items-center gap-2 cursor-pointer" @click="$router.push({name: 'content'})">
             <img src="/logo.png" alt="logo" loading="lazy" class="h-14 object-contain" />
             <span class="font-ethnocentric text-2xl gradient-text">NIMBL</span>
         </div>
@@ -44,7 +47,7 @@ const logout = ()  => {
                         <ul class="pl-4 text-white whitespace-nowrap [&_li]:cursor-pointer">
                             <li @click="toggleDark(true)" >Dark</li>
                             <li @click="toggleDark(false)">Light</li>
-                            <li>Theme +</li>
+                            <li @click="blobs.setVisibleBlobs(!blobs.visibleBlobs)">Theme +</li>
                         </ul>
                     </li>
                     <li class="text-white/50">Settings

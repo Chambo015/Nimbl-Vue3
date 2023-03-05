@@ -87,7 +87,7 @@ const baseUrl = import.meta.env.BASE_URL
         <div key="posts" class="relative flex-shrink-0 h-full pr-5 mr-1 mt-3 flex justify-center items-start overflow-y-scroll pb-[calc(theme(spacing.height-navigation)+theme(spacing.6))]" :class="[{'flex-grow': !showChat}]">
 
             <section key="category" v-if="!showChat" class="w-[250px] sticky top-3 -ml-[calc(250px+20px)] mr-5 ">
-                <div v-for="category in categoryList" :key="category.id" class="flex items-center justify-center w-full h-[110px] mb-6 cursor-pointer bg-custom-center hover:bg-[length:auto_105%] hover:shadow-md  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
+                <div v-for="category in categoryList" :key="category.id" class="flex items-center justify-center w-full h-[110px] mb-6 cursor-pointer bg-custom-center hover:bg-[length:105%_auto] hover:shadow-md  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
                     <span class="text-xl font-bold">{{ category.title }}</span>
                 </div>
             </section>

@@ -13,25 +13,26 @@ interface Store {
 export const useCategoryStore = defineStore('category', {
     state: (): Store =>( {
         categoryList: [
+           
             {
                 id: 1,
-                title: 'Crypto News',
-                img: '/img/category/crypto-news.png',
+                title: 'Trending Videos',
+                img: import.meta.env.BASE_URL +'/img/category/trending-videos.png',
             },
             {
                 id: 2,
-                title: 'Trending Videos',
-                img: import.meta.env.BASE_URL +'/img/category/category-1.png',
+                title: 'Crypto News',
+                img: import.meta.env.BASE_URL +'/img/category/crypto-news.png',
             },
             {
                 id: 3,
                 title: 'ETH NFTs',
-                img: import.meta.env.BASE_URL +'/img/category/category-3.png',
+                img: import.meta.env.BASE_URL +'/img/category/eth-nfts.png',
             },
             {
                 id: 4,
                 title: 'Play2Earn',
-                img: import.meta.env.BASE_URL +'/img/category/category-4.png',
+                img: import.meta.env.BASE_URL +'/img/category/play2earn.png',
             }
         ],
     })

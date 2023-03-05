@@ -13,6 +13,7 @@ module.exports = {
             },
             backgroundImage: {
                 'gradient-main': 'linear-gradient(107.7deg, #320F5B 0%, #162E56 49.66%, #124D6A 99.33%)',
+                'gradient-main-mute': 'linear-gradient(107.7deg, rgba(50, 15, 91, 0.1) 0%, rgba(22, 46, 86, 0.1) 49.66%, rgba(18, 77, 106, 0.1) 99.33%)',
                 'gradient-nav':
                     'linear-gradient(269.89deg, rgba(45, 167, 179, 0.5) -8.41%, rgba(24, 57, 156, 0.5) 64.31%, rgba(100, 34, 104, 0.5) 113.62%)',
                 'gradient-tab-list':
@@ -69,7 +70,7 @@ module.exports = {
                 '.bg-custom-center': {
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'auto 100%'
+                    backgroundSize: '100% auto'
                 }
             });
         }),
