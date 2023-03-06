@@ -27,6 +27,9 @@ const dataUsers: IUser[] = [{
 }, {
     username: 'Adilkhan',
     password: '7u8i9o8i'
+},{
+    username: 'Warwick',
+    password: 'qwerty'
 }]
         
  
