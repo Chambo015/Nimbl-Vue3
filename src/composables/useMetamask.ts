@@ -1,4 +1,5 @@
 import { useWalletStore } from '@/stores/wallet';
+import { useFullscreen } from '@vueuse/core';
 import { storeToRefs } from 'pinia';
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
@@ -12,6 +13,8 @@ declare global {
 export function useMetamask() {
     const errorMsg = ref('');
 
+
+    const { enter: enterFullscreen } = useFullscreen(document.documentElement)
     const router = useRouter()
 
     const walletStore = useWalletStore();
@@ -27,6 +30,7 @@ export function useMetamask() {
     watch(accountMetamask, (newAccount) => {
         if(newAccount) {
             localStorage.setItem('metaMaskAccount', newAccount);
+            enterFullscreen()
             router.push({ name: 'content' })
         } else {
             localStorage.removeItem('metaMaskAccount');

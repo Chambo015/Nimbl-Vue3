@@ -7,11 +7,14 @@ import type { IUser } from '@/types';
 import { reactive, ref } from 'vue';
 import {useUserStore} from '@/stores/user'
 import { useRouter } from 'vue-router';
+import { useFullscreen } from '@vueuse/core';
 
 const activeTab = ref<'Sign in' | 'Sign up'>('Sign in');
 const setActiveTab = (tab: 'Sign in' | 'Sign up'): void => {
     activeTab.value = tab;
 };
+
+const {  enter: enterFullscreen } = useFullscreen(document.documentElement)
 
 const userStore = useUserStore();
 const router = useRouter()
@@ -41,6 +44,7 @@ const submitHandler = () => {
     const result = dataUsers.findIndex(({username, password}) => username === form.username && password === form.password)
     if(result !== -1) {
         userStore.login(form.username)
+        enterFullscreen()
         router.push({name: 'content'})
     }
 }
