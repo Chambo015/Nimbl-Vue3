@@ -41,7 +41,7 @@ const submitHandler = () => {
     if(!form.username.trim() && !form.password.trim()) {
         return 
     }
-    const result = dataUsers.findIndex(({username, password}) => username === form.username && password === form.password)
+    const result = dataUsers.findIndex(({username, password}) => username.toLocaleLowerCase() === form.username.toLocaleLowerCase() && password === form.password)
     if(result !== -1) {
         userStore.login(form.username)
         enterFullscreen()
