@@ -19,8 +19,6 @@ const {categoryList} = storeToRefs(categoryStore)
 
 const showChat = ref<boolean>(false)
 
-const baseUrl = import.meta.env.BASE_URL
-
 </script>
 
 <template>
@@ -48,7 +46,7 @@ const baseUrl = import.meta.env.BASE_URL
         <section key="chat" v-if="showChat" class=" flex-grow peer-hover/aside:ml-[calc(380px+15px)] peer-hover/aside:delay-[150ms] will-change-[margin-lef] ml-[calc(theme(spacing.width-sidebar-community)+15px)] transition-all delay-500 duration-300 bg-light-glass self-stretch  mb-[calc(theme(spacing.height-navigation)+theme(spacing.3))] mr-5 mt-3 px-5 pt-5">
             <header class="grid grid-cols-[repeat(3,minmax(0,1fr))_50px] gap-1 mb-5">
                 <div class="row-span-2 col-span-1 col-start-1 bg-light-glass flex gap-3 justify-center p-2 items-center">
-                    <img :src="baseUrl + '/img/users/10.png'" alt="avatar" class="w-16 h-16 object-cover block">
+                    <img src="/img/users/10.png" alt="avatar" class="w-16 h-16 object-cover block">
                     <div>
                         <h3 class="text-2xl font-semibold mb-1">Bankless</h3>
                         <div>Community Size: <span class="font-ethnocentric gradient-text">4.2k</span></div>
