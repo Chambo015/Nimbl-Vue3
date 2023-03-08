@@ -14,7 +14,6 @@ const activeTabCategory = ref<TabCategoryType>('Top');
 const setActiveTabCategory = (tab: TabCategoryType): void => {
     activeTabCategory.value = tab;
 };
-const era = import.meta.env.VITE_ERA
 </script>
 
 <template>
@@ -36,7 +35,6 @@ const era = import.meta.env.VITE_ERA
             </div> 
         </div>
         <div class="col-span-8 h-full flex flex-col overflow-hidden">
-            {{ era }}
             <AppCategory class="pr-5 mb-10" />
             <AppVideoGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
         </div> 
