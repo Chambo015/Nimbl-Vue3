@@ -33,7 +33,7 @@ const showChat = ref<boolean>(false)
                         <span class="text-sm">{{  channel.name }}</span>
                         <span class="truncate text-sm">Reading about people grabbing multi-figures monthly as incomes in investments even in this crazy</span>
                     </div>
-                    <div class="flex flex-col text-xs overflow-hidden self-start flex-shrink-0 items-end gap-1 ">
+                    <div class="flex flex-col text-xs overflow-hidden self-start flex-shrink-0 items-end gap-1 opacity-0 transition-opacity group-hover:opacity-100 group-hover:delay-100 delay-300 ">
                         <span>12:04p.m</span>
                         <span class="bg-gradient-tab-list px-1">144</span>
                     </div>
