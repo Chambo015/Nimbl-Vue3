@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 import NotFound from '@/views/ViewNotFound.vue';
 import LayoutHome from '@/layouts/LayoutHome.vue';

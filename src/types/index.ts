@@ -40,7 +40,32 @@ export interface PostI {
 }
 
 
+export interface ILoginForm {
+    password: {
+        value: string,
+        typeInput: string,
+        placeholder: string,
+        label: string,
+        validateError: string | null,
+    },
+    confirmPassword: {
+        value: string,
+        typeInput: string,
+        placeholder: string,
+        label: string,
+        validateError: string | null,
+    },
+    email: {
+        value: string,
+        typeInput: string,
+        placeholder: string,
+        label: string,
+        validateError: string | null,
+    },
+}
+
 export interface IUser {
-    username: string,
-    password: string
+    email: string ,
+    token: string ,
+    id: string ,
 }

@@ -11,54 +11,54 @@ declare global {
 }
 
 export function useMetamask() {
-    const errorMsg = ref('');
+    const hasMetaMaskExt = ref(true);
 
-
-    const { enter: enterFullscreen } = useFullscreen(document.documentElement)
-    const router = useRouter()
+    const { enter: enterFullscreen } = useFullscreen(document.documentElement);
+    const router = useRouter();
 
     const walletStore = useWalletStore();
-    const {isLoading, accountMetamask, errorMessage} = storeToRefs(walletStore)
-
+    const { isLoading, accountMetamask, errorMessage } = storeToRefs(walletStore);
 
     if (typeof window.ethereum !== 'undefined') {
+        hasMetaMaskExt.value = true;
         console.log('MetaMask is installed!');
     } else {
-        errorMsg.value = 'Install MetaMask extension';
+        hasMetaMaskExt.value = false;
     }
 
     watch(accountMetamask, (newAccount) => {
-        if(newAccount) {
+        if (newAccount) {
             localStorage.setItem('metaMaskAccount', newAccount);
-            enterFullscreen()
-            router.push({ name: 'content' })
+            enterFullscreen();
+            router.push({ name: 'content' });
         } else {
             localStorage.removeItem('metaMaskAccount');
-            router.push({ name: 'login' })
+            router.push({ name: 'login' });
         }
-    })
+    });
 
     function handleAccountsChanged(accounts: string[]) {
-        if(!accounts[0]) {
-            walletStore.logoutMetaMask()
+        if (!accounts[0]) {
+            walletStore.logoutMetaMask();
         }
-      }
+    }
 
-    onMounted(() => {
-        window.ethereum.on('accountsChanged',handleAccountsChanged);
-    })
+    if (hasMetaMaskExt.value) {
+        onMounted(() => {
+            window.ethereum.on('accountsChanged', handleAccountsChanged);
+        });
 
-    onUnmounted(() => {
-        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
-    })
-
+        onUnmounted(() => {
+            window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        });
+    }
 
     return {
-        errorMsg,
+        errorMetaMask: errorMessage,
+        hasMetaMaskExt,
         connectMetaMask: walletStore.connectMetaMask,
         logoutMetaMask: walletStore.logoutMetaMask,
         account: accountMetamask,
-        isLoading,
-        errorConnect: errorMessage,
+        isLoadingMetaMask: isLoading,
     };
 }

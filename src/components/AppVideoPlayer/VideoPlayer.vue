@@ -15,7 +15,6 @@ const setVisibleControls = () => {
     if(!visibleControls.value) {
         visibleControls.value = true
         setTimeout(() => {
-            console.log('таймаут');
             visibleControls.value = false
         }, 4000)
     }   

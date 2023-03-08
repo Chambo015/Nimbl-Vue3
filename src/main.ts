@@ -5,6 +5,7 @@ import {createPinia } from 'pinia'
 
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue';
 import VueApexCharts from "vue3-apexcharts";
+import '@/utils/firebase'
 
 
 import './assets/main.scss';

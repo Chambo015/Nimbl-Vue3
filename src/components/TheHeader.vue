@@ -3,13 +3,12 @@ import { useMetamask } from '@/composables/useMetamask';
 import { IconChevron, IconSearch, IconBell, IconLogout } from './icons';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { useDark, useFullscreen, useToggle } from '@vueuse/core'
-import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 import { useBlobsStore } from '@/stores/blobs';
+import { useAuth } from '@/composables/useAuth';
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-
 
 const { toggle: toggleFullscreen } = useFullscreen(document.documentElement)
 
@@ -18,12 +17,11 @@ const router = useRouter()
 const blobs =  useBlobsStore()
 
 const { logoutMetaMask, account} = useMetamask()
-const userStore = useUserStore();
+const {logoutUser} = useAuth();
 
 const logout = ()  => {
-    logoutMetaMask()
-    userStore.logout()
-    router.push({name: 'login'})
+    if(account) logoutMetaMask();
+    logoutUser().then(() =>  router.push({name: 'login'})).catch((err) => console.error(err))
 }
 </script>
 

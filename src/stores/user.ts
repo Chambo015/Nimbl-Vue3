@@ -1,23 +1,31 @@
+import type { IUser } from '@/types';
 import { defineStore } from 'pinia';
 
-interface Store {
-    isLoading: boolean,
-    user: null | string
+interface Store  {
+  email: string | null,
+  token: string | null,
+  id: string | null,
+}
+
+const storedUser =  localStorage.getItem('user')
+const initialUser: IUser = storedUser ? JSON.parse(storedUser) : {
+      email: null,
+      token: null, 
+      id: null
 }
 
 export const useUserStore = defineStore('user', {
-    state: (): Store =>( {
-      isLoading: false,
-      user: null ||  localStorage.getItem('user')
-    }),
+    state: (): Store => initialUser,
     actions: {
-       login(username: string) {
-            this.user = username
-            localStorage.setItem('user', username)
+      setUser(payload: IUser) {
+        this.email = payload.email
+        this.token = payload.token
+        this.id = payload.id
       },
-      logout() {
-        this.user = null
-        localStorage.removeItem('user')
+      removeUser() {
+        this.email = null
+        this.token = null
+        this.id = null
       }
     }
 })
