@@ -27,7 +27,7 @@ export interface VideoI {
     poster: string,
 }
 
-export interface PostI {
+export interface IAnnouncement {
     id: number,
     author: {
         name: string,

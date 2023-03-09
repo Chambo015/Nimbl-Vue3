@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('../fonts/fonts.css');
+@import './_mixins';
 
 :root {
     --main-color-purple: #3d5eff;
@@ -16,6 +17,8 @@
         @apply min-h-screen bg-[#1E1E1E] font-tt-octosquares text-white;
     }
 }
+
+
 
 ::-webkit-scrollbar {
     width: 5px;

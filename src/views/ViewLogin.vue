@@ -215,7 +215,7 @@ onMounted(() => {
                 ]">
                 <img
                     src="/img/login/image2.png"
-                    width="939"
+                    width="1600"
                     height="857"
                     alt="mobile"
                     loading="lazy"

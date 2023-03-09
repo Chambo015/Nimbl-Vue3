@@ -1,13 +1,13 @@
-import type { PostI } from '@/types';
+import type { IAnnouncement } from '@/types';
 import { defineStore } from 'pinia';
 
 interface Store {
-   postList: PostI[];
+    announcementList: IAnnouncement[];
 }
 
-export const usePostStore = defineStore('post', {
+export const useAnnouncementStore = defineStore('announcement', {
     state: () : Store => ({
-        postList: [
+        announcementList: [
             {
                 id: 1,
                 author: {

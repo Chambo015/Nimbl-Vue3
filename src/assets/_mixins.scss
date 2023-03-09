@@ -1,0 +1,7 @@
+/* Задается класс bg-hover-mixin и позиционирование не статическое  */
+@mixin bg-hover-color() {
+    @apply before:w-full before:h-full before:bg-gradient-active-tab  before:absolute before:inset-0 before:z-[1] before:opacity-0 before:transition-opacity hover:before:opacity-80;
+} 
+.bg-hover-mixin {
+    @include bg-hover-color()
+}

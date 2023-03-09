@@ -5,7 +5,7 @@ import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
-import { usePostStore } from '@/stores/community-post';
+import { usePostStore } from '@/stores/announcement.js';
 import { storeToRefs } from 'pinia';
 import { defineAsyncComponent, ref } from 'vue';
 
