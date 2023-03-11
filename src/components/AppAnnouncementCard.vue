@@ -12,7 +12,7 @@ defineProps({
 </script>
 <!-- light-glass-mute -->
 <template>
-    <article class="flex relative bg-light-glass-mute p-5 bg-hover-mixin ">
+    <article class="flex relative bg-light-glass-mute p-5 bg-hover-mixin z-10 ">
         <img
             :src="announcement.author.avatar"
             alt="avatar"

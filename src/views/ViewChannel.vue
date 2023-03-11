@@ -5,7 +5,7 @@ import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue';
 import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
-import { usePostStore } from '@/stores/announcement.js';
+import { useAnnouncementStore } from '@/stores/announcement.js';
 import { storeToRefs } from 'pinia';
 import { defineAsyncComponent, ref } from 'vue';
 
@@ -35,8 +35,8 @@ const dataStats =  ref({
     'Listings': 25
 })
 
-const postStore = usePostStore()
-const {postList} = storeToRefs(postStore)
+const announceStore = useAnnouncementStore()
+const {announcementList} = storeToRefs(announceStore)
 
 const baseUrl = import.meta.env.BASE_URL;
 </script>
@@ -81,7 +81,7 @@ const baseUrl = import.meta.env.BASE_URL;
                 <h4 class="mb-5 text-xl font-semibold">Announcements</h4>
                 <!-- Posts -->
                 <section class="space-y-3 overflow-y-scroll pb-7">
-                    <article v-for="post in postList" :key="post.id" class="bg-light-glass-mute flex p-5 ">
+                    <article v-for="post in announcementList" :key="post.id" class="bg-light-glass-mute flex p-5 ">
                     <img :src="post.author.avatar" alt="avatar" width="32" height="32" class="w-8 h-8 object-cover rounded-full mr-3 sticky top-1">
                     <div class="flex flex-col w-[500px]">
                         <div class="flex justify-between mb-3">

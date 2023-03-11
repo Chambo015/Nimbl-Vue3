@@ -81,7 +81,8 @@ const views = computed(() => randomNumber(90000, 999999));
                     </AppTabListItem>
                 </AppTabList>
             </div>
-            <div class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation">
+            <!-- Videos tabs -->
+            <div v-if="activeSidebarTab === 'videos'" class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation">
                 <div
                     v-for="video in videoList"
                     :key="video.id"
@@ -107,6 +108,13 @@ const views = computed(() => randomNumber(90000, 999999));
                     </div>
                 </div>
             </div>
+            <!-- --- -->
+            <!-- Trade tabs -->
+            <div v-if="activeSidebarTab === 'trade'" class="mr-[5px] pr-[10px] pb-height-navigation">
+                
+                
+            </div>
+            <!-- --- -->
         </div>
     </div>
 </template>

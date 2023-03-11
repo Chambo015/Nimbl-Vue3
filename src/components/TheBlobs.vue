@@ -19,7 +19,7 @@
                             transform="translate(100 100)"
                         >
                             <animate
-                                attribute-name="d"
+                                attributeName="d"
                                 dur="10000ms"
                                 repeatCount="indefinite"
                                 values="M48.6,-45.6C58.2,-39,58,-19.5,58,0C58,19.6,58.3,39.1,48.7,54.9C39.1,70.6,19.6,82.6,1.3,81.3C-17,80.1,-34.1,65.6,-47.6,49.8C-61.1,34.1,-71.2,17,-70.7,0.5C-70.3,-16.1,-59.3,-32.2,-45.8,-38.8C-32.2,-45.3,-16.1,-42.3,1.7,-44C19.5,-45.7,39,-52.1,48.6,-45.6Z;
@@ -181,7 +181,7 @@
         left: 30%;
         animation: blob_2 40s ease-in-out infinite reverse;
     }
-    &:nth-of-type(5) {
+    &:nth-of-type(1) {
         width: 45%;
         bottom: 0%;
         right: 5%;

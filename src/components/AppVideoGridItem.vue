@@ -32,7 +32,7 @@ const views = computed(() => randomNumber(90000, 999999));
 
 <template>
     <div
-        class="group flex cursor-pointer flex-col transition-shadow duration-300 hover:bg-gradient-active-tab hover:shadow-md"
+        class="group flex cursor-pointer flex-col transition-shadow duration-300 hover:bg-gradient-active-tab hover:before:opacity-100 relative before:absolute before:inset-0 before:shadow-[4px_5px_13px_rgba(65,107,255,0.4)] before:duration-700 before:opacity-0"
         aria-orientation="vertical"
         @click="handleClickVideo">
         <div class="relative aspect-video w-full overflow-hidden">
