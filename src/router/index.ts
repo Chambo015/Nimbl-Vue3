@@ -26,7 +26,7 @@ const router = createRouter({
                 {
                     path: '/community',
                     name: 'community',
-                    component: () => import('../views/ViewCommunity.vue')
+                    component: () => import('@/views/ViewCommunity.vue')
                 },
                 {
                     path: '/channel',
@@ -37,6 +37,18 @@ const router = createRouter({
                     path: '/settings',
                     name: 'settings',
                     component: () => import('../views/ViewSettings.vue')
+                },
+                {
+                    path: '/marketplace',
+                    name: 'marketplace',
+                    component: () => import('../layouts/LayoutMarketplace.vue'),
+                    children: [
+                        {
+                            path: 'rankings',
+                            name: 'rankings',
+                            component: () => import('@/views/ViewRankings.vue')
+                        }
+                    ]
                 },
                 {
                     path: '/:pathMatch(.*)*',

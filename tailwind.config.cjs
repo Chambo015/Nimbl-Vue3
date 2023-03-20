@@ -25,6 +25,7 @@ module.exports = {
                 'gradient-header':
                     'linear-gradient(269.89deg, rgba(45, 167, 179, 0.5) -8.41%, rgba(24, 57, 156, 0.5) 64.31%, rgba(100, 34, 104, 0.5) 113.62%)',
                 'gradient-text': 'linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%)',
+                'gradient-text-v2': 'linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%)',
                 'gradient-metamask-btn': 'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90.05deg, #6C71F7 -17.07%, rgba(151, 36, 164, 0.900001) 75.94%, rgba(234, 0, 154, 0.8) 145.22%)'
             },
             colors: {
@@ -46,6 +47,11 @@ module.exports = {
             addComponents({
                 '.gradient-text': {
                     backgroundImage: theme('backgroundImage.gradient-text'),
+                    color: theme('colors.transparent'),
+                    backgroundClip: 'text'
+                },
+                '.gradient-text-v2': {
+                    backgroundImage: theme('backgroundImage.gradient-text-v2'),
                     color: theme('colors.transparent'),
                     backgroundClip: 'text'
                 },

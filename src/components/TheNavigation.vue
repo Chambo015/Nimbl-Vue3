@@ -32,8 +32,11 @@ const routers = reactive([
         icon: shallowRef(IconCommunity)
     },
     {
-        slug: '/marketplace',
+        slug: '/marketplace/rankings',
         name: 'marketplace',
+        children: [
+            'rankings'
+        ],
         icon: shallowRef(IconMarketplace)
     },
     {

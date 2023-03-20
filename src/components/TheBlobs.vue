@@ -160,23 +160,23 @@
 .blob {
     position: absolute;
     z-index: 1;
-    filter: blur(5px);
+    filter: blur(10px);
 
     &:nth-of-type(2) {
-        width: 45%;
+        width: 40%;
         bottom: -50px;
         right: -100px;
         animation: blob_1 20s ease-in-out infinite reverse;
     }
 
     &:nth-of-type(3) {
-        width: 45%;
+        width: 50%;
         bottom: 0;
         left: -100px;
         animation: blob_2 40s ease-in-out infinite reverse;
     }
     &:nth-of-type(4) {
-        width: 45%;
+        width: 55%;
         top: -200px;
         left: 30%;
         animation: blob_2 40s ease-in-out infinite reverse;
