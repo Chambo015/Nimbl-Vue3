@@ -69,3 +69,5 @@ export interface IUser {
     token: string ,
     id: string ,
 }
+
+export type SoundVolumeType = 'medium' | 'low' | 'high' | 'off'

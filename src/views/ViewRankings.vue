@@ -21,9 +21,8 @@ const videoStore = useVideoStore()
 </script>
 
 <template>
-
             <div class="flex gap-5 px-5 my-5">
-                <AppButton class="h-11 self-center"
+                <AppButton class="h-12 self-center"
                     ><span class="mr-2">Top Creators</span> <IconChevron class="w-4 translate-x-2"
                 /></AppButton>
                 <AppTabList @change-tab="setActiveRange" v-slot="{ onChange }">
@@ -36,17 +35,19 @@ const videoStore = useVideoStore()
                         ><span class="text-sm">{{ tab }}</span>
                     </AppTabListItem>
                 </AppTabList>
-                <AppButton class="h-11 self-center"
+                <AppButton class="h-12 self-center"
                     ><span class="mr-2">All Categories</span> <IconChevron class="w-4 translate-x-2"
                 /></AppButton>
                 <AppTabList @change-tab="setActiveViewTab" v-slot="{ onChange }">
                     <AppTabListItem
+                        class="px-5"
                         value="grid"
                         :active-value="activeViewTab"
                         @click="onChange('grid')"
                         ><span >View as Grid</span>
                     </AppTabListItem>
                     <AppTabListItem
+                        class="px-5"
                         value="list"
                         :active-value="activeViewTab"
                         @click="onChange('list')"
@@ -55,7 +56,7 @@ const videoStore = useVideoStore()
                 </AppTabList>
                 <AppButton class="ml-auto self-center h-11">View all</AppButton>
             </div>
-            <section key="grid" v-if="activeViewTab === 'grid'" class="grid overflow-y-auto mb-height-navigation pb-8  grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 pl-5 pr-[10px] mr-[5px] ">
+            <section key="grid" v-if="activeViewTab === 'grid'" class="grid overflow-y-auto pb-height-navigation grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 pl-5 pr-[10px] mr-[5px] ">
                     <div class="group/card flex flex-col cursor-pointer border border-white/20  duration-300 hover:shadow-2xl" v-for="item in videoStore.videoList" :key="item.id">
                         <div class="w-full relative overflow-hidden">
                             <img :src="item.poster" alt="card_img" class="w-full object-cover aspect-[16/7] group-hover/card:rotate-[2deg] group-hover/card:scale-110 duration-300 will-change-transform" />
@@ -79,7 +80,7 @@ const videoStore = useVideoStore()
                         </div>
                     </div>
             </section>
-            <section key="list" v-else-if="activeViewTab === 'list'" class="overflow-y-auto mb-height-navigation pb-8 pl-5 pr-[10px] mr-[5px]">
+            <section key="list" v-else-if="activeViewTab === 'list'" class="overflow-y-auto pb-height-navigation pl-5 pr-[10px] mr-[5px]">
                 <table class="w-full">
                     <thead>
                         <tr class="[&>th]:pb-4 [&>th]:font-normal">

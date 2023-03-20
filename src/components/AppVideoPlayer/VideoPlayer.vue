@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useFullscreen, useMediaControls } from '@vueuse/core'
 import Controls from './VideoPlayerControls'
-import { IconPlay, IconPause, IconFullScreenOn, IconFullScreenOff } from '../icons';
+import { IconPlay, IconPause, IconFullScreenOn, IconFullScreenOff, IconVolume } from '../icons';
+import IconAirPlay from '../icons/IconAirPlay.vue';
+import type { SoundVolumeType } from '@/types';
 
 const video = ref<HTMLVideoElement>()
 const loop = ref(false)
@@ -25,22 +27,7 @@ const controls = useMediaControls(video, {
   src: {
     src: 'https://storage.googleapis.com/nimbl_next/NFTs%20and%20the%20%2413B%20marketplace%2C%20explained.mp4',
     type: 'video/mp4',
-  },
- /*  tracks: [
-    {
-      default: true,
-      src: 'https://gist.githubusercontent.com/wheatjs/a85a65a82d87d7c098e1a0972ef1f726/raw',
-      kind: 'subtitles',
-      label: 'English',
-      srcLang: 'en',
-    },
-    {
-      src: 'https://gist.githubusercontent.com/wheatjs/38f32925d20c683bf77ba33ff737891b/raw',
-      kind: 'subtitles',
-      label: 'French',
-      srcLang: 'fr',
-    },
-  ], */
+  }
 })
 
 const {
@@ -62,6 +49,31 @@ const {
 // const text = reactive(controls)
 const endBuffer = computed(() => buffered.value.length > 0 ? buffered.value[buffered.value.length - 1][1] : 0)
 const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString().slice(14, 19)
+
+// Change initial media properties
+onMounted(() => {
+  volume.value = 0.5
+})
+
+watch(muted, () => {
+  if (muted.value) {
+    volume.value = 0
+  } else if( volume.value === 0) {
+    volume.value = 0.5
+  }
+})
+
+const soundVolume = computed<SoundVolumeType>(() => {
+  if(volume.value === 0 || muted.value) {
+    return 'off'
+  } else if(volume.value > 0.5) {
+    return 'high'
+  } else if(volume.value < 0.2) {
+    return 'low'
+  } else {
+    return 'medium'
+  }
+})
 </script>
 
 <template>
@@ -105,15 +117,15 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
         <!--  -->
 
         <!-- Строка Контролеров -->
-        <div class="flex flex-row h-10 items-center py-1 px-2">
+        <div :class="['flex flex-row  items-center ', isFullscreen ? 'py-3 px-4 gap-4' : 'h-10 gap-2 py-1 px-2']">
         <button @click="playing = !playing">
             <IconPlay v-if="!playing" class="inline-block align-middle w-7 h-7" />
             <IconPause v-else class="inline-block align-middle w-7 h-7" />
         </button>
         <button @click="muted = !muted">
-            <i v-if="muted" i-carbon-volume-mute inline-block align-middle />
-            <i v-else i-carbon-volume-up inline-block align-middle />
+            <IconVolume class="inline-block align-middle w-7 h-7" :volume="soundVolume" />
         </button>
+        
         <Controls.Scrubber v-model="volume" :max="1" class="w-32 ml-2" />
         <div
             class="flex flex-col flex-1 text-sm ml-2"
@@ -121,7 +133,7 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
             {{ formatDuration(currentTime) }} / {{ formatDuration(duration) }}
         </div>
 
-        <Controls.Menu class="mr-2">
+    <!--     <Controls.Menu class="mr-2">
             <template #default="{ open }">
             <button @click="open">
                 <i i-carbon-closed-caption inline-block align-middle />
@@ -147,8 +159,8 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
                 </Controls.MenuItem>
             </div>
             </template>
-        </Controls.Menu>
-        <Controls.Menu class="mr-2">
+        </Controls.Menu> -->
+      <!--   <Controls.Menu class="mr-2">
             <template #default="{ open }">
             <button class="block" @click="open()">
                 <i i-carbon-settings inline-block align-middle />
@@ -170,8 +182,8 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
                 </Controls.MenuItem>
             </div>
             </template>
-        </Controls.Menu>
-        <Controls.Menu>
+        </Controls.Menu> -->
+      <!--   <Controls.Menu>
             <template #default="{ open }">
             <button class="block" @click="open()">
                 <i i-carbon-meter inline-block align-middle />
@@ -187,7 +199,10 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
                 </Controls.MenuItem>
             </div>
             </template>
-        </Controls.Menu>
+        </Controls.Menu> -->
+        <button @click="togglePictureInPicture" v-if="supportsPictureInPicture">
+            <IconAirPlay class="inline-block align-middle w-7 h-7" />
+        </button>
         <button @click="toggleFullscreen">
             <IconFullScreenOn v-if="!isFullscreen" class="inline-block align-middle w-7 h-7" />
             <IconFullScreenOff v-else  class="inline-block align-middle w-7 h-7" />

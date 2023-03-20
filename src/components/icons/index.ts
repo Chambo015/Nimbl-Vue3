@@ -22,6 +22,8 @@ import IconFullScreenOff from './IconFullScreenOff.vue';
 import IconFullScreenOn from './IconFullScreenOn.vue';
 import IconLogout from './IconLogout.vue';
 import IconSpinner from './IconSpinner.vue';
+import IconAirPlay from './IconAirPlay.vue';
+import IconVolume from './IconVolume.vue';
 
 
 export {
@@ -48,5 +50,7 @@ export {
     IconFullScreenOff,
     IconFullScreenOn,
     IconLogout,
-    IconSpinner
+    IconSpinner,
+    IconAirPlay,
+    IconVolume
 }

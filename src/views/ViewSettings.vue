@@ -69,35 +69,35 @@ const data = reactive<IDataSettings>({
         }
     },
     LIKES_AND_PREFERENCES: {
-        VIDEO_PLAYER_PREFERENCES: {
-            VIDEO_QUALITY: {
+        'Video player preferences': {
+            'Video quality': {
                 'Watch videos in High Quality': true,
                 'Use Data Saving mode while using mobile data': true,
             },
-            SUBTITLES: {
+            Subtitles: {
                 'Always show subtitles': true,
             },
-            COMMENTS: {
+            Comments: {
                 'Show comments in the lower left corner': true,
             },
         },
-        MARKETPLACE_PREFERENCES : {
-            SETTING_1: {
+        'Marketplace preferences' : {
+            Setting: {
                 'Setting 1 description': true,
             }
         }
 
     },
     SECURITY_AND_PRIVACY: {
-        PROFILE_CONDIFENTIALITY: {
-            PLAYLISTS: {
+        'Profile condifentiality': {
+            Playlists: {
                 'Display saved playlists': true,
                 'Display created playlists': true,
             },
-            FAVORITE_CHANNELS: {
+            'Favorite channels': {
                 'Display favorite channels': false,
             },
-            HISTORY: {
+            History: {
                 'Save watched history': true,
             },
         }
@@ -221,7 +221,7 @@ const data = reactive<IDataSettings>({
                 <!--  -->
                 <!-- SECURITY_AND_PRIVACY -->
                 <template v-else-if="activeSettingsTab === 'SECURITY_AND_PRIVACY'">
-                    <TheSettings.Title>SECURITY_AND_PRIVACY</TheSettings.Title>
+                    <TheSettings.Title>Security and privacy</TheSettings.Title>
                     <template v-for="(subData, subTitle) in data['SECURITY_AND_PRIVACY']" :key="subTitle">
                         <TheSettings.SubTitle>{{subTitle}}</TheSettings.SubTitle>
                         <TheSettings.List>

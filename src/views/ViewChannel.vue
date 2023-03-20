@@ -51,16 +51,16 @@ const baseUrl = import.meta.env.BASE_URL;
                 <section class="mb-8">
                     <div class="mb-4 flex items-center gap-5 text-lg">
                         <img :src="baseUrl + 'img/users/11.png'"
-                            alt="avatar" width="64" height="64"
-                            class="h-16 w-16 rounded-full object-cover" />
+                            alt="avatar" width="44" height="44"
+                            class="h-11 w-11 rounded-full object-cover" />
                         <div class="flex flex-col justify-center gap-1">
-                            <h3>Helen_NFT</h3>
+                            <h3 class="font-medium">Helen_NFT</h3>
                             <span class="text-sm text-white/50">245,511 members</span>
                         </div>
-                        <AppButton class="ml-auto">
+                        <AppButton class="ml-auto h-11">
                             <IconBell class="h-7 w-7" />
                         </AppButton>
-                        <AppButton>Subscribe</AppButton>
+                        <AppButton class="h-11">Subscribe</AppButton>
                     </div>
                     <p class="mb-3">
                         Users who connect their crypto wallet are able to purchase NFTs and set them as their profile
