@@ -1,0 +1,57 @@
+<script setup lang="ts">
+import { ref, type PropType, onMounted, onUnmounted } from 'vue';
+import Typed from 'typed.js';
+import type { TypeMessageGPT } from '@/types';
+import { IconChatGPT } from './icons';
+
+const props = defineProps({
+    message: {
+        type: Object as PropType<TypeMessageGPT>,
+        required: true,
+    },
+});
+const emit = defineEmits(['completeTyping']);
+
+const typingRef = ref(null);
+const typed = ref<Typed | null>(null);
+
+onMounted(() => {
+    if (typingRef.value && props.message.isChatGPT && !props.message.showStatus) {
+        typed.value = new Typed(typingRef.value, {
+            strings: [props.message.text.join('^500 <br>')],
+            typeSpeed: 40,
+            autoInsertCss: true,
+            startDelay: props.message.delayToResponse,
+             onComplete: (self: Typed) => {
+                emit('completeTyping');
+                setTimeout(() => {
+                    self.cursor.remove();
+                }, 200);
+            },
+        });
+        typed.value.cursor.classList.add('typed-cursor--blink'); // включил мигание курсора
+    }
+});
+
+onUnmounted(() => {
+    typed.value?.destroy();
+});
+</script>
+
+<template>
+    <div :class="['flex gap-5 py-3 px-5', message.isChatGPT ? '' : 'bg-light-glass-mute']">
+        <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']"> 
+            <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" />
+            <img v-else src="/img/users/1.png" width="32" height="32" alt="user avatar" class="h-10 w-10 object-cover" />
+        </div>
+        <div  v-auto-animate="{ duration: 150 }" class="p-4">
+            <span v-if="message.isChatGPT && !message.showStatus"  ref="typingRef"></span>
+            <template v-else>
+                <p v-for="item in message.text" :key="item">{{ item }}</p>
+            </template>
+            <component v-if="message.isChatGPT && message.showStatus" :is="message.attachComponent" />
+        </div>
+    </div>
+</template>
+
+<style scoped></style>

@@ -59,7 +59,7 @@ const videoStore = useVideoStore()
             <section key="grid" v-if="activeViewTab === 'grid'" class="grid overflow-y-auto pb-height-navigation grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 pl-5 pr-[10px] mr-[5px] ">
                     <div class="group/card flex flex-col cursor-pointer border border-white/20  duration-300 hover:shadow-2xl" v-for="item in videoStore.videoList" :key="item.id">
                         <div class="w-full relative overflow-hidden">
-                            <img :src="item.poster" alt="card_img" class="w-full object-cover aspect-[16/7] group-hover/card:rotate-[2deg] group-hover/card:scale-110 duration-300 will-change-transform" />
+                            <img :src="item.poster" alt="card_img" class="w-full object-cover aspect-[16/7] group-hover/card:scale-110 duration-300 will-change-transform" />
                             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-light-glass-mute backdrop-blur-md rounded-full p-2"><IconPlay class="w-10 h-10" /></div>
                         </div>
                         <div class="py-2 backdrop-blur-lg bg-gradient-nav dark:bg-none dark:bg-default-glass bg-[length:150%_150%] hover:bg-[length:100%_100%] duration-300">
