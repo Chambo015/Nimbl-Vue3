@@ -18,10 +18,10 @@ const typed = ref<Typed | null>(null);
 onMounted(() => {
     if (typingRef.value && props.message.isChatGPT && !props.message.showStatus) {
         typed.value = new Typed(typingRef.value, {
-            strings: [props.message.text.join('^500 <br>')],
-            typeSpeed: 40,
+            strings: [props.message.text.join('^500 <p class="my-4"></p>')],
+            typeSpeed: 30,
             autoInsertCss: true,
-            startDelay: props.message.delayToResponse,
+            startDelay: props.message.delayToResponse || 500,
              onComplete: (self: Typed) => {
                 emit('completeTyping');
                 setTimeout(() => {
@@ -39,12 +39,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div :class="['flex gap-5 py-3 px-5', message.isChatGPT ? '' : 'bg-light-glass-mute']">
+    <div :class="['flex gap-5 py-3 px-5', message.isChatGPT ? '' : 'bg-[#343541] dark:bg-[#333042]']">
         <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']"> 
             <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" />
             <img v-else src="/img/users/1.png" width="32" height="32" alt="user avatar" class="h-10 w-10 object-cover" />
         </div>
-        <div  v-auto-animate="{ duration: 150 }" class="p-4">
+        <div  v-auto-animate="{ duration: 150 }" class="p-4 leading-normal space-y-4">
             <span v-if="message.isChatGPT && !message.showStatus"  ref="typingRef"></span>
             <template v-else>
                 <p v-for="item in message.text" :key="item">{{ item }}</p>
@@ -54,4 +54,5 @@ onUnmounted(() => {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

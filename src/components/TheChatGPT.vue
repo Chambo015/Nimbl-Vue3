@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
 import { IconSearch } from './icons';
 import { useChatGPTStore } from '@/stores/chatGPT';
 import TheChatGPTItem from './TheChatGPTItem.vue';
+import type { HtmlAttributes } from 'csstype';
+import Typed from 'typed.js';
 
 const inputText = ref<string>('');
 
@@ -30,6 +32,20 @@ const sendMessageHandle = () => {
     }
 };
 
+const inputRef = ref<HTMLInputElement | null>(null)
+onMounted(() => {
+    if (inputRef.value) {
+        new Typed(inputRef.value, {
+            strings: ['GPT Search Channels', 'GPT Search Channels', 'GPT Search Videos', 'GPT Search NFTs'],
+            typeSpeed: 80,
+            backSpeed: 0,
+            loop: true,
+            attr: 'placeholder',
+            bindInputFocusEvents: false,
+            smartBackspace: true,
+        });
+    }
+});
 </script>
 
 <template>
@@ -37,9 +53,9 @@ const sendMessageHandle = () => {
         <label class="w-full" :aria-expanded="isOpenPopover" aria-controls="widgetChatGpt" @click="openPopover">
             <IconSearch class="absolute top-1/2 left-6 w-5 -translate-y-1/2 -translate-x-1/2 text-white/50" />
             <input
+                ref="inputRef"
                 type="search"
                 class="relative z-50 w-full bg-[rgba(34,32,47,0.40)] py-2 pr-2 pl-12"
-                placeholder="Search Channels, Videos or NFTs"
                 @keydown.enter="sendMessageHandle"
                 @focus="openPopover"
                 @input="inputHandler"
@@ -56,7 +72,7 @@ const sendMessageHandle = () => {
                 v-auto-animate="{ duration: 500 }"
                 v-if="isOpenPopover"
                 id="widgetChatGpt"
-                class="absolute z-10 mt-2 min-w-full bg-gradient-header backdrop-blur-md dark:bg-dark-glass dark:bg-none max-h-[max(500px,55vh)] overflow-y-auto">
+                class="absolute z-10 mt-2 min-w-full bg-[#444654] dark:bg-[#22202F] max-h-[max(500px,55vh)] overflow-y-auto">
                 <TheChatGPTItem
                     v-for="msg in chatStore.chat"
                     :key="msg.id"
