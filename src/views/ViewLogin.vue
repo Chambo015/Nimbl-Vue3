@@ -64,8 +64,8 @@ const submitHandler = () => {
         createUser(form.email.value, form.password.value)
             .then((user) => {
                 console.log(user, 'user');
-                router.push({name: 'content'})
                 enterFullscreen()
+                router.push({name: 'content'})
             })
             .catch((error) => {
                 console.error(error);
@@ -74,8 +74,8 @@ const submitHandler = () => {
         loginUser(form.email.value, form.password.value)
             .then((user) => {
                 console.log(user, 'user');
-                router.push({name: 'content'})
                 enterFullscreen()
+                router.push({name: 'content'})
             })
             .catch((error) => {
                 console.error(error);

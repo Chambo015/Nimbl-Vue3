@@ -2,7 +2,7 @@
 import AppButton from '@/components/AppButton.vue';
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
-import { IconClock, IconComments, IconEye, IconFutures, IconVideoGallery } from '@/components/icons';
+import { IconChatGPT, IconClock, IconComments, IconEye, IconFutures, IconVideoGallery } from '@/components/icons';
 import { useVideoStore } from '@/stores/video';
 import { randomNumber } from '@/utils';
 import { storeToRefs } from 'pinia';
@@ -10,12 +10,9 @@ import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue'
 
-type SidebarTabsTypes = 'videos' | 'comments' | 'trade';
+type SidebarTabsTypes = 'videos' | 'comments' | 'trade' | 'chatGpt';
 
 const activeSidebarTab = ref<SidebarTabsTypes>('videos');
-const setActiveSidebarTab = (tab: SidebarTabsTypes) => {
-    activeSidebarTab.value = tab;
-};
 
 const route = useRoute();
 const idParams = computed(() => parseInt(route.params.id as string));
@@ -63,7 +60,7 @@ const views = computed(() => randomNumber(90000, 999999));
         </div>
         <div class="col-span-4 flex flex-col overflow-hidden">
             <div class="mb-5 flex pr-5">
-                <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="setActiveSidebarTab" v-slot="{ onChange }">
+                <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="(tab) => activeSidebarTab = tab" v-slot="{ onChange }">
                     <AppTabListItem value="videos" :active-value="activeSidebarTab" @click="() => onChange('videos')">
                         <IconVideoGallery class="mr-4 h-6 w-6 translate-y-[2px]" />
                         <span class="text-xl leading-none">Videos</span>
@@ -78,6 +75,9 @@ const views = computed(() => randomNumber(90000, 999999));
                     <AppTabListItem value="trade" :active-value="activeSidebarTab" @click="() => onChange('trade')">
                         <IconFutures class="mr-4 h-6 w-6" />
                         <span class="text-xl leading-none">Trade</span>
+                    </AppTabListItem>
+                    <AppTabListItem value="chatGpt" :active-value="activeSidebarTab" @click="() => onChange('chatGpt')">
+                        <IconChatGPT class="h-6 w-6" />
                     </AppTabListItem>
                 </AppTabList>
             </div>
@@ -122,7 +122,7 @@ const views = computed(() => randomNumber(90000, 999999));
 <style scoped lang="scss">
 .video-scrollbar {
     &::-webkit-scrollbar {
-        width: px;
+        width: 0px;
     }
     &::-webkit-scrollbar-thumb {
         background: transparent;

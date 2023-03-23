@@ -12,7 +12,7 @@ import TheChatGPT from './TheChatGPT.vue';
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
 
-const { toggle: toggleFullscreen } = useFullscreen(document.documentElement);
+const { toggle: toggleFullScreen } = useFullscreen(document.documentElement);
 
 const router = useRouter();
 
@@ -71,7 +71,7 @@ const logout = () => {
                             Settings
                             <ul class="whitespace-nowrap pl-4 text-white [&_li]:cursor-pointer">
                                 <li>Sound</li>
-                                <li @click="toggleFullscreen">Fullscreen</li>
+                                <li @click="toggleFullScreen">Fullscreen</li>
                             </ul>
                         </li>
                     </ul>
