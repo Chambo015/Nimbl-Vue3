@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import apexcharts from 'vue3-apexcharts'
-import { ref, type PropType, reactive, watch } from 'vue'
+import { ref, type PropType, reactive, watch, defineAsyncComponent } from 'vue'
 import { useChartStore } from '@/stores/chart'
 
 import type { ApexOptions } from 'apexcharts'
 import type { ChartRangeType } from '@/types'
 
-
+const apexcharts = defineAsyncComponent(() =>
+  import('vue3-apexcharts')
+)
 
 const props = defineProps({
     height: {
@@ -31,7 +32,6 @@ const series = ref<ApexOptions['series']>([
         data: chartStore.areaChart
     }
 ])
-
 
 const options = reactive<ApexOptions>({
         chart: {

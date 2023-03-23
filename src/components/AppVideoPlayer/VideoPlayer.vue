@@ -48,20 +48,20 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
 
 /* Visible Controls and Menu */
 const [visibleChatGPT, toggleChatGPT] = useToggle()
-const visibleControls = ref(false);
+const visibleOfMousemove = ref(false);
 const mousemoveHandler = () => {
-    if (!visibleControls.value) {
-        visibleControls.value = true;
-        console.log('debug');
-        setTimeout(() => {
-            visibleControls.value = false;
-        }, 4000);
-    }
-    return;
+  if (!visibleOfMousemove.value) {
+    visibleOfMousemove.value = true;
+    setTimeout(() => {
+      visibleOfMousemove.value = false;
+    }, 4000);
+  }
+  return;
 };
 
-
-
+const visibleControls = computed(() => {
+  return visibleOfMousemove.value || visibleChatGPT.value
+});
 
 
 /* Change initial media properties */
@@ -101,9 +101,9 @@ const soundVolume = computed<SoundVolumeType>(() => {
         @keydown.right="currentTime += 10"
         @keydown.left="currentTime -= 10"
         @mousemove="mousemoveHandler">
-        <div class="relative h-full w-full overflow-hidden bg-black shadow">
+        <div class="relative h-full w-full overflow-hidden = shadow">
             <!-- crossorigin="anonymous" -->
-            <video ref="videoEl" class="block w-full" :loop="loop" @click="playing = !playing" />
+            <video ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
             <div
                 v-if="waiting"
                 class="pointer-events-none absolute inset-0 grid place-items-center bg-black bg-opacity-20">
@@ -189,9 +189,10 @@ const soundVolume = computed<SoundVolumeType>(() => {
             </div>
             <!--  -->
 
+            <!-- Video Title -->
             <div
                 :class="['absolute inset-x-0 top-0 z-20 flex flex-col h-1/3  bg-gradient-to-b from-black/70 via-black/30 px-5 pt-5',
-                    !playing || visibleControls ? 'visible' : 'invisible']">
+                    isFullscreen && (!playing || visibleControls) ? 'visible' : 'invisible']">
                 <div class="flex justify-between">
                   <h2 class="max-w-[60%] text-2xl font-semibold">
                       IGNORE THE FUD Binance CZ | AAVE Freezes Lending Markets | Polygon Solana NFT
@@ -213,6 +214,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
                 <div class="flex-grow" @click="playing = !playing"></div>
                 <!--  -->
             </div>
+            <!-- --- -->
         </div>
     </div>
     <!-- <pre class="code-block" lang="yaml">{{ text }}</pre> -->

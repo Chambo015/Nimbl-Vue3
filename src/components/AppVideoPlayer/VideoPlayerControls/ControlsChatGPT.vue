@@ -17,7 +17,7 @@ onUnmounted(() => {
         <div class="flex justify-start gap-2 p-4">
             <button @click="() => tab === 'summary' ? chatStore.summarizeVideo() : null" v-for="tab in tabsGtp" :key="tab" class="px-4 whitespace-nowrap py-1 bg-[#2C2E35]">{{ tab }}</button>
         </div>
-        <div  v-auto-animate="{ duration: 500 }" class="overflow-y-scroll justify-end [overflow-anchor:none]">
+        <div  v-auto-animate="{ duration: 500 }" class="overflow-y-auto justify-end [overflow-anchor:none]">
             <TheChatGPTItem
                     v-for="msg in chatStore.innerVideoChat"
                     :key="msg.id"
