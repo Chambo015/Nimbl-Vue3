@@ -38,7 +38,8 @@ module.exports = {
             },
             spacing: {
                 'height-navigation': '60px',
-                'width-sidebar-community': '5rem'
+                'width-sidebar-community': '5rem',
+                'size-video-controls': '50px'
             }
         },
     },

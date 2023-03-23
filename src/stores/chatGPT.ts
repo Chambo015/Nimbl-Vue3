@@ -6,8 +6,20 @@ import { shallowRef } from 'vue';
 
 interface Store {
     chat: TypeMessageGPT[];
+    innerVideoChat: TypeMessageGPT[];
 }
 
+const initialInnerVideoChat =  [
+    {
+        id: 0,
+        text: [
+            "Hi, I'm ChatGPT! Explore similar videos, summaries, links, and access transcripts.",
+            "Let's dive in!",
+        ],
+        isChatGPT: true,
+        showStatus: false,
+    }
+]
 
 export const useChatGPTStore = defineStore('chatGPT', {
     state: (): Store => ({
@@ -22,6 +34,7 @@ export const useChatGPTStore = defineStore('chatGPT', {
                 showStatus: false,
             },
         ],
+        innerVideoChat: [...initialInnerVideoChat]
     }),
     actions: {
         addMessage(payload: { message: TypeMessageGPT }) {
@@ -34,7 +47,25 @@ export const useChatGPTStore = defineStore('chatGPT', {
                 attachComponent: shallowRef(AppVideoCardPreview),
                 delayToResponse: 3500
             });
-            
+        },
+        summarizeVideo() {
+            this.innerVideoChat.push(
+                {
+                    id: this.innerVideoChat.length ,
+                     isChatGPT: false,
+                     showStatus: false,
+                     text: ['summarize video']
+                }, {
+                    id: this.innerVideoChat.length  + 1,
+                    isChatGPT: true,
+                    showStatus: false,
+                    text: ['The video is a bankless weekly roll-up discussing the news in the crypto world. They cover topics such as the Arbitrum airdrop, a banking crisis fallout, whether Ethereum is a security, a hack of $196 million in D5 protocol Oiler, Fidelity giving access to Bitcoin and Ether, and the fragility of D5 protocols due to their reliance on USDC stablecoin. They also mention the launch of the Bankless website, an NFT sale by Starbucks, and a crypto game pipeline by Epic. The transcript also includes various opinions and discussions related to the covered topics.'],
+                    delayToResponse: 3500
+                }
+            )
+        },
+        resetVideoChat() {
+            this.innerVideoChat = initialInnerVideoChat
         },
         setShowStatus(payload: { id: number }) {
             const message = this.chat.find((m) => m.id === payload.id);

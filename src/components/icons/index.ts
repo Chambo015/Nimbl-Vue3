@@ -25,6 +25,7 @@ import IconSpinner from './IconSpinner.vue';
 import IconAirPlay from './IconAirPlay.vue';
 import IconVolume from './IconVolume.vue';
 import IconChatGPT from './IconChatGPT.vue';
+import IconSettingsSolid from './IconSettingsSolid.vue';
 
 
 export {
@@ -54,5 +55,6 @@ export {
     IconSpinner,
     IconAirPlay,
     IconVolume,
-    IconChatGPT
+    IconChatGPT,
+    IconSettingsSolid
 }

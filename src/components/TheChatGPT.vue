@@ -4,7 +4,6 @@ import { onClickOutside } from '@vueuse/core';
 import { IconSearch } from './icons';
 import { useChatGPTStore } from '@/stores/chatGPT';
 import TheChatGPTItem from './TheChatGPTItem.vue';
-import type { HtmlAttributes } from 'csstype';
 import Typed from 'typed.js';
 
 const inputText = ref<string>('');
@@ -33,19 +32,21 @@ const sendMessageHandle = () => {
 };
 
 const inputRef = ref<HTMLInputElement | null>(null)
+const typed = ref<Typed | null>(null)
 onMounted(() => {
     if (inputRef.value) {
-        new Typed(inputRef.value, {
-            strings: ['GPT Search Channels', 'GPT Search Channels', 'GPT Search Videos', 'GPT Search NFTs'],
-            typeSpeed: 80,
+        typed.value = new Typed(inputRef.value, {
+            strings: ['GPT Search Channels', 'GPT Search Channels', 'GPT Search Videos', 'GPT Search NFTs', 'GPT Search'],
+            typeSpeed: 50,
             backSpeed: 0,
-            loop: true,
+            loop: false,
             attr: 'placeholder',
             bindInputFocusEvents: false,
             smartBackspace: true,
         });
     }
 });
+onUnmounted(() => typed.value?.destroy())
 </script>
 
 <template>
@@ -56,6 +57,7 @@ onMounted(() => {
                 ref="inputRef"
                 type="search"
                 class="relative z-50 w-full bg-[rgba(34,32,47,0.40)] py-2 pr-2 pl-12"
+                placeholder="GPT Search"
                 @keydown.enter="sendMessageHandle"
                 @focus="openPopover"
                 @input="inputHandler"
