@@ -79,7 +79,8 @@ onUnmounted(() => typed.value?.destroy())
                     v-for="msg in chatStore.chat"
                     :key="msg.id"
                     :message="msg"
-                    @complete-typing="() => chatStore.setShowStatus({ id: msg.id })" />
+                    @complete-typing="() => chatStore.setShowStatus({ id: msg.id })"
+                    bg-color-user="bg-[#343541] dark:bg-[#333042]" />
             </div>
         </transition>
     </div>

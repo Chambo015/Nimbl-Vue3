@@ -9,7 +9,14 @@ const props = defineProps({
         type: Object as PropType<TypeMessageGPT>,
         required: true,
     },
-    isInnerVideoChat: Boolean
+    isInnerVideoChat: Boolean,
+    bgColorUser: {
+        type: String
+    },
+    bgColorGpt: {
+        type: String,
+    }
+
 });
 const emit = defineEmits(['completeTyping']);
 
@@ -39,8 +46,9 @@ onUnmounted(() => {
 });
 </script>
 
+<!-- isInnerVideoChat ? {'!bg-[#343541] ': !message.isChatGPT , 'bg-[#343541]/40': message.isChatGPT} : {'!bg-[#343541] dark:bg-[#333042]': !message.isChatGPT}  -->
 <template>
-    <div :class="['flex gap-5 py-3 px-5', isInnerVideoChat ? {'bg-[#343541]/40 backdrop-blur ': !message.isChatGPT} : {'bg-[#343541] dark:bg-[#333042]': !message.isChatGPT} ]">
+    <div :class="['flex gap-5 py-3 px-5 backdrop-blur', message.isChatGPT ? bgColorGpt : bgColorUser]">
         <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']"> 
             <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" />
             <img v-else src="/img/users/1.png" width="32" height="32" alt="user avatar" class="h-10 w-10 object-cover" />

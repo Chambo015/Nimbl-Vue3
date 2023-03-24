@@ -9,7 +9,7 @@ interface Store {
     innerVideoChat: TypeMessageGPT[];
 }
 
-const initialInnerVideoChat =  [
+const initialInnerVideoChat = () => ([
     {
         id: 0,
         text: [
@@ -19,7 +19,7 @@ const initialInnerVideoChat =  [
         isChatGPT: true,
         showStatus: false,
     }
-]
+]) 
 
 export const useChatGPTStore = defineStore('chatGPT', {
     state: (): Store => ({
@@ -34,7 +34,7 @@ export const useChatGPTStore = defineStore('chatGPT', {
                 showStatus: false,
             },
         ],
-        innerVideoChat: [...initialInnerVideoChat]
+        innerVideoChat: initialInnerVideoChat()
     }),
     actions: {
         addMessage(payload: { message: TypeMessageGPT }) {
@@ -65,10 +65,16 @@ export const useChatGPTStore = defineStore('chatGPT', {
             )
         },
         resetVideoChat() {
-            this.innerVideoChat = initialInnerVideoChat
+            this.innerVideoChat = initialInnerVideoChat()
         },
-        setShowStatus(payload: { id: number }) {
-            const message = this.chat.find((m) => m.id === payload.id);
+        setShowStatus(payload: { id: number, isVideoChat?: boolean }) {
+            let message = null
+
+            if(payload.isVideoChat) {
+                message = this.innerVideoChat.find((m) => m.id === payload.id);
+            } else {
+                 message = this.chat.find((m) => m.id === payload.id);
+            }
             if (message) message.showStatus = true;
         },
     },

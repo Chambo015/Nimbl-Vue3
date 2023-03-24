@@ -6,9 +6,11 @@ import { IconChatGPT, IconClock, IconComments, IconEye, IconFutures, IconVideoGa
 import { useVideoStore } from '@/stores/video';
 import { randomNumber } from '@/utils';
 import { storeToRefs } from 'pinia';
-import { computed, ref } from 'vue';
+import { computed, onUnmounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue'
+import AppChatGPTVideo from '@/components/AppChatGPT/AppChatGPTVideo.vue';
+import { useChatGPTStore } from '@/stores/chatGPT';
 
 type SidebarTabsTypes = 'videos' | 'comments' | 'trade' | 'chatGpt';
 
@@ -21,12 +23,17 @@ const videoStore = useVideoStore();
 const { videoList } = storeToRefs(videoStore);
 const video = computed(() => videoStore.getVideoById(idParams.value));
 
+const chatStore = useChatGPTStore();
 
 const views = computed(() => randomNumber(90000, 999999));
+
+onUnmounted(() => {
+    chatStore.resetVideoChat()
+})
 </script>
 
 <template>
-    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
+    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden pt-5">
         <div class="video-scrollbar col-span-8 overflow-scroll pl-5 pb-height-navigation flex flex-col">
             <VideoPlayer class="min-h-[65vh] w-full self-center" />
             <div class="w-full p-4">
@@ -81,7 +88,7 @@ const views = computed(() => randomNumber(90000, 999999));
                     </AppTabListItem>
                 </AppTabList>
             </div>
-            <!-- Videos tabs -->
+            <!-- Videos tab -->
             <div v-if="activeSidebarTab === 'videos'" class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation">
                 <div
                     v-for="video in videoList"
@@ -109,12 +116,15 @@ const views = computed(() => randomNumber(90000, 999999));
                 </div>
             </div>
             <!-- --- -->
-            <!-- Trade tabs -->
+            <!-- Trade tab -->
             <div v-if="activeSidebarTab === 'trade'" class="mr-[5px] pr-[10px] pb-height-navigation">
                 
                 
             </div>
             <!-- --- -->
+            <!-- ChatGPT tab -->
+            <AppChatGPTVideo v-if="activeSidebarTab === 'chatGpt'" class="mb-height-navigation" />
+    <!-- --- -->
         </div>
     </div>
 </template>
