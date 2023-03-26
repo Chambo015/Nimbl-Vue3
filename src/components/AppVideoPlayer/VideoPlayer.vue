@@ -13,8 +13,7 @@ import {
 } from '../icons';
 import IconAirPlay from '../icons/IconAirPlay.vue';
 import type { SoundVolumeType } from '@/types';
-import ControlsChatGPT from './VideoPlayerControls/ControlsChatGPT.vue';
-import  AppChatGPTVideo from '../AppChatGPT/AppChatGPTVideo.vue';
+import  AppChatGPTVideo from '../AppChatGPT/ChatGPTVideo.vue';
 
 const videoEl = ref<HTMLVideoElement>();
 const loop = ref(false);
@@ -134,7 +133,6 @@ const soundVolume = computed<SoundVolumeType>(() => {
       
                       <!-- Wrap Menu Controls -->
                       <div class="flex" @click.self="playing = !playing">
-                       <!--    <ControlsChatGPT v-if="visibleChatGPT" class="ml-auto" /> -->
                       </div>
                       <!-- --- -->
       

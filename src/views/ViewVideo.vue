@@ -9,7 +9,7 @@ import { storeToRefs } from 'pinia';
 import { computed, onUnmounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue'
-import AppChatGPTVideo from '@/components/AppChatGPT/AppChatGPTVideo.vue';
+import AppChatGPTVideo from '@/components/AppChatGPT/ChatGPTVideo.vue';
 import { useChatGPTStore } from '@/stores/chatGPT';
 
 type SidebarTabsTypes = 'videos' | 'comments' | 'trade' | 'chatGpt';

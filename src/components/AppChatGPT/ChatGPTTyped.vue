@@ -2,7 +2,7 @@
 import { ref, type PropType, onMounted, onUnmounted } from 'vue';
 import Typed from 'typed.js';
 import type { TypeMessageGPT } from '@/types';
-import { IconChatGPT } from './icons';
+import { IconChatGPT } from '../icons';
 
 const props = defineProps({
     message: {
@@ -11,12 +11,11 @@ const props = defineProps({
     },
     isInnerVideoChat: Boolean,
     bgColorUser: {
-        type: String
+        type: String,
     },
     bgColorGpt: {
         type: String,
-    }
-
+    },
 });
 const emit = defineEmits(['completeTyping']);
 
@@ -30,7 +29,7 @@ onMounted(() => {
             typeSpeed: 20,
             autoInsertCss: true,
             startDelay: props.message.delayToResponse || 500,
-             onComplete: (self: Typed) => {
+            onComplete: (self: Typed) => {
                 emit('completeTyping');
                 setTimeout(() => {
                     self.cursor.remove();
@@ -46,26 +45,34 @@ onUnmounted(() => {
 });
 </script>
 
-<!-- isInnerVideoChat ? {'!bg-[#343541] ': !message.isChatGPT , 'bg-[#343541]/40': message.isChatGPT} : {'!bg-[#343541] dark:bg-[#333042]': !message.isChatGPT}  -->
 <template>
     <div :class="['flex gap-5 py-3 px-5 backdrop-blur', message.isChatGPT ? bgColorGpt : bgColorUser]">
-        <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']"> 
+        <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']">
             <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" />
-            <img v-else src="/img/users/1.png" width="32" height="32" alt="user avatar" class="h-10 w-10 object-cover" />
+            <img
+                v-else
+                src="/img/users/1.png"
+                width="32"
+                height="32"
+                alt="user avatar"
+                class="h-10 w-10 object-cover" />
         </div>
-        <div class="p-4 leading-normal space-y-4">
-            <span v-if="message.isChatGPT && !message.showStatus"  ref="typingRef"></span>
+        <div class="space-y-4 p-4 leading-normal">
+            <span v-if="message.isChatGPT && !message.showStatus" ref="typingRef"></span>
             <template v-else>
                 <p v-for="item in message.text" :key="item">{{ item }}</p>
             </template>
-            <Transition  enter-active-class="transition duration-500 ease-out"
-            enter-from-class="translate-y-1 opacity-0"
-            enter-to-class="translate-y-0 opacity-100">
-                <component  key="contentAttach" v-if="message.isChatGPT && message.showStatus" :is="message.attachComponent" />
+            <Transition
+                enter-active-class="transition duration-500 ease-out"
+                enter-from-class="translate-y-1 opacity-0"
+                enter-to-class="translate-y-0 opacity-100">
+                <component
+                    key="contentAttach"
+                    v-if="message.isChatGPT && message.showStatus"
+                    :is="message.attachComponent" />
             </Transition>
         </div>
     </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

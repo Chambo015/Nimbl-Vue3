@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { IconSearch } from './icons';
+import { IconSearch } from '../icons';
 import { useChatGPTStore } from '@/stores/chatGPT';
-import TheChatGPTItem from './TheChatGPTItem.vue';
+import TheChatGPTItem from './ChatGPTTyped.vue';
 import Typed from 'typed.js';
 
 const inputText = ref<string>('');

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheChatGPTItem from '@/components/TheChatGPTItem.vue';
+import ChatGPTTyped from '@/components/AppChatGPT/ChatGPTTyped.vue';
 import { useScrollToBottom } from '@/composables/useScrollToBottom';
 import { useChatGPTStore } from '@/stores/chatGPT';
 import { ref } from 'vue';
@@ -29,7 +29,7 @@ useScrollToBottom(wrapChat, scrollParent);
             v-auto-animate="{ duration: 500 }"
             class="mr-[5px] justify-end overflow-y-auto overflow-x-hidden pr-[10px] [overflow-anchor:none]">
             <div ref="wrapChat">
-                <TheChatGPTItem
+                <ChatGPTTyped
                     v-for="msg in chatStore.innerVideoChat"
                     :key="msg.id"
                     :message="msg"

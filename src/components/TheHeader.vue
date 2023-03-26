@@ -6,7 +6,7 @@ import { useDark, useFullscreen, useToggle } from '@vueuse/core';
 import { useRouter } from 'vue-router';
 import { useBlobsStore } from '@/stores/blobs';
 import { useAuth } from '@/composables/useAuth';
-import TheChatGPT from './TheChatGPT.vue';
+import TheChatGPT from './AppChatGPT/ChatGPTSearch.vue';
 
 
 const isDark = useDark();
