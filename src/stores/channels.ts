@@ -66,4 +66,9 @@ export const useChannelStore = defineStore('channel', {
             },
         ],
     }),
+    getters: {
+        getChannelById(state) {
+            return (id: number): ChannelI | undefined => state.channelList.find(channel => channel.id === id) 
+        }
+    }
 });

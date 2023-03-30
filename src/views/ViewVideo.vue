@@ -69,22 +69,22 @@ onUnmounted(() => {
             <div class="mb-5 flex pr-5">
                 <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="(tab) => activeSidebarTab = tab" v-slot="{ onChange }">
                     <AppTabListItem value="videos" :active-value="activeSidebarTab" @click="() => onChange('videos')">
-                        <IconVideoGallery class="mr-4 h-6 w-6 translate-y-[2px]" />
-                        <span class="text-xl leading-none">Videos</span>
+                        <IconVideoGallery class="mr-4 h-5 w-5 translate-y-[2px]" />
+                        <span class="text-lg leading-none">Videos</span>
                     </AppTabListItem>
                     <AppTabListItem
                         value="comments"
                         :active-value="activeSidebarTab"
                         @click="() => onChange('comments')">
-                        <IconComments class="mr-4 h-6 w-6 translate-y-[3px]" />
-                        <span class="text-xl leading-none">Comments</span>
+                        <IconComments class="mr-4 h-5 w-5 translate-y-[3px]" />
+                        <span class="text-lg leading-none">Comments</span>
                     </AppTabListItem>
                     <AppTabListItem value="trade" :active-value="activeSidebarTab" @click="() => onChange('trade')">
-                        <IconFutures class="mr-4 h-6 w-6" />
-                        <span class="text-xl leading-none">Trade</span>
+                        <IconFutures class="mr-4 h-5 w-5" />
+                        <span class="text-lg leading-none">Trade</span>
                     </AppTabListItem>
                     <AppTabListItem value="chatGpt" :active-value="activeSidebarTab" @click="() => onChange('chatGpt')">
-                        <IconChatGPT class="h-6 w-6" />
+                        <IconChatGPT class="h-5 w-5" />
                     </AppTabListItem>
                 </AppTabList>
             </div>

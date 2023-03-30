@@ -2,7 +2,7 @@
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
 import { ref } from 'vue';
-import TheHomeTable from '@/components/TheHomeTable.vue';
+import TheHomeTable from '@/components/TheHomeLeftAside.vue';
 import AppCategory from '@/components/AppCategory.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
 

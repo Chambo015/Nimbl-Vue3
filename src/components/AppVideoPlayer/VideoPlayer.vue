@@ -103,9 +103,9 @@ const soundVolume = computed<SoundVolumeType>(() => {
 </script>
 
 <template>
-      <div class="flex justify-center" v-auto-animate  ref="videoWrap">
+      <div class="flex justify-center duration-200" ref="videoWrap">
           <div
-              class="group/video outline-none"
+              class="group/video outline-none flex-grow  duration-200"
               :tabindex="0"
               autofocus
               @keydown.prevent.stop.space="playing = !playing"
@@ -228,7 +228,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
               </div>
           </div>
           <!-- ChatGPT Sidebar -->
-         <Transition> <div v-if="visibleChatGPT && isFullscreen" class="flex-[1_0_27%] -mr-[15px] overflow-hidden"><AppChatGPTVideo /></div></Transition>
+          <Transition enter-from-class="!flex-[0_0_0px] !max-w-[0%]"  enter-active-class="!flex-[111_0_27%] !w-[27%]" leave-from-class="flex-[111_0_27%] max-w-[27%]" leave-active-class="flex-[0_0_0px] max-w-[0%]"><div v-if="visibleChatGPT && isFullscreen" :class="['overflow-hidden flex-[111_0_27%] max-w-[27%] duration-200 -mr-[15px] ']"><AppChatGPTVideo /></div></Transition>
           <!--  -->
       </div>
 

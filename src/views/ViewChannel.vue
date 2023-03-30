@@ -141,7 +141,7 @@ const baseUrl = import.meta.env.BASE_URL;
                     <AppChartArea height="150" width="100%" />
                 </div>
             </section>
-            <!--  -->
+            <!-- ---  -->
             <!-- Tabs Video -->
             <div class="pr-5 mb-5">
                 <AppTabList class="h-14 !bg-gradient-tab-list-mute w-full dark:!bg-none" @change-tab="setActiveTabVideo" v-slot="{ onChange }">

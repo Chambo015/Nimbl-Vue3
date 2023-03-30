@@ -26,6 +26,7 @@ import IconAirPlay from './IconAirPlay.vue';
 import IconVolume from './IconVolume.vue';
 import IconChatGPT from './IconChatGPT.vue';
 import IconSettingsSolid from './IconSettingsSolid.vue';
+import IconArrowRight from './IconArrowRight.vue';
 
 
 export {
@@ -56,5 +57,6 @@ export {
     IconAirPlay,
     IconVolume,
     IconChatGPT,
-    IconSettingsSolid
+    IconSettingsSolid,
+    IconArrowRight
 }
