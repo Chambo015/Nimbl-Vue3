@@ -43,7 +43,7 @@ const views = computed(() => randomNumber(90000, 999999));
                 class="w-full h-full object-cover transition-transform duration-300 will-change-transform group-hover:scale-105" />
         </div>
         <div class="flex items-center bg-default-glass py-1 px-2 backdrop-blur-sm">
-            <div class="flex items-center">
+            <div class="flex items-center overflow-hidden">
                 <img
                     :src="video.avatar"
                     width="30"
@@ -51,9 +51,9 @@ const views = computed(() => randomNumber(90000, 999999));
                     :alt="video.channel"
                     loading="lazy"
                     class="mr-2 h-8 w-8 rounded-full object-cover" />
-                <RouterLink to="/channel" class="text-[white]/80 hover:text-white" @click.stop="() => {}">{{ video.channel }}</RouterLink>
+                <RouterLink to="/channel" class="text-[white]/80 hover:text-white truncate" @click.stop="() => {}">{{ video.channel }}</RouterLink>
             </div>
-            <div class="ml-auto flex flex-col justify-center">
+            <div class="ml-auto flex flex-col justify-center flex-shrink-0">
                 <div class="text-right leading-none">Floor Price:</div>
                 <div class="gradient-text text-right font-ethnocentric ">
                     {{ video.price }} NMBL

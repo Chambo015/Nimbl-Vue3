@@ -1,6 +1,7 @@
 import type { Component } from 'vue';
 
 export type TabCategoryType = 'Top' | 'Trending' | 'Rising' | 'WatchList';
+export type TabHomeCategoryType = 'Mints' | 'Secondary Market';
 
 export type RangeType = '1d' | '1w' | '1m' | '3m';
 

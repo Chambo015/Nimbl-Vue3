@@ -35,7 +35,7 @@ const { width: widthVideo, height: heightVideo } = useElementSize(videoWrap);
 
 const controls = useMediaControls(videoEl, {
     src: {
-        src: 'https://storage.googleapis.com/nimbl_next/NFTs%20and%20the%20%2413B%20marketplace%2C%20explained.mp4',
+        src: '/NFTsVideo.mp4',
         type: 'video/mp4',
     },
 });
@@ -114,7 +114,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
               @mousemove="mousemoveHandler">
               <div class="relative h-full w-full overflow-hidden shadow">
                   <!-- crossorigin="anonymous" -->
-                  <video ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
+                  <video crossorigin="anonymous" ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
                   <div
                       v-if="waiting"
                       class="pointer-events-none absolute inset-0 grid place-items-center bg-black bg-opacity-20">
