@@ -1,19 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref, type PropType } from 'vue';
 
-defineProps({
+const props = defineProps({
     title: {
         type: String,
-        default: 'Title TitleTitleTitleTitleTitleTitleTitleTitleTitle',
+        default: 'What You Need To Know About The NFT World',
+    },
+    previewImgUrl: {
+        type: String,
+        default: '/img/video-card/1.jpg'
     },
     channelImgUrl: {
         type: String,
         default: '/img/users/1.png',
     },
     openVideo: {
-        type: Function
+        type: Function as PropType<() => void>
     }
 });
+
+const channelImg = computed(() => (new URL(props.channelImgUrl, import.meta.url).href))
+const previewImg = computed(() => (new URL(props.previewImgUrl, import.meta.url).href))
 
 const isHover = ref(false);
 </script>
@@ -26,18 +33,18 @@ const isHover = ref(false);
             class="group flex h-full cursor-pointer flex-col bg-dark-violet p-[6px]"
             @mouseenter="() => (isHover = true)"
             @mouseleave="() => (isHover = false)">
-            <div class="relative w-full overflow-hidden before:block before:pt-[100%]">
+            <div class="relative w-full flex-shrink-0 overflow-hidden before:block before:pt-[100%]">
                 <img
-                    src="/img/video-card/1.jpg"
+                    :src="previewImg"
                     alt="poster"
                     width="165"
                     height="165"
                     class="absolute inset-0 h-full w-full object-cover" />
             </div>
             <div class="mt-3 flex items-center">
-                <p class="truncate">{{ title }}</p>
+                <p class="truncate" :title="title">{{ title }}</p>
                 <div class="ml-auto h-5 w-5 flex-shrink-0 overflow-hidden rounded-full">
-                    <img :src="channelImgUrl" alt="channelImgUrl" class="h-full w-full object-cover" />
+                    <img :src="channelImg" alt="channelImgUrl" class="h-full w-full object-cover" />
                 </div>
             </div>
             <TransitionGroup
@@ -46,8 +53,7 @@ const isHover = ref(false);
                 class="relative mt-2 grid grid-cols-2 gap-y-1 leading-none"
                 tag="div">
                 <p key="total" class="mb-1 text-xs text-white/50">Total mints</p>
-                <p :key="1" v-if="isHover" class="col-span-1 ml-auto">50<span class="text-white/40">/2000</span></p>
-                <p :key="1" v-if="!isHover" class="col-span-2">50<span class="text-white/40">/2000</span></p>
+                <p :key="1"  :class="[isHover ? 'col-span-1 ml-auto' : 'col-span-2']">50<span class="text-white/40">/2000</span></p>
                 <div
                     v-if="!isHover"
                     key="line"

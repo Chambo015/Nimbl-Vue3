@@ -6,7 +6,7 @@ import AppButton from './AppButton.vue';
 import { computed, ref } from 'vue';
 
 import type { RangeType } from '@/types';
-import { IconArrowRight, IconChevron } from '@/components/icons';
+import { IconArrowTurnRight, IconChevron } from '@/components/icons';
 import { useChannelStore } from '@/stores/channels';
 import { storeToRefs } from 'pinia';
 import { useVideoStore } from '@/stores/video';
@@ -106,7 +106,7 @@ const dataStats =  ref({
             <div class="flex items-center">
                 <div class="group bg-gradient-tab-list dark:bg-none dark:bg-dark-glass cursor-pointer py-1 px-2  mr-5"
                 @click="selectedChannelId = null">
-                    <IconArrowRight class="[transform:scale(-1,1)] w-7 h-7 group-hover:fill-white/80 dark:fill-white/30 fill-[#64dbff]" />
+                    <IconArrowTurnRight class="[transform:scale(-1,1)] w-7 h-7 group-hover:fill-white/80 dark:fill-white/30 fill-[#64dbff]" />
                 </div>
                 <div>
                     <img width="60" height="60" :src="selectedChannel.avatar" class="w-16 h-16 object-cover rounded-full inline-block mr-5" alt="avatar"/><span class="text-xl">{{selectedChannel.name}}</span>

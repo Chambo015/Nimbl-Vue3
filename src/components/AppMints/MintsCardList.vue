@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import MintsCard from './MintsCardItem.vue';
-import MintsPlayer from './MintsPlayer.vue';
+import MintsPlayer from './MintsVideoPlayer.vue';
 
 const isOpenPlayer = ref(false)
 </script>
@@ -15,10 +15,12 @@ const isOpenPlayer = ref(false)
                 Live Mints</span
             ><span class="text-white/50 hover:text-white">Upcoming</span>
         </div>
-        <ul v-if="!isOpenPlayer" class="grid grid-cols-[repeat(auto-fill,minmax(175px,1fr))] gap-5 px-3">
-            <MintsCard :open-video="() => isOpenPlayer = true" v-for="i in 8" :key="i" />
-        </ul>
-        <MintsPlayer v-else />
+        <div v-if="!isOpenPlayer" class="overflow-y-auto pb-height-navigation">
+            <ul  class="grid grid-cols-[repeat(auto-fill,minmax(175px,1fr))] gap-5 pl-3 ">
+                <li v-for="i in 8" :key="i" ><MintsCard :open-video="() => isOpenPlayer = true" /></li>
+            </ul>
+        </div>
+        <MintsPlayer :close-video="() => isOpenPlayer = false" v-else />
     </section>
 </template>
 

@@ -59,7 +59,7 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
 
 /* Visible Controls and Menu */
 const [visibleChatGPT, toggleChatGPT] = useToggle()
-const visibleOfMousemove = ref(false);
+const visibleOfMousemove = ref(true);
 const mousemoveHandler = () => {
   if (!visibleOfMousemove.value) {
     visibleOfMousemove.value = true;
@@ -74,11 +74,11 @@ const visibleControls = computed(() => {
   return visibleOfMousemove.value || visibleChatGPT.value
 });
 
-
 /* Change initial media properties */
 onMounted(() => {
     volume.value = 0.5;
 });
+
 watch(muted, () => {
     if (muted.value) {
         volume.value = 0;
@@ -114,7 +114,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
               @mousemove="mousemoveHandler">
               <div class="relative h-full w-full overflow-hidden shadow">
                   <!-- crossorigin="anonymous" -->
-                  <video crossorigin="anonymous" ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
+                  <video autoplay crossorigin="anonymous" ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
                   <div
                       v-if="waiting"
                       class="pointer-events-none absolute inset-0 grid place-items-center bg-black bg-opacity-20">
@@ -130,11 +130,6 @@ const soundVolume = computed<SoundVolumeType>(() => {
                       <!-- заполнитель пространства  -->
                       <div class="flex-grow" @click="playing = !playing"></div>
                       <!--  -->
-      
-                      <!-- Wrap Menu Controls -->
-                      <div class="flex" @click.self="playing = !playing">
-                      </div>
-                      <!-- --- -->
       
                       <!-- Линия перемотки -->
                       <Controls.Scrubber v-model="currentTime" :max="duration" :secondary="endBuffer" class="flex-shrink-0">

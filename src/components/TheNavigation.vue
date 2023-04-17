@@ -2,7 +2,8 @@
     <nav class="flex bg-gradient-nav backdrop-blur-md dark:bg-none dark:bg-dark-glass" aria-orientation="horizontal">
         <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow" :to="route.slug" :is-active="isActiveRoute(route.name, route.children)" >
             <template #icon="iconProps">
-                <component :is="route.icon" :class="iconProps.class" />
+                <!-- <component :is="route.icon" :class="iconProps.class" /> -->
+                <img :src="route.iconImg" alt=""  class="h-[50px] object-contain">
             </template>
             <template #default>{{ capitalize(route.name) }}</template>
         </TheNavigationItem>
@@ -15,6 +16,11 @@ import TheNavigationItem from './TheNavigationItem.vue';
 import {IconContent, IconCommunity, IconMarketplace, IconSettings} from './icons';
 import { useRoute } from 'vue-router';
 
+import ContentIconImg from '@/assets/content-icon.png'
+import CommunityIconImg from '@/assets/community-icon.png'
+import MarketplaceIconImg from '@/assets/marketplace-icon.png'
+import SettingsIconImg from '@/assets/settings-icon.png'
+
 
 const routers = reactive([
     {
@@ -24,12 +30,14 @@ const routers = reactive([
             'video',
             'channel'
         ],
-        icon: shallowRef(IconContent)
+        icon: shallowRef(IconContent),
+        iconImg: ContentIconImg
     },
     {
         slug: '/community',
         name: 'community',
-        icon: shallowRef(IconCommunity)
+        icon: shallowRef(IconCommunity),
+        iconImg: CommunityIconImg
     },
     {
         slug: '/marketplace/rankings',
@@ -37,12 +45,14 @@ const routers = reactive([
         children: [
             'rankings'
         ],
-        icon: shallowRef(IconMarketplace)
+        icon: shallowRef(IconMarketplace),
+        iconImg: MarketplaceIconImg
     },
     {
         slug: '/settings',
         name: 'settings',
-        icon: shallowRef(IconSettings)
+        icon: shallowRef(IconSettings),
+        iconImg: SettingsIconImg
     }
 ])
 
