@@ -22,47 +22,47 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 1,
                 title: 'Trending Videos',
-                img: import.meta.env.BASE_URL +'/img/category/trending-videos.png',
+                img: import.meta.env.BASE_URL +'img/category/trending-videos.png',
             },
             {
                 id: 2,
                 title: 'Crypto News',
-                img: import.meta.env.BASE_URL +'/img/category/crypto-news.png',
+                img: import.meta.env.BASE_URL +'img/category/crypto-news.png',
             },
             {
                 id: 3,
                 title: 'ETH NFTs',
-                img: import.meta.env.BASE_URL +'/img/category/eth-nfts.png',
+                img: import.meta.env.BASE_URL +'img/category/eth-nfts.png',
             },
             {
                 id: 4,
                 title: 'Play2Earn',
-                img: import.meta.env.BASE_URL +'/img/category/play2earn.png',
+                img: import.meta.env.BASE_URL +'img/category/play2earn.png',
             }
         ],
         homeCategoryList: [ 
             {
                 id: 1,
                 title: 'Clips',
-                img: import.meta.env.BASE_URL +'/img/category/clips.png',
+                img: import.meta.env.BASE_URL +'img/category/clips.png',
                 isActive: true
             },
             {
                 id: 2,
                 title: 'Longs',
-                img: import.meta.env.BASE_URL +'/img/category/longs.png',
+                img: import.meta.env.BASE_URL +'img/category/longs.png',
                 isActive: false
             },
             {
                 id: 3,
                 title: 'Wallet',
-                img: import.meta.env.BASE_URL +'/img/category/wallet.png',
+                img: import.meta.env.BASE_URL +'img/category/wallet.png',
                 isActive: false
             },
             {
                 id: 4,
                 title: 'Categories',
-                img: import.meta.env.BASE_URL +'/img/category/play2earn.png',
+                img: import.meta.env.BASE_URL +'img/category/play2earn.png',
                 isActive: false
             }
         ],
