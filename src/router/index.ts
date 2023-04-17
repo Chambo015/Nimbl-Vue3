@@ -1,11 +1,11 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import NotFound from '@/views/ViewNotFound.vue';
 import LayoutHome from '@/layouts/LayoutHome.vue';
 
 
 const router = createRouter({
-    history: createWebHashHistory(import.meta.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
+    history: createWebHistory(), // createWebHashHistory(import.meta.env.BASE_URL), // Способ сохранения истории переходов по маршрутам
     routes: [
         // Определяем маршруты
         {
