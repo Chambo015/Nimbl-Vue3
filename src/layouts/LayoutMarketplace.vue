@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppCategory from '@/components/AppCategory.vue';
+import AppCategory from '@/components/AppCategories/AppCategory.vue';
 import { RouterView } from 'vue-router';
 
 

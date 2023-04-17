@@ -30,10 +30,10 @@ export function useMetamask() {
         if (newAccount) {
             localStorage.setItem('metaMaskAccount', newAccount);
             enterFullscreen();
-            router.push({ name: 'content' });
+            router.replace({ name: 'content' });
         } else {
             localStorage.removeItem('metaMaskAccount');
-            router.push({ name: 'login' });
+            router.replace({ name: 'login' });
         }
     });
 

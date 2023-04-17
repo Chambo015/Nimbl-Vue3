@@ -1,0 +1,38 @@
+on:
+  push:
+    branches: ['new-version-video']
+name: 🚀 Deploy website on push
+
+env:
+  VITE_API_FIREBASE_API_KEY: ${{ secrets.VITE_API_FIREBASE_API_KEY }}
+  VITE_API_FIREBASE_APP_ID: ${{ secrets.VITE_API_FIREBASE_APP_ID }}
+  VITE_API_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_API_FIREBASE_AUTH_DOMAIN }}
+  VITE_API_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_API_FIREBASE_MESSAGING_SENDER_ID }}
+  VITE_API_FIREBASE_PROJECT_ID: ${{ secrets.VITE_API_FIREBASE_PROJECT_ID }}
+  VITE_API_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_API_FIREBASE_STORAGE_BUCKET }}
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run web-build
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/

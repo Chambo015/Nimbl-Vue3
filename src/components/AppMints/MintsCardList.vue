@@ -2,12 +2,17 @@
 import { ref } from 'vue';
 import MintsCard from './MintsCardItem.vue';
 import MintsPlayer from './MintsVideoPlayer.vue';
+import { storeToRefs } from 'pinia';
+import {useVideoStore} from '@/stores/video'
 
 const isOpenPlayer = ref(false)
+
+const videoStore = useVideoStore()
+const {clipList} = storeToRefs(videoStore)
 </script>
 
 <template>
-    <section class="py-4 overflow-hidden flex flex-col">
+    <section class="py-4 overflow-hidden flex flex-col bg-default-glass backdrop-blur-sm">
         <div class="relative flex items-center gap-8 px-4 mb-4 [&>span]:cursor-pointer ">
             <span class="relative pl-6"
                 ><span
@@ -17,7 +22,7 @@ const isOpenPlayer = ref(false)
         </div>
         <div v-if="!isOpenPlayer" class="overflow-y-auto pb-height-navigation">
             <ul  class="grid grid-cols-[repeat(auto-fill,minmax(175px,1fr))] gap-5 pl-3 ">
-                <li v-for="i in 8" :key="i" ><MintsCard :open-video="() => isOpenPlayer = true" /></li>
+                <li v-for="c in clipList" :key="c.id" ><MintsCard :open-video="() => isOpenPlayer = true" :title="c.title" :preview-img-url="c.poster" :channel-img-url="c.avatar" :price="c.price"/></li>
             </ul>
         </div>
         <MintsPlayer :close-video="() => isOpenPlayer = false" v-else />

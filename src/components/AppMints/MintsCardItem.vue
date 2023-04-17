@@ -16,6 +16,10 @@ const props = defineProps({
     },
     openVideo: {
         type: Function as PropType<() => void>
+    },
+    price: {
+        type: Number,
+        default: 8
     }
 });
 
@@ -60,7 +64,7 @@ const isHover = ref(false);
                     class="col-span-2 mt-2 h-[1px] w-full overflow-hidden bg-[#2C2C35] before:block before:h-full before:w-[20%] before:bg-gradient-text"></div>
                 <div v-if="!isHover" key="price" class="col-span-2 flex justify-between text-xs">
                     <p class="text-white/50">Floor price</p>
-                    <p class="font-ethnocentric">8 nimbl</p>
+                    <p class="font-ethnocentric">{{price}} nimbl</p>
                 </div>
                 <button
                     key="Get Pre-mint Token"

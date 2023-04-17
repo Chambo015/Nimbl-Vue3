@@ -28,6 +28,8 @@ import IconChatGPT from './IconChatGPT.vue';
 import IconSettingsSolid from './IconSettingsSolid.vue';
 import IconArrowTurnRight from './IconArrowTurnRight.vue';
 import IconArrowLeft from './IconArrowLeft.vue';
+import IconPlus from './IconPlus.vue';
+import IconReload from './IconReload.vue';
 
 
 export {
@@ -60,5 +62,7 @@ export {
     IconChatGPT,
     IconSettingsSolid,
     IconArrowTurnRight,
-    IconArrowLeft
+    IconArrowLeft,
+    IconPlus,
+    IconReload
 }

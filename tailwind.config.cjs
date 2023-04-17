@@ -8,8 +8,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                ethnocentric: ['Ethnocentric', 'Inter', '-apple-system', 'Helvetica Neue', 'sans-serif'],
-                'tt-octosquares': ['TT Octosquares', 'Inter', '-apple-system', 'Helvetica Neue', 'sans-serif'],
+                'ethnocentric': ['Ethnocentric', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu' ,'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue' ,'sans-serif'],
+                'tt-octosquares': ['TT Octosquares', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu' ,'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue' ,'sans-serif'],
+                'rollbox': ['Rollbox', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu' ,'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue' ,'sans-serif'], 
             },
             backgroundImage: {
                 'gradient-main': 'linear-gradient(107.7deg, #320F5B 0%, #162E56 49.66%, #124D6A 99.33%)',

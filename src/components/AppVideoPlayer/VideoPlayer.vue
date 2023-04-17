@@ -15,6 +15,10 @@ import IconAirPlay from '../icons/IconAirPlay.vue';
 import type { SoundVolumeType } from '@/types';
 import  AppChatGPTVideo from '../AppChatGPT/ChatGPTVideo.vue';
 
+const props = defineProps({
+    lite: Boolean
+})
+
 const videoEl = ref<HTMLVideoElement>();
 const loop = ref(false);
 
@@ -59,7 +63,7 @@ const formatDuration = (seconds: number) => new Date(1000 * seconds).toISOString
 
 /* Visible Controls and Menu */
 const [visibleChatGPT, toggleChatGPT] = useToggle()
-const visibleOfMousemove = ref(true);
+const visibleOfMousemove = ref(false);
 const mousemoveHandler = () => {
   if (!visibleOfMousemove.value) {
     visibleOfMousemove.value = true;
@@ -114,7 +118,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
               @mousemove="mousemoveHandler">
               <div class="relative h-full w-full overflow-hidden shadow">
                   <!-- crossorigin="anonymous" -->
-                  <video autoplay crossorigin="anonymous" ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
+                  <video :autoplay="!lite" crossorigin="anonymous" ref="videoEl" class="block w-full h-full bg-transparent" :loop="loop" @click="playing = !playing" />
                   <div
                       v-if="waiting"
                       class="pointer-events-none absolute inset-0 grid place-items-center bg-black bg-opacity-20">

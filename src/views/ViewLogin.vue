@@ -65,7 +65,7 @@ const submitHandler = () => {
             .then((user) => {
                 console.log(user, 'user');
                 enterFullscreen()
-                router.push({name: 'content'})
+                router.replace({name: 'content'})
             })
             .catch((error) => {
                 console.error(error);
@@ -75,7 +75,7 @@ const submitHandler = () => {
             .then((user) => {
                 console.log(user, 'user');
                 enterFullscreen()
-                router.push({name: 'content'})
+                router.replace({name: 'content'})
             })
             .catch((error) => {
                 console.error(error);

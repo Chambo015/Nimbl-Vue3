@@ -1,6 +1,6 @@
 <template>
     <nav class="flex bg-gradient-nav backdrop-blur-md dark:bg-none dark:bg-dark-glass" aria-orientation="horizontal">
-        <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow" :to="route.slug" :is-active="isActiveRoute(route.name, route.children)" >
+        <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow font-['Starzone']" :to="route.slug" :is-active="isActiveRoute(route.name, route.children)" >
             <template #icon="iconProps">
                 <!-- <component :is="route.icon" :class="iconProps.class" /> -->
                 <img :src="route.iconImg" alt=""  class="h-[50px] object-contain">

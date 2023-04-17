@@ -242,3 +242,24 @@
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Rollbox';
+    src: local('Rollbox'),
+        url('@/fonts/Rollbox-ExtraBold.woff2') format('woff2'),
+        url('@/fonts/Rollbox-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: auto;
+}
+
+@font-face {
+    font-family: 'Starzone';
+    src: url('Starzone-Regular.woff2') format('woff2'),
+        url('Starzone-Regular.woff') format('woff'),
+        url('Starzone-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: auto;
+}
+
