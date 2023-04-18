@@ -12,7 +12,9 @@ import HeaderUserRank from './TheHeader/HeaderUserRank.vue';
 import bellImg from '@/assets/bell-icon.png';
 import coinImg from '@/assets/nimbl-coin.png';
 
-const isDark = useDark();
+const isDark = useDark({
+    initialValue: 'dark',
+});
 const toggleDark = useToggle(isDark);
 
 const { toggle: toggleFullScreen } = useFullscreen(document.documentElement);

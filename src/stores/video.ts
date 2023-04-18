@@ -1,9 +1,12 @@
 import type { VideoI } from '@/types'
 import { defineStore } from 'pinia'
 
+interface ClipI extends VideoI {
+    video?: string
+}
 interface State {
     videoList: VideoI[];
-    clipList: VideoI[]
+    clipList: ClipI[]
 }
  
 export const useVideoStore = defineStore('video', {
@@ -114,6 +117,7 @@ export const useVideoStore = defineStore('video', {
                 price: 8,
                 avatar: import.meta.env.BASE_URL + 'img/users/1.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/1.png',
+                video: import.meta.env.BASE_URL + 'shorts.mp4'
             },
             {
                 id: 2,
@@ -122,6 +126,7 @@ export const useVideoStore = defineStore('video', {
                 price: 20,
                 avatar: import.meta.env.BASE_URL + 'img/users/2.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/2.png',
+                video: import.meta.env.BASE_URL + 'shorts2.mp4'
             },
             {
                 id: 3,
@@ -130,6 +135,7 @@ export const useVideoStore = defineStore('video', {
                 price: 45,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/3.png',
+                video: import.meta.env.BASE_URL + 'shorts1.mp4'
             },
             {
                 id: 4,
@@ -138,6 +144,7 @@ export const useVideoStore = defineStore('video', {
                 price: 56,
                 avatar: import.meta.env.BASE_URL + 'img/users/4.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/4.png',
+                video: import.meta.env.BASE_URL + 'shorts1.mp4'
             },
             {
                 id: 5,
@@ -146,6 +153,7 @@ export const useVideoStore = defineStore('video', {
                 price: 122,
                 avatar: import.meta.env.BASE_URL + 'img/users/5.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/6.png',
+                video: import.meta.env.BASE_URL + 'shorts2.mp4'
             },
             {
                 id: 6,
@@ -154,6 +162,7 @@ export const useVideoStore = defineStore('video', {
                 price: 12,
                 avatar: import.meta.env.BASE_URL + 'img/users/6.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/5.png',
+                video: import.meta.env.BASE_URL + 'shorts1.mp4'
             },
             {
                 id: 7,
@@ -162,6 +171,7 @@ export const useVideoStore = defineStore('video', {
                 price: 43,
                 avatar: import.meta.env.BASE_URL + 'img/users/7.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/7.png',
+                video: import.meta.env.BASE_URL + 'shorts2.mp4'
             },
             {
                 id: 8,
@@ -170,6 +180,7 @@ export const useVideoStore = defineStore('video', {
                 price: 78,
                 avatar: import.meta.env.BASE_URL + 'img/users/8.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/8.jpg',
+                video: import.meta.env.BASE_URL + 'shorts.mp4'
             },
             {
                 id: 9,
@@ -178,6 +189,7 @@ export const useVideoStore = defineStore('video', {
                 price: 212,
                 avatar: import.meta.env.BASE_URL + 'img/users/9.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/9.png',
+                video: import.meta.env.BASE_URL + 'shorts2.mp4'
             },
             {
                 id: 10,
@@ -186,6 +198,7 @@ export const useVideoStore = defineStore('video', {
                 price: 120,
                 avatar: import.meta.env.BASE_URL + 'img/users/1.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/10.jpg',
+                video: import.meta.env.BASE_URL + 'shorts1.mp4'
             },
             {
                 id: 11,
@@ -194,6 +207,7 @@ export const useVideoStore = defineStore('video', {
                 price: 13,
                 avatar: import.meta.env.BASE_URL + 'img/users/2.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/11.jpg',
+                video: import.meta.env.BASE_URL + 'shorts2.mp4'
             },
             {
                 id: 12,
@@ -202,6 +216,7 @@ export const useVideoStore = defineStore('video', {
                 price: 278,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/clip-card/8.png',
+                video: import.meta.env.BASE_URL + 'shorts1.mp4'
             },
         ]
     }),

@@ -45,13 +45,13 @@ export const useCategoryStore = defineStore('category', {
                 id: 1,
                 title: 'Clips',
                 img: import.meta.env.BASE_URL +'img/category/clips.png',
-                isActive: true
+                isActive: false
             },
             {
                 id: 2,
                 title: 'Longs',
                 img: import.meta.env.BASE_URL +'img/category/longs.png',
-                isActive: false
+                isActive: true
             },
             {
                 id: 3,

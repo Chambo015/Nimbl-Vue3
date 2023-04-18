@@ -6,13 +6,15 @@ import { IconSpinner } from '@/components/icons';
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Motion, Presence } from 'motion/vue';
-import { useFullscreen } from '@vueuse/core';
+import { useDark, useFullscreen } from '@vueuse/core';
 import { animate } from 'motion';
 
 import type { ILoginForm } from '@/types';
 
 import { useMetamask } from '@/composables/useMetamask';
 import { useAuth } from '@/composables/useAuth';
+
+const router = useRouter();
 
 const activeTab = ref<'Sign in' | 'Sign up'>('Sign in');
 const setActiveTab = (tab: 'Sign in' | 'Sign up'): void => {
@@ -21,11 +23,14 @@ const setActiveTab = (tab: 'Sign in' | 'Sign up'): void => {
 const isSignUp = computed(() => activeTab.value === 'Sign up');
 
 const { createUser, loginUser, isLoadingAuth, errorAuth } = useAuth();
-
-const { enter: enterFullscreen } = useFullscreen(document.documentElement);
 const { connectMetaMask, isLoadingMetaMask, errorMetaMask, hasMetaMaskExt } = useMetamask();
 
-const router = useRouter();
+const { enter: enterFullscreen } = useFullscreen(document.documentElement);
+useDark({
+    initialValue: 'dark',
+});
+
+
 
 const form = reactive<ILoginForm>({
     email: {

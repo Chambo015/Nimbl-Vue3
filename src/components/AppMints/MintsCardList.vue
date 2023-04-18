@@ -3,9 +3,12 @@ import { ref } from 'vue';
 import MintsCard from './MintsCardItem.vue';
 import MintsPlayer from './MintsVideoPlayer.vue';
 import { storeToRefs } from 'pinia';
-import {useVideoStore} from '@/stores/video'
+import { useVideoStore } from '@/stores/video'
 
-const isOpenPlayer = ref(false)
+const activeClipUrl = ref<string | null>(null)
+const selectClip = (urlClip: string) => {
+    activeClipUrl.value = urlClip
+}
 
 const videoStore = useVideoStore()
 const {clipList} = storeToRefs(videoStore)
@@ -20,12 +23,12 @@ const {clipList} = storeToRefs(videoStore)
                 Live Mints</span
             ><span class="text-white/50 hover:text-white">Upcoming</span>
         </div>
-        <div v-if="!isOpenPlayer" class="overflow-y-auto pb-height-navigation">
-            <ul  class="grid grid-cols-[repeat(auto-fill,minmax(175px,1fr))] gap-5 pl-3 ">
-                <li v-for="c in clipList" :key="c.id" ><MintsCard :open-video="() => isOpenPlayer = true" :title="c.title" :preview-img-url="c.poster" :channel-img-url="c.avatar" :price="c.price"/></li>
+        <div v-if="!activeClipUrl" class="overflow-y-auto pb-height-navigation">
+            <ul  class="grid grid-cols-[repeat(auto-fill,minmax(175px,1fr))] gap-5 pl-[10px] pr-[5px] ">
+                <li v-for="c in clipList" :key="c.id" ><MintsCard :select-clip="selectClip" :title="c.title" :preview-img-url="c.poster" :channel-img-url="c.avatar" :price="c.price" :video="c.video"/></li>
             </ul>
         </div>
-        <MintsPlayer :close-video="() => isOpenPlayer = false" v-else />
+        <MintsPlayer :close-video="() => activeClipUrl = null" v-else :video="activeClipUrl" />
     </section>
 </template>
 

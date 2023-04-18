@@ -3,8 +3,12 @@ import { useMediaControls } from '@vueuse/core';
 import { IconConfetti, IconHeadDiamond, IconLike, IconArrowLeft } from '../icons';
 import { onMounted, ref, type PropType } from 'vue';
 
-defineProps({
-    closeVideo: Function as PropType<() => void>
+const props = defineProps({
+    closeVideo: Function as PropType<() => void>,
+    video: {
+        type: String,
+        default: '/shorts1.mp4'
+    }
 })
 
 const videoEl = ref(null)
@@ -20,7 +24,7 @@ const {
     togglePictureInPicture,
 } = useMediaControls(videoEl, {
     src: {
-        src: '/shorts.mp4',
+        src: props.video,
         type: 'video/mp4',
     },
 });

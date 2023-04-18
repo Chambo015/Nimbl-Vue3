@@ -1,7 +1,7 @@
 <template>
     <RouterLink to="" v-bind="$props" custom  v-slot="{ href, navigate }">
         <a v-bind="$attrs" :href="href" @click="navigate" :class="['flex items-center py-4 h-height-navigation justify-center gap-3 relative', $props.isActive ? 'bg-gradient-active-tab dark:bg-none dark:bg-light-glass-mute  after:bottom-line' : 'hover:bg-white/10']">
-            <i> <slot name="icon" class="h-6" /></i>
+            <i> <slot name="icon" class="h-[50px] object-contain" /></i>
             <span class="text-xl antialiased"><slot /></span>
         </a>
     </RouterLink>

@@ -9,7 +9,7 @@ const {categoryList, homeCategoryList } = storeToRefs(categoryStore)
 <template>
     <div class="grid grid-cols-4 gap-5 ">
         <div v-for="category in homeCategoryList" :key="category.id" :class="['card overflow-hidden relative',  category.isActive && 'active']" @click="['Longs', 'Clips'].includes(category.title) && categoryStore.setActiveHomeCategory(category.id)">
-            <div class="group py-11 min-w-[290px] bg-clip-padding border border-transparent text-2xl font-ethnocentric font-bold flex relative before:bg-black/60 before:absolute before:inset-0 before:z-[-1] isolate  justify-center items-center cursor-pointer bg-custom-center hover:bg-[length:_105%_auto] hover:shadow-md hover:before:bg-black/40 before:transition-colors  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
+            <div class="group py-11 min-w-[290px] bg-clip-padding border border-transparent text-2xl font-tt-octosquares font-bold uppercase flex relative before:bg-black/60 before:absolute before:inset-0 before:z-[-1] isolate  justify-center items-center cursor-pointer bg-custom-center hover:bg-[length:_105%_auto] hover:shadow-md hover:before:bg-black/40 before:transition-colors  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
                 <span v-for="(w, idx) of category.title" :key="w" class="transition-all group-hover:mx-[2px]" :style="{transitionDelay: idx * 50 + 'ms'}">{{ w }}</span>
             </div>
             <div class="border_gradient"></div>

@@ -14,12 +14,17 @@ const props = defineProps({
         type: String,
         default: '/img/users/1.png',
     },
-    openVideo: {
-        type: Function as PropType<() => void>
+    selectClip: {
+        type: Function as PropType<(urlClip: string) => void>,
+        required:  true
     },
     price: {
         type: Number,
         default: 8
+    },
+    video: {
+        type: String,
+        default: '/shorts1.mp4'
     }
 });
 
@@ -30,21 +35,33 @@ const isHover = ref(false);
 </script>
 
 <template>
-    <li class="card relative overflow-hidden p-[1px]" @click="openVideo && openVideo()">
+    <li class="card relative overflow-hidden p-[1px]" @click="selectClip(video)">
         <div class="border_gradient"></div>
         <!-- Content inner card -->
         <div
             class="group flex h-full cursor-pointer flex-col bg-dark-violet p-[6px]"
             @mouseenter="() => (isHover = true)"
             @mouseleave="() => (isHover = false)">
-            <div class="relative w-full flex-shrink-0 overflow-hidden before:block before:pt-[100%]">
-                <img
-                    :src="previewImg"
-                    alt="poster"
-                    width="165"
-                    height="165"
-                    class="absolute inset-0 h-full w-full object-cover" />
-            </div>
+            <figure class="relative w-full flex-shrink-0 overflow-hidden before:block before:pt-[100%]">
+                <Transition name="fade">
+                    <img v-if="!isHover"
+                        :src="previewImg"
+                        alt="poster"
+                        width="165"
+                        height="165"
+                        class="absolute inset-0 h-full w-full object-cover" />
+                    <video v-else
+                        autoplay
+                        muted
+                        loop
+                        class="absolute inset-0 h-full w-full object-cover"
+                        loading="lazy"
+                        playsinline>
+                        <source :src="video" type="video/mp4" />
+                    </video>
+                </Transition>
+                    
+            </figure>
             <div class="mt-3 flex items-center">
                 <p class="truncate" :title="title">{{ title }}</p>
                 <div class="ml-auto h-5 w-5 flex-shrink-0 overflow-hidden rounded-full">
@@ -130,5 +147,13 @@ const isHover = ref(false);
     }
 }
 
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease;
+}
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

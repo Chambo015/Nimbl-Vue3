@@ -3,7 +3,7 @@
         <TheNavigationItem v-for="route of routers" :key="route.name" class="flex-grow font-['Starzone']" :to="route.slug" :is-active="isActiveRoute(route.name, route.children)" >
             <template #icon="iconProps">
                 <!-- <component :is="route.icon" :class="iconProps.class" /> -->
-                <img :src="route.iconImg" alt=""  class="h-[50px] object-contain">
+                <img :src="route.iconImg" :alt="route.name"  :class="iconProps.class">
             </template>
             <template #default>{{ capitalize(route.name) }}</template>
         </TheNavigationItem>
