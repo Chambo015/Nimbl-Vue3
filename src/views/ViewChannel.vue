@@ -4,24 +4,29 @@ import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
 import AppVideoGrid from '@/components/AppVideoGrid.vue';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue';
-import { IconBell, IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
+import { IconCalendar, IconConfetti, IconFutures, IconHeadDiamond, IconLike, IconLocationDot, IconVideoGallery } from '@/components/icons';
 import { useAnnouncementStore } from '@/stores/announcement.js';
 import { storeToRefs } from 'pinia';
 import { defineAsyncComponent, ref } from 'vue';
 
+import settingsImg from '@/assets/settings-icon.png'
+import videoImg from '@/assets/video-icon.png'
+
+const  ModalUploadVideo =  defineAsyncComponent(() =>
+  import('@/components/TheChannel/ModalUploadVideo.vue')
+);
 const AppChartArea = defineAsyncComponent(() =>
   import('@/components/AppChartArea.vue')
 )
 
 type ContentTabsTypes = 'content' | 'token';
-
 const activeContentTab = ref<ContentTabsTypes>('content');
 const setActiveContentTab = (tab: ContentTabsTypes) => {
     activeContentTab.value = tab;
 };
 
-const tabVideoArr = ['Most watched', 'Recent videos', 'Playlists'];
-const activeTabVideo = ref('Most watched');
+const tabVideoArr = ['My videos', 'My playlists'];
+const activeTabVideo = ref('My videos');
 const setActiveTabVideo = (tab: string): void => {
     activeTabVideo.value = tab;
 };
@@ -38,17 +43,19 @@ const dataStats =  ref({
 const announceStore = useAnnouncementStore()
 const {announcementList} = storeToRefs(announceStore)
 
+const isOpenModal = ref(false)
+
 const baseUrl = import.meta.env.BASE_URL;
 </script>
 
 <template>
-    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5">
+    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden py-5" :style="{filter: isOpenModal ? 'blur(8px)' : undefined}">
         <!-- Left Side -->
         <section class="col-span-4 pl-5 overflow-hidden h-full flex flex-col">
-            <VideoPlayer />
-            <div class="mt-5 bg-light-glass p-5 backdrop-blur-sm overflow-hidden flex flex-col">
+            <VideoPlayer lite />
+            <div class="mt-5 dark:bg-dark-glass py-5 backdrop-blur-sm bg-light-glass overflow-hidden flex flex-col">
                 <!--  -->
-                <section class="mb-8">
+                <section class="mb-8 px-5">
                     <div class="mb-4 flex items-center gap-5 text-lg">
                         <img :src="baseUrl + 'img/users/11.png'"
                             alt="avatar" width="44" height="44"
@@ -57,10 +64,9 @@ const baseUrl = import.meta.env.BASE_URL;
                             <h3 class="font-medium">Helen_NFT</h3>
                             <span class="text-sm text-white/50">245,511 members</span>
                         </div>
-                        <AppButton class="ml-auto h-11">
-                            <IconBell class="h-7 w-7" />
-                        </AppButton>
-                        <AppButton class="h-11">Subscribe</AppButton>
+                        <button class="ml-auto" @click="$router.push({name: 'settings'})">
+                            <img :src="settingsImg" width="45" height="45" alt="settings" class="h-12 w-12 object-contain">
+                        </button>
                     </div>
                     <p class="mb-3">
                         Users who connect their crypto wallet are able to purchase NFTs and set them as their profile
@@ -78,9 +84,12 @@ const baseUrl = import.meta.env.BASE_URL;
                     </footer>
                 </section>
                 <!--  -->
-                <h4 class="mb-5 text-xl font-semibold">Announcements</h4>
+                <div class="px-5 flex items-center mb-5">
+                    <h4 class=" text-xl font-semibold ">Announcements</h4>
+                    <button class=" ml-auto bg-[linear-gradient(88.76deg,#393939_0.58%,#4D4D4D_98.96%)] py-1 px-5 font-medium text-lg">Share news</button>
+                </div>
                 <!-- Posts -->
-                <section class="space-y-3 overflow-y-scroll pb-7">
+                <section class="space-y-3 overflow-y-scroll pb-7 pl-5 pr-[10px] mr-[5px]">
                     <article v-for="post in announcementList" :key="post.id" class="bg-light-glass-mute flex p-5 ">
                     <img :src="post.author.avatar" alt="avatar" width="32" height="32" class="w-8 h-8 object-cover rounded-full mr-3 sticky top-1">
                     <div class="flex flex-col w-[500px]">
@@ -125,26 +134,27 @@ const baseUrl = import.meta.env.BASE_URL;
                     </AppTabListItem>
                 </AppTabList>
                 <div class="col-span-4 flex justify-end">
-                    <AppButton @click="$router.push({name: 'community'})">Channels community</AppButton>
+                    <AppButton class="text-xl" @click="$router.push({name: 'community'})">My community</AppButton>
                 </div>               
             </head>
             <!--   -->
             <!-- Stats & Chart section  -->
             <section class="w-full grid grid-cols-8 gap-5 pr-5 mb-5">
                 <div class="col-span-4 grid grid-cols-3 gap-2">
-                    <div v-for="(value, key) in dataStats" :key="key" class="py-3 flex items-center justify-center flex-col backdrop-blur-sm bg-light-glass">
-                        <div class="font-ethnocentric gradient-text text-lg">{{value.toLocaleString('ru')}}</div> 
+                    <div v-for="(value, key) in dataStats" :key="key" class="py-3 flex items-center justify-center flex-col backdrop-blur-sm bg-light-glass dark:bg-dark-glass">
+                        <div class="text-lg">{{value.toLocaleString('ru')}}</div> 
                         <div class="font-light text-white/50">{{ key }}</div>
                     </div>
                 </div>
-                <div class="col-span-4 bg-light-glass backdrop-blur-sm py-3 px-2">
+                <div class="col-span-4 bg-light-glass dark:bg-dark-glass backdrop-blur-sm py-3 px-2 relative">
+                    <p class="leading-none font-medium absolute left-1/2 -translate-x-1/2">Community Stats</p>
                     <AppChartArea height="150" width="100%" />
                 </div>
             </section>
             <!-- ---  -->
             <!-- Tabs Video -->
-            <div class="pr-5 mb-5">
-                <AppTabList class="h-14 !bg-gradient-tab-list-mute w-full dark:!bg-none" @change-tab="setActiveTabVideo" v-slot="{ onChange }">
+            <div class="pr-5 mb-5 grid grid-cols-8 gap-5 ">
+                <AppTabList class="h-14 !bg-gradient-tab-list-mute col-span-4 dark:!bg-none " @change-tab="setActiveTabVideo" v-slot="{ onChange }">
                         <AppTabListItem 
                             v-for="tab in tabVideoArr"
                             :key="tab"
@@ -154,10 +164,14 @@ const baseUrl = import.meta.env.BASE_URL;
                                 <span class="text-xl font leading-none">{{tab}}</span>
                         </AppTabListItem>
                 </AppTabList>
+                <div class="col-span-4 flex justify-end">
+                    <AppButton class="text-xl !py-1 !leading-snug !px-5 items-center" @click="isOpenModal = true"> <img :src="videoImg" alt="videoimg" class="w-11 h-11 mr-3"> <span>Upload Video</span></AppButton>
+                </div>    
             </div>
             <!--  -->
             <AppVideoGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
         </section>
+        <ModalUploadVideo v-if="isOpenModal" @close-modal="() => isOpenModal = false" />
     </div>
 </template>
 

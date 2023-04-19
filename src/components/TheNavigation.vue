@@ -5,7 +5,7 @@
                 <!-- <component :is="route.icon" :class="iconProps.class" /> -->
                 <img :src="route.iconImg" :alt="route.name"  :class="iconProps.class">
             </template>
-            <template #default>{{ capitalize(route.name) }}</template>
+            <template #default>{{ capitalize(route.title) }}</template>
         </TheNavigationItem>
     </nav>
 </template>
@@ -20,6 +20,7 @@ import ContentIconImg from '@/assets/content-icon.png'
 import CommunityIconImg from '@/assets/community-icon.png'
 import MarketplaceIconImg from '@/assets/marketplace-icon.png'
 import SettingsIconImg from '@/assets/settings-icon.png'
+import MyChannelIconImg from '@/assets/my-channel-icon.png'
 
 
 const routers = reactive([
@@ -28,14 +29,15 @@ const routers = reactive([
         name: 'content',
         children: [
             'video',
-            'channel'
         ],
+        title: 'Content',
         icon: shallowRef(IconContent),
         iconImg: ContentIconImg
     },
     {
         slug: '/community',
         name: 'community',
+        title: 'Community',
         icon: shallowRef(IconCommunity),
         iconImg: CommunityIconImg
     },
@@ -45,15 +47,26 @@ const routers = reactive([
         children: [
             'rankings'
         ],
+        title: 'Marketplace',
         icon: shallowRef(IconMarketplace),
         iconImg: MarketplaceIconImg
     },
     {
+        slug: '/channel',
+        name: 'channel',
+        children: [
+            'settings',
+        ],
+        title: 'My Channel',
+        icon: shallowRef(IconSettings),
+        iconImg: MyChannelIconImg
+    }
+/*     {
         slug: '/settings',
         name: 'settings',
         icon: shallowRef(IconSettings),
         iconImg: SettingsIconImg
-    }
+    } */
 ])
 
 const route = useRoute()
