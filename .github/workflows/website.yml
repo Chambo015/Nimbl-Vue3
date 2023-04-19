@@ -1,6 +1,6 @@
 on:
   push:
-    branches: ['new-version-video']
+    branches: ['new-version-video', 'promo']
 name: 🚀 Deploy website on push
 
 env:
