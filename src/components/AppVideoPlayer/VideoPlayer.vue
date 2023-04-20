@@ -54,7 +54,7 @@ const currentVoice = computed(() => {
     }
 }) 
 
-const {playing: playVoice, currentTime: currentTimeVoice} = useMediaControls(audioEl, {
+const {playing: playVoice, currentTime: currentTimeVoice, volume: volumeVoice} = useMediaControls(audioEl, {
     src: {
         src: currentVoice.value,
         type: 'audio/mpeg',
@@ -72,6 +72,9 @@ watch(currentVoice, async () => {
     } 
 })
 
+
+
+
 /**
  * Функция сопоставляет время видео и аудио
  */
@@ -83,6 +86,14 @@ onMounted(() => {
      watch([playing, waiting], () => {
         playVoice.value = !waiting.value && playing.value // включаем одновременно
         handleChangeTime()
+    })
+    /* Наблюдаем за громкостью */
+    watch(volume, () => {
+        if(volume.value === 0 || volume.value >= 0.7) {
+            volumeVoice.value = volume.value
+        } else {
+            volumeVoice.value = volume.value + 0.3
+        }
     })
     handleChangeTime()
 })
