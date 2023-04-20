@@ -17,7 +17,6 @@ import IconAirPlay from '../icons/IconAirPlay.vue';
 import type { AudioTrackType, LanguagesType, SoundVolumeType } from '@/types';
 import  AppChatGPTVideo from '../AppChatGPT/ChatGPTVideo.vue';
 import { useCustomFullscreen } from '@/composables/useCustomFullscreen';
-import type { async } from '@firebase/util';
 import type { UseMediaTextTrackSource } from '@vueuse/core';
 
 const props = defineProps({
@@ -43,10 +42,10 @@ const imgBase64 = {
 }
 
 
-/* Video aaaaaaaaaa */
+/* Video ******************************************************************************************* */
 const audioEl = ref<HTMLAudioElement>();
 
-const enableVoice = ref<number | null>(null)
+const enableVoice = ref<number | null >(null)
 const currentVoice = computed(() => {
     if(props.voiceTracks && typeof  enableVoice.value === 'number') {
       return  props.voiceTracks[enableVoice.value].src
@@ -62,11 +61,12 @@ const {playing: playVoice, currentTime: currentTimeVoice} = useMediaControls(aud
     },
 });
 
+/* Наблюдатель переключения аудио */
 watch(currentVoice, async () => {
     if(audioEl.value) {
         audioEl.value.setAttribute('src', currentVoice.value)
-        await audioEl.value.play()
         await nextTick()
+        await audioEl.value.play()
         playVoice.value = playing.value
         handleChangeTime()
     } 
@@ -75,19 +75,19 @@ watch(currentVoice, async () => {
 /**
  * Функция сопоставляет время видео и аудио
  */
- function handleChangeTime() {
+function handleChangeTime() {
     currentTimeVoice.value = currentTime.value
 }
 onMounted(() => {
      // Аудио наблюдает за Видео
-     watch(playing, () => {
-        playVoice.value = playing.value // включаем одновременно
+     watch([playing, waiting], () => {
+        playVoice.value = !waiting.value && playing.value // включаем одновременно
         handleChangeTime()
     })
     handleChangeTime()
 })
 
-/* *** */
+/* **************************************************************************************** */
 
 /* Full Screen */
 const { isFullscreen, toggleFullscreen } = useCustomFullscreen(videoWrap);
@@ -285,6 +285,12 @@ const soundVolume = computed<SoundVolumeType>(() => {
                             </template>
                         <template #menu="{ close }">
                         <div class="absolute bottom-0 right-0 bg-black rounded py-2 shadow">
+                            <Controls.MenuItem
+                            @click="() => {enableVoice = null ; close() }"
+                        >
+                            <span class="flex-1">Off</span>
+                        <img :src="imgBase64.selected" alt="" :class="{ 'opacity-0': currentVoice  , 'w-5 h-5 mx-4': true}">
+                        </Controls.MenuItem>
                         <Controls.MenuItem
                         v-for="(v, idx) of voiceTracks"
                         :key="v.language"

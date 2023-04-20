@@ -40,8 +40,8 @@ onUnmounted(() => {
                 <div class="w-full p-4">
                     <h1 class="mb-4 truncate text-2xl">{{ video?.title }}</h1>
                     <div class="mb-4 flex items-center text-lg">
-                        <div class="mr-4">100k views</div>
-                        <div class="mr-6">4 hours ago</div>
+                        <div class="mr-4">{{video.id === 13 ? '500 views': '100k views'}}</div>
+                        <div class="mr-6">{{video.id === 13 ? '2 seconds ago': '4 hours ago'}}</div>
                         <div class="flex gap-2 text-base text-[#6BB8FF]">
                             <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">ETH-NFT</div>
                             <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">NFT-Trading</div>
