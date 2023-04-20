@@ -14,13 +14,16 @@ const imgBase64 = {
         'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA0IiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMTA0IDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMuNzM1ODYgNC4zODYyNUg4NC45MDI4VjUwLjI4NTJIODguNjE1MlY0LjM4NjI1VjAuNjczODI4SDg0LjkwMjhIMy43MzU4NkgwLjAyMzQzNzVWNC4zODYyNVY1OC4zODUxVjYyLjA5NzVIMy43MzU4Nkg3NC40Mzc1VjU4LjM4NTFIMy43MzU4NlY0LjM4NjI1WiIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iNzYuNTUzMSIgeT0iNTIuMzk0OSIgd2lkdGg9IjI2LjQ5MzIiIGhlaWdodD0iMjYuNDkzMiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjg1NjIxIi8+CjxwYXRoIGQ9Ik01Ny45MDYyIDMxLjk3NjJMMzUuNzU4MyA0NC43NjM0TDM1Ljc1ODMgMTkuMTg5MUw1Ny45MDYyIDMxLjk3NjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNODkuMjAyMiA1OC41NTQ3TDgzLjg4NjcgNjIuMDk4NE04OS4yMDIyIDU4LjU1NDdMOTMuOTI3MSA2Mi4wOTg0TTg5LjIwMjIgNTguNTU0N0w4OS4yMDIyIDc4LjYzNTUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS44NTYyMSIvPgo8L3N2Zz4K',
     publicIcon:
         'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNSIgaGVpZ2h0PSIyNSIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDI1IDI1Ij48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Im0yLjgxNyA5LjQyNC40Ni44YTMuMTI3IDMuMTI3IDAgMCAwIDEuODU1IDEuNDU2bDIuODI3LjgwNWExLjk1MSAxLjk1MSAwIDAgMSAxLjQxNiAxLjg4djEuOTQ5YzAgLjUzNy4zMDMgMS4wMjUuNzgxIDEuMjY0LjQ3OS4yNC43ODEuNzI4Ljc4MSAxLjI2NXYxLjkwNGMwIC43NjIuNzI4IDEuMzE0IDEuNDYgMS4xMDRhMi4zMDEgMi4zMDEgMCAwIDAgMS41OTctMS42NWwuMTM3LS41NDhhMy4xMTYgMy4xMTYgMCAwIDEgMS40OC0xLjk1M2wuMzk1LS4yMjRhMi4zNCAyLjM0IDAgMCAwIDEuMTgxLTIuMDM2di0uNDA2YTIuMzQgMi4zNCAwIDAgMC0uNjg4LTEuNjU1bC0uMTktLjE5YTIuMzQ0IDIuMzQ0IDAgMCAwLTEuNjU2LS42ODlIMTIuNTVhMy4xNiAzLjE2IDAgMCAxLTEuNTUzLS40MWwtMS42ODQtLjk2MmExLjAxNCAxLjAxNCAwIDAgMS0uNDUtLjU0Ny45ODMuOTgzIDAgMCAxIC40OTgtMS4xOTZsLjI4OC0uMTQ3Yy4zMjMtLjE2LjY5OS0uMTkgMS4wNC0uMDczbDEuMTMzLjM3NmEuOTMyLjkzMiAwIDAgMCAxLjAxLTEuNDhsLS42NjMtLjc5NWExLjU2IDEuNTYgMCAwIDEgLjAxNS0yLjAxN2wuNzY2LS44OTRjLjQzLS41MDIuNDk4LTEuMjIuMTcxLTEuNzkybC0uMTE3LS4yMDVhOC44MSA4LjgxIDAgMCAwLS41MDgtLjAxNGMtNC41MzEgMC04LjM3NCAyLjk3My05LjY3OCA3LjA4Wm0xOS44NCAzLjA3NmMwLTEuNzk3LS40Ny0zLjQ4Ni0xLjI5LTQuOTU2bC0xLjI1LjUwM2ExLjU2NyAxLjU2NyAwIDAgMC0uOTAzIDEuOTQzbC44MjUgMi40NzZjLjE3MS41MDguNTg2Ljg5MyAxLjEwNCAxLjAybDEuNDIuMzU3Yy4wNi0uNDQuMDg4LS44ODkuMDg4LTEuMzQzaC4wMDVabTIuMzQzIDBDMjUgMTkuNDA0IDE5LjQwNCAyNSAxMi41IDI1UzAgMTkuNDA0IDAgMTIuNSA1LjU5NiAwIDEyLjUgMCAyNSA1LjU5NiAyNSAxMi41WiIvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoMjV2MjVIMHoiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=',
-    privateIcon: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDIyIDI2Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNy4wNzEgNy4zMTNWOS43NWg3Ljg1OFY3LjMxMmMwLTIuMjQ0LTEuNzU4LTQuMDYyLTMuOTI5LTQuMDYyLTIuMTcgMC0zLjkyOSAxLjgxOC0zLjkyOSA0LjA2M1pNMy45MyA5Ljc1VjcuMzEyQzMuOTI5IDMuMjc2IDcuMDk2IDAgMTEgMHM3LjA3MSAzLjI3NSA3LjA3MSA3LjMxM1Y5Ljc1aC43ODZDMjAuNTkxIDkuNzUgMjIgMTEuMjA3IDIyIDEzdjkuNzVjMCAxLjc5My0xLjQxIDMuMjUtMy4xNDMgMy4yNUgzLjE0M0MxLjQwOSAyNiAwIDI0LjU0MyAwIDIyLjc1VjEzYzAtMS43OTMgMS40MS0zLjI1IDMuMTQzLTMuMjVoLjc4NloiLz48L3N2Zz4=',
+    privateIcon:
+        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyNiIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDIyIDI2Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNy4wNzEgNy4zMTNWOS43NWg3Ljg1OFY3LjMxMmMwLTIuMjQ0LTEuNzU4LTQuMDYyLTMuOTI5LTQuMDYyLTIuMTcgMC0zLjkyOSAxLjgxOC0zLjkyOSA0LjA2M1pNMy45MyA5Ljc1VjcuMzEyQzMuOTI5IDMuMjc2IDcuMDk2IDAgMTEgMHM3LjA3MSAzLjI3NSA3LjA3MSA3LjMxM1Y5Ljc1aC43ODZDMjAuNTkxIDkuNzUgMjIgMTEuMjA3IDIyIDEzdjkuNzVjMCAxLjc5My0xLjQxIDMuMjUtMy4xNDMgMy4yNUgzLjE0M0MxLjQwOSAyNiAwIDI0LjU0MyAwIDIyLjc1VjEzYzAtMS43OTMgMS40MS0zLjI1IDMuMTQzLTMuMjVoLjc4NloiLz48L3N2Zz4=',
 };
 
 const enabledGPT = ref(false);
 const stepUploading = ref(false);
 
 onMounted(() => {});
+
+const completedAnimation = ref(false)
 
 const activeVideoVisibility = ref('Public');
 const setActiveVideoVisibility = (tab: string): void => {
@@ -76,40 +79,42 @@ const setActiveVideoVisibility = (tab: string): void => {
                                 <ModalUploadGPTTyped />
                             </div>
                         </div>
-                        <div class="w-[40%] flex-[0_0_40%] flex flex-col">
-                            <ModalUploadAnimation />
-                            <div class="mt-8 flex-grow flex flex-col">
+                        <div class="flex w-[40%] flex-[0_0_40%] flex-col">
+                            <ModalUploadAnimation @complete-animation="() => completedAnimation = true" />
+                            <div class="mt-8 flex flex-grow flex-col">
                                 <p class="text-2xl font-medium">Video visibility</p>
-                                
-                                    <AppTabList
-                                        class="w-full h-14 !bg-gradient-tab-list-mute dark:!bg-none mt-6"
-                                        @change-tab="setActiveVideoVisibility"
-                                        v-slot="{ onChange }">
-                                        <AppTabListItem
-                                            value="Public"
-                                            :active-value="activeVideoVisibility"
-                                            @click="() => onChange('Public')"
-                                            :class="[activeVideoVisibility == 'Public' ? '' : 'opacity-50']">
-                                            <img :src="imgBase64.publicIcon" alt="publicIcon" class="w-6 h-6 mr-2">
-                                            <span class="text-xl leading-none">Public</span>
-                                        </AppTabListItem>
-                                        <AppTabListItem
-                                            value="Private"
-                                            :active-value="activeVideoVisibility"
-                                            @click="() => onChange('Private')"
-                                            :class="[activeVideoVisibility == 'Private' ? '' : 'opacity-50']">
-                                            <img :src="imgBase64.privateIcon" alt="privateIcon" class="w-6 h-6 mr-2">
-                                            <span class="text-xl leading-none">Private</span>
-                                        </AppTabListItem>
-                                    </AppTabList>
-                                    <button
-                                :class="[
-                                    'relative ml-auto mt-auto isolate flex items-center px-3 before:opacity-0 hover:before:opacity-100 bg-gradient-active-tab py-4 text-2xl transition-all before:absolute before:inset-0  before:z-[-1] before:bg-[linear-gradient(88.76deg,#3939399c_0.58%,#a307f361_98.96%)]  before:transition-all active:scale-95',
-                                ]">
-                                <img class="h-[22px] w-[32px] object-contain mr-3" :src="imgBase64.cameraIcon" alt="" />
-                                <span class="!leading-none">Upload Video</span
-                                >
-                            </button>
+
+                                <AppTabList
+                                    class="mt-6 h-14 w-full !bg-gradient-tab-list-mute dark:!bg-none"
+                                    @change-tab="setActiveVideoVisibility"
+                                    v-slot="{ onChange }">
+                                    <AppTabListItem
+                                        value="Public"
+                                        :active-value="activeVideoVisibility"
+                                        @click="() => onChange('Public')"
+                                        :class="[activeVideoVisibility == 'Public' ? '' : 'opacity-50']">
+                                        <img :src="imgBase64.publicIcon" alt="publicIcon" class="mr-2 h-6 w-6" />
+                                        <span class="text-xl leading-none">Public</span>
+                                    </AppTabListItem>
+                                    <AppTabListItem
+                                        value="Private"
+                                        :active-value="activeVideoVisibility"
+                                        @click="() => onChange('Private')"
+                                        :class="[activeVideoVisibility == 'Private' ? '' : 'opacity-50']">
+                                        <img :src="imgBase64.privateIcon" alt="privateIcon" class="mr-2 h-6 w-6" />
+                                        <span class="text-xl leading-none">Private</span>
+                                    </AppTabListItem>
+                                </AppTabList>
+                                <button :disabled="!completedAnimation" @click="$router.push({name: 'video', params: {id : 13}})"
+                                    :class="[
+                                        'relative isolate ml-auto mt-auto flex items-center bg-gradient-active-tab px-3 py-4 text-2xl transition-all before:absolute before:inset-0 before:z-[-1] before:bg-[linear-gradient(88.76deg,#3939399c_0.58%,#a307f361_98.96%)]  before:opacity-0 before:transition-all  hover:before:opacity-100 active:scale-95',
+                                    ]">
+                                    <img
+                                        class="mr-3 h-[22px] w-[32px] object-contain"
+                                        :src="imgBase64.cameraIcon"
+                                        alt="" />
+                                    <span class="!leading-none">Upload Video</span>
+                                </button>
                             </div>
                         </div>
                     </div>

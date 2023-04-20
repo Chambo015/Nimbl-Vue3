@@ -18,7 +18,9 @@
 import { gsap } from 'gsap'
 import { computed, ref } from 'vue';
 
-let tl = gsap.timeline()
+const emit = defineEmits(['completeAnimation'])
+
+let tl = gsap.timeline({onComplete: () => emit('completeAnimation')})
 
 
 const loading = ref(0)

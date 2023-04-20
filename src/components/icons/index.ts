@@ -30,6 +30,8 @@ import IconArrowTurnRight from './IconArrowTurnRight.vue';
 import IconArrowLeft from './IconArrowLeft.vue';
 import IconPlus from './IconPlus.vue';
 import IconReload from './IconReload.vue';
+import IconSubtitles from './IconSubtitles.vue';
+import IconVoice from './IconVoice.vue';
 
 
 export {
@@ -64,5 +66,7 @@ export {
     IconArrowTurnRight,
     IconArrowLeft,
     IconPlus,
-    IconReload
+    IconReload,
+    IconSubtitles,
+    IconVoice
 }

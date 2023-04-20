@@ -33,38 +33,40 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden pt-5">
-        <div class="video-scrollbar col-span-8 overflow-scroll pl-5 pb-height-navigation flex flex-col">
-            <VideoPlayer class="min-h-[65vh] w-full self-center" />
-            <div class="w-full p-4">
-                <h1 class="mb-4 truncate text-2xl">{{ video?.title }}</h1>
-                <div class="mb-4 flex items-center text-lg">
-                    <div class="mr-4">100k views</div>
-                    <div class="mr-6">4 hours ago</div>
-                    <div class="flex gap-2 text-base text-[#6BB8FF]">
-                        <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">ETH-NFT</div>
-                        <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">NFT-Trading</div>
-                        <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">Discord-Tips</div>
-                    </div>
-                </div>
-                <div class="flex items-center">
-                    <div class="inline-flex bg-gradient-tab-list-mute">
-                        <div class="inline-flex items-center gap-3 py-3 px-4">
-                            <IconVideoGallery class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
-                        </div>
-                        <div class="inline-flex items-center gap-3 py-3 px-4">
-                            <IconComments class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
-                        </div>
-                        <div class="inline-flex items-center gap-3 py-3 px-4">
-                            <IconFutures class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
+    <div class="grid h-full w-full grid-cols-12 gap-5 overflow-hidden pt-5 relative">
+        <Transition name="left_fade" mode="out-in">
+            <div :key="video?.id" class="video-scrollbar col-span-8 overflow-scroll pl-5 pb-height-navigation flex flex-col">
+                <VideoPlayer class="min-h-[65vh] w-full self-center" :video-src="video?.videoSrc" :subtitles="video?.subtitles"  :voice-tracks="video?.audioSrc"/>
+                <div class="w-full p-4">
+                    <h1 class="mb-4 truncate text-2xl">{{ video?.title }}</h1>
+                    <div class="mb-4 flex items-center text-lg">
+                        <div class="mr-4">100k views</div>
+                        <div class="mr-6">4 hours ago</div>
+                        <div class="flex gap-2 text-base text-[#6BB8FF]">
+                            <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">ETH-NFT</div>
+                            <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">NFT-Trading</div>
+                            <div class="cursor-pointer bg-[rgba(17,17,17,0.3)] p-1 before:content-['#']">Discord-Tips</div>
                         </div>
                     </div>
-                    <div class="ml-auto mr-32 text-xl">
-                        <AppButton class="mr-5">Subscribe</AppButton> <AppButton @click="$router.push({name: 'channel'})">Channel page</AppButton>
+                    <div class="flex items-center">
+                        <div class="inline-flex bg-gradient-tab-list-mute">
+                            <div class="inline-flex items-center gap-3 py-3 px-4">
+                                <IconVideoGallery class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
+                            </div>
+                            <div class="inline-flex items-center gap-3 py-3 px-4">
+                                <IconComments class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
+                            </div>
+                            <div class="inline-flex items-center gap-3 py-3 px-4">
+                                <IconFutures class="h-6 w-6" /> <span class="text-lg leading-none">5 304</span>
+                            </div>
+                        </div>
+                        <div class="ml-auto mr-32 text-xl">
+                            <AppButton class="mr-5">Subscribe</AppButton> <AppButton @click="$router.push({name: 'channel'})">Channel page</AppButton>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </Transition>
         <div class="col-span-4 flex flex-col overflow-hidden">
             <div class="mb-5 flex pr-5">
                 <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="(tab) => activeSidebarTab = tab" v-slot="{ onChange }">
@@ -91,6 +93,7 @@ onUnmounted(() => {
             <!-- Videos tab -->
             <div v-if="activeSidebarTab === 'videos'" class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation">
                 <div
+                    @click="() => $router.push({name: 'video', params: {id : video.id}})"
                     v-for="video in videoList"
                     :key="video.id"
                     class="mb-4 flex last:mb-0 cursor-pointer hover:bg-gradient-active-tab"
@@ -138,4 +141,21 @@ onUnmounted(() => {
         background: transparent;
     }
 }
+
+
+.left_fade-enter-active,
+.left_fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+
+.left_fade-leave-to {
+  opacity: 0;
+  transform: translateY(50%);
+}
+.left_fade-enter-from {
+    transform: translateY(-50%) ;
+    opacity: 0;
+}
+
 </style>

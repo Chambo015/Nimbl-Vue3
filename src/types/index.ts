@@ -23,6 +23,15 @@ export interface VideoI {
     price: number;
     avatar: string;
     poster: string;
+    /* Свойства для видео аудио и субтитров */
+    videoSrc?: string,
+    audioSrc? : AudioTrackType[],
+    subtitles?: {
+        src: string,
+        kind: 'subtitles',
+        label: string,
+        srcLang: LanguagesType,
+    }[]
 }
 
 export interface IAnnouncement {
@@ -77,3 +86,12 @@ export type TypeMessageGPT = {
     delayToResponse?: number;
     attachComponent?: Component
 };
+
+export type LanguagesType = 'en' | 'fr' | 'es' | 'zh' | 'it' | 'kk' | 'de'
+
+export interface  AudioTrackType  {
+    language: LanguagesType,
+    src: string,
+    label: string,
+    flag: string
+}
