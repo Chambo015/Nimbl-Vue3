@@ -173,6 +173,18 @@ export const useVideoStore = defineStore('video', {
                         label: 'Kazakh',
                         srcLang: 'kk',
                     },
+                    {
+                        src: '/video/Spanish/subtitles.vtt',
+                        kind: 'subtitles',
+                        label: 'Spanish',
+                        srcLang: 'es',
+                    },
+                    {
+                        src: '/video/Chinese/subtitles.vtt',
+                        kind: 'subtitles',
+                        label: 'Chinese',
+                        srcLang: 'zh',
+                    },
                 ]
             },
         ],

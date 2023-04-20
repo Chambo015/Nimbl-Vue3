@@ -19,7 +19,7 @@ import { useRoute } from 'vue-router';
 import ContentIconImg from '@/assets/content-icon.png'
 import CommunityIconImg from '@/assets/community-icon.png'
 import MarketplaceIconImg from '@/assets/marketplace-icon.png'
-import SettingsIconImg from '@/assets/settings-icon.png'
+// import SettingsIconImg from '@/assets/settings-icon.png'
 import MyChannelIconImg from '@/assets/my-channel-icon.png'
 
 

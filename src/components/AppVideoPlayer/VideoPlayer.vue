@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {  computed, onMounted, ref, watch, type PropType, watchEffect, nextTick } from 'vue';
+import {  computed, onMounted, ref, watch, type PropType, nextTick } from 'vue';
 import { useMediaControls,  useToggle  } from '@vueuse/core';
 import Controls from './VideoPlayerControls';
 import {
@@ -14,7 +14,7 @@ import {
     IconVoice
 } from '../icons';
 import IconAirPlay from '../icons/IconAirPlay.vue';
-import type { AudioTrackType, LanguagesType, SoundVolumeType } from '@/types';
+import type { AudioTrackType, SoundVolumeType } from '@/types';
 import  AppChatGPTVideo from '../AppChatGPT/ChatGPTVideo.vue';
 import { useCustomFullscreen } from '@/composables/useCustomFullscreen';
 import type { UseMediaTextTrackSource } from '@vueuse/core';
@@ -46,34 +46,45 @@ const imgBase64 = {
 const audioEl = ref<HTMLAudioElement>();
 
 const enableVoice = ref<number | null >(null)
-const currentVoice = computed(() => {
-    if(props.voiceTracks && typeof  enableVoice.value === 'number') {
+const currentVoiceSrc = computed(() => {
+    if(props.voiceTracks && typeof enableVoice.value === 'number') {
       return  props.voiceTracks[enableVoice.value].src
     } else {
         return ''
     }
-}) 
+})
+
+/**
+ * Выбираем субтитры под озвучку
+ */
+const currentSubtitlesId = computed(() => {
+    if(props.voiceTracks  && typeof enableVoice.value === 'number' && props.subtitles ) {
+        const lang = props.voiceTracks[enableVoice.value].language
+        return props.subtitles.findIndex(s => s.srcLang === lang)
+    } else {
+        return false
+    }
+})
 
 const {playing: playVoice, currentTime: currentTimeVoice, volume: volumeVoice} = useMediaControls(audioEl, {
     src: {
-        src: currentVoice.value,
+        src: currentVoiceSrc.value,
         type: 'audio/mpeg',
     },
 });
 
 /* Наблюдатель переключения аудио */
-watch(currentVoice, async () => {
+watch(currentVoiceSrc, async () => {
     if(audioEl.value) {
-        audioEl.value.setAttribute('src', currentVoice.value)
+        audioEl.value.setAttribute('src', currentVoiceSrc.value)
         await nextTick()
         await audioEl.value.play()
         playVoice.value = playing.value
         handleChangeTime()
+
+        currentSubtitlesId.value && enableTrack(currentSubtitlesId.value); // если есть субтитры под аудио - вкл
     } 
 })
-
-
-
 
 /**
  * Функция сопоставляет время видео и аудио
@@ -86,14 +97,6 @@ onMounted(() => {
      watch([playing, waiting], () => {
         playVoice.value = !waiting.value && playing.value // включаем одновременно
         handleChangeTime()
-    })
-    /* Наблюдаем за громкостью */
-    watch(volume, () => {
-        if(volume.value === 0 || volume.value >= 0.7) {
-            volumeVoice.value = volume.value
-        } else {
-            volumeVoice.value = volume.value + 0.3
-        }
     })
     handleChangeTime()
 })
@@ -151,17 +154,30 @@ const visibleControls = computed(() => {
   return visibleOfMousemove.value || visibleChatGPT.value
 });
 
-/* Change initial media properties */
-onMounted(() => {
-    volume.value = 0.5;
-});
+/* Звук видео */
+const scrubberVolume = ref(0.5)
+watch([scrubberVolume, currentVoiceSrc], () => {
+    if(currentVoiceSrc.value) {
+        volumeVoice.value = scrubberVolume.value
+        if(scrubberVolume.value === 0) {
+            volume.value = 0
+        } else if(scrubberVolume.value <= 0.6) {
+            volume.value = 0.1
+        } else {
+            volume.value = scrubberVolume.value - 0.6
+        }
+        
+    } else {
+        volume.value = scrubberVolume.value
+    }
+})
 
-
+/* Переключение выкл и вкл звука */
 watch(muted, () => {
     if (muted.value) {
-        volume.value = 0;
-    } else if (volume.value === 0) {
-        volume.value = 0.5;
+        scrubberVolume.value = 0;
+    } else if (scrubberVolume.value === 0) {
+        scrubberVolume.value = 0.5;
     }
 });
 
@@ -178,6 +194,10 @@ const soundVolume = computed<SoundVolumeType>(() => {
     }
 });
 
+/* Change initial media properties */
+/* onMounted(() => {
+    volume.value = 0.5;
+}); */
 </script>
 
 <template>
@@ -238,7 +258,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
                           <!--  -->
       
                           <!-- Линия звука -->
-                          <Controls.Scrubber v-model="volume" :max="1" class="ml-2 w-24" />
+                          <Controls.Scrubber v-model="scrubberVolume" :max="1" class="ml-2 w-24" />
                           <!-- --- -->
 
                           <!--Время видео  -->
@@ -300,7 +320,7 @@ const soundVolume = computed<SoundVolumeType>(() => {
                             @click="() => {enableVoice = null ; close() }"
                         >
                             <span class="flex-1">Off</span>
-                        <img :src="imgBase64.selected" alt="" :class="{ 'opacity-0': currentVoice  , 'w-5 h-5 mx-4': true}">
+                        <img :src="imgBase64.selected" alt="" :class="{ 'opacity-0': currentVoiceSrc  , 'w-5 h-5 mx-4': true}">
                         </Controls.MenuItem>
                         <Controls.MenuItem
                         v-for="(v, idx) of voiceTracks"
