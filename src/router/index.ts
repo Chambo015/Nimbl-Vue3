@@ -66,11 +66,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-    const isAuthenticated = localStorage.getItem('user') || localStorage.getItem('metaMaskAccount') 
+   /*  const isAuthenticated = localStorage.getItem('user') || localStorage.getItem('metaMaskAccount') 
     if (to.name !== 'login' && !isAuthenticated) {
         return { name : 'login'} // Не авторизован
     } 
-    return true // Авторизован
+    return true // Авторизован */
 })
 
 export default router;

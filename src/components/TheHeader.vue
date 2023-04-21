@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useMetamask } from '@/composables/useMetamask';
-import { IconChevron, IconReload, IconLogout, IconPlus, IconArrowLeft } from './icons';
+import { IconReload, IconLogout, IconPlus, IconArrowLeft } from './icons';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 import { useDark, useFullscreen, useToggle } from '@vueuse/core';
 import { useRouter } from 'vue-router';

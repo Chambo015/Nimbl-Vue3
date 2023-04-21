@@ -11,6 +11,7 @@ import { useRoute } from 'vue-router';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue'
 import AppChatGPTVideo from '@/components/AppChatGPT/ChatGPTVideo.vue';
 import { useChatGPTStore } from '@/stores/chatGPT';
+import TheTradeTab from '@/components/TheVideoPage/TheTradeAside.vue';
 
 type SidebarTabsTypes = 'videos' | 'comments' | 'trade' | 'chatGpt';
 
@@ -68,7 +69,7 @@ onUnmounted(() => {
             </div>
         </Transition>
         <div class="col-span-4 flex flex-col overflow-hidden">
-            <div class="mb-5 flex pr-5">
+            <div class="flex pr-5">
                 <AppTabList class="h-14 flex-grow !bg-gradient-tab-list-mute dark:!bg-none" @change-tab="(tab) => activeSidebarTab = tab" v-slot="{ onChange }">
                     <AppTabListItem value="videos" :active-value="activeSidebarTab" @click="() => onChange('videos')">
                         <IconVideoGallery class="mr-4 h-5 w-5 translate-y-[2px]" />
@@ -91,7 +92,7 @@ onUnmounted(() => {
                 </AppTabList>
             </div>
             <!-- Videos tab -->
-            <div v-if="activeSidebarTab === 'videos'" class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation">
+            <div v-if="activeSidebarTab === 'videos'" class="mr-[5px] pt-5 overflow-y-scroll pr-[10px] pb-height-navigation">
                 <div
                     @click="() => $router.push({name: 'video', params: {id : video.id}})"
                     v-for="video in videoList"
@@ -121,8 +122,7 @@ onUnmounted(() => {
             <!-- --- -->
             <!-- Trade tab -->
             <div v-if="activeSidebarTab === 'trade'" class="mr-[5px] pr-[10px] pb-height-navigation">
-                
-                
+                <TheTradeTab />
             </div>
             <!-- --- -->
             <!-- ChatGPT tab -->

@@ -4,6 +4,7 @@ type AreaChartI = number[][]
 
 interface Store {
     areaChart: AreaChartI;
+    videoTradeSidebar: AreaChartI
 }
 
 export const useChartStore = defineStore('chart', {
@@ -237,5 +238,8 @@ export const useChartStore = defineStore('chart', {
             [1361833200000, 40.59],
             [1361919600000, 39.6],
         ],
+        videoTradeSidebar: [
+            [Date.now()]
+        ]
     })
 })
