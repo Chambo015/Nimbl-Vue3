@@ -47,15 +47,34 @@ const cropImage = (base64orSrc: string, aspectRatio: number) => {
     });
 };
 
+/**
+ * Рандом число с тысячным разделителем в виде пробела
+ * @param min минимально число
+ * @param max максимальное число
+ */
 const randomNumber = (min: number, max: number): string => {
     return Math.floor(Math.random() * (max - min) + min).toLocaleString().replace(/,/g, " ");
 }
 
+const maxDateFormChartData = (data: number[][]) => {
+    const dateList = data.map(([n]) => n)
+    return Math.max(...dateList)
+}
+
+const yearMilliseconds: number = 1000 * 60 * 60 * 24 * 365
+const monthMilliseconds: number = 1000 * 60 * 60 * 24 * 30
+const weekMilliseconds: number = 1000 * 60 * 60 * 24 * 7
+const dayMilliseconds: number = 1000 * 60 * 60 * 24 
 
 export {
     capitalize,
     cropImage,
-    randomNumber
+    randomNumber,
+    maxDateFormChartData,
+    yearMilliseconds,
+    monthMilliseconds,
+    weekMilliseconds,
+    dayMilliseconds
 }
 
 

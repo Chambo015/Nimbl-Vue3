@@ -24,9 +24,9 @@ const {categoryList, homeCategoryList } = storeToRefs(categoryStore)
         position: absolute;
         z-index: -2;
         left: -50%;
-        top: -50%;
-        width: 200%;
-        height: 350%;
+        top: -150%;
+        right: -50%;
+        bottom: -150%;
         transition: all 0.3s linear;
         background-clip:  border-box;
         background: linear-gradient(90deg, rgba(215, 11, 218, 0.5) -0.01%, #649BFF 18.66%, #FFC240 40.99%, #FFC240 48.1%, #ABDD42 54.72%, #07FFFF 62.16%, #0F50C7 70.43%, rgba(215, 11, 218, 0.5) 76.72%);

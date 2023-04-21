@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AppTabList from './AppTabList.vue';
-import AppTabListItem from './AppTabListItem.vue';
-import AppButton from './AppButton.vue';
+import AppTabList from '../AppTabList.vue';
+import AppTabListItem from '../AppTabListItem.vue';
+import AppButton from '../AppButton.vue';
 
 import { computed, ref } from 'vue';
 

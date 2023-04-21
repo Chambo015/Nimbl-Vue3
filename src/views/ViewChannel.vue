@@ -11,6 +11,7 @@ import { defineAsyncComponent, ref } from 'vue';
 
 import settingsImg from '@/assets/settings-icon.png'
 import videoImg from '@/assets/video-icon.png'
+import { useChartStore } from '@/stores/chart';
 
 const  ModalUploadVideo =  defineAsyncComponent(() =>
   import('@/components/TheChannel/ModalUploadVideo.vue')
@@ -40,6 +41,7 @@ const dataStats =  ref({
     'Listings': 25
 })
 
+const chartStore = useChartStore();
 const announceStore = useAnnouncementStore()
 const {announcementList} = storeToRefs(announceStore)
 
@@ -148,7 +150,7 @@ const baseUrl = import.meta.env.BASE_URL;
                 </div>
                 <div class="col-span-4 bg-light-glass dark:bg-dark-glass backdrop-blur-sm py-3 px-2 relative">
                     <p class="leading-none font-medium absolute left-1/2 -translate-x-1/2">Community Stats</p>
-                    <AppChartArea height="150" width="100%" />
+                    <AppChartArea :data="chartStore.areaChart" height="150" width="100%" />
                 </div>
             </section>
             <!-- ---  -->

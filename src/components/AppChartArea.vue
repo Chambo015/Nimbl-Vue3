@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, type PropType, reactive, watch, defineAsyncComponent } from 'vue'
-import { useChartStore } from '@/stores/chart'
 
 import type { ApexOptions } from 'apexcharts'
 import type { ChartRangeType } from '@/types'
+import { dayMilliseconds, maxDateFormChartData, monthMilliseconds, weekMilliseconds, yearMilliseconds } from '@/utils';
+import type { VueApexChartsComponent } from 'vue3-apexcharts';
 
 const apexcharts = defineAsyncComponent(() =>
   import('vue3-apexcharts')
@@ -21,15 +22,23 @@ const props = defineProps({
     range: {
         type: String as PropType<ChartRangeType>,
         default: 'ALL'
+    },
+    yMax: {
+        type: Number,
+        default: 47
+    },
+    data: {
+        type: Array as PropType<number[][]>,
+        required: true
     }
 })
 
-const chartStore = useChartStore();
+
 
 const series = ref<ApexOptions['series']>([
     {
         name: '', // чтобы не отображать дефолтное имя
-        data: chartStore.areaChart
+        data: props.data
     }
 ])
 
@@ -71,13 +80,13 @@ const options = reactive<ApexOptions>({
             labels: {
                 style: {
                     colors: 'rgba(143, 143, 143, 1)',
-                    fontSize: '10px',
+                    fontSize: '14px',
                     fontFamily: 'TT Octosquares',
                 },
             },
         },
         yaxis: {
-            max: 47,
+            max: props.yMax,
             tickAmount: 3,
             decimalsInFloat: 0, // округляет (не будет эффекта если есть функция formatter)
             forceNiceScale: false, // будут генерировать красиво выглядящие минимальные и максимальные значения.
@@ -153,32 +162,33 @@ const options = reactive<ApexOptions>({
         },
 })
 
+const chartEl = ref<VueApexChartsComponent | null>(null);
+const maxDate = ref<number | null>(null)
+
 watch( 
     () => props.range, 
     (newRange) => {
+    if(!maxDate.value) {
+        maxDate.value = maxDateFormChartData(props.data)
+    }
     if(newRange === 'ALL') {
-        options.xaxis!.min = undefined;
-        options.xaxis!.max = undefined;
+        chartEl.value?.resetSeries()
     } else if(newRange === 'ONE_YEAR') {
-        options.xaxis!.min = new Date('27 Feb 2012').getTime()
-        options.xaxis!.max = new Date('27 Feb 2013').getTime()
+        chartEl.value?.zoomX(maxDate.value - yearMilliseconds , maxDate.value)
     }
     else if(newRange === 'ONE_MONTH') {
-        options.xaxis!.min = new Date('28 Jan 2013').getTime()
-        options.xaxis!.max = new Date('27 Feb 2013').getTime()
+        chartEl.value?.zoomX(maxDate.value - monthMilliseconds , maxDate.value)
     } else if(newRange === 'ONE_WEEK') {
-        options.xaxis!.min = new Date('20 Feb 2013').getTime(),
-        options.xaxis!.max = new Date('27 Feb 2013').getTime()
+        chartEl.value?.zoomX(maxDate.value - weekMilliseconds , maxDate.value)
     } else { // newRange  === one Day
-        options.xaxis!.min = new Date('26 Feb 2013').getTime(),
-        options.xaxis!.max = new Date('27 Feb 2013').getTime()
+        chartEl.value?.zoomX(maxDate.value - dayMilliseconds , maxDate.value)
     }
 })
 
 </script>
 <template>
     <div>
-        <apexcharts  :series="series"  type="area" :options="options" :width="props.width" :height="props.height"/>
+        <apexcharts ref="chartEl" :series="series"  type="area" :options="options" :width="props.width" :height="props.height"/>
     </div>
 </template>
 

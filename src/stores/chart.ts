@@ -1,3 +1,4 @@
+import { yearMilliseconds } from '@/utils';
 import { defineStore } from 'pinia';
 
 type AreaChartI = number[][]
@@ -6,6 +7,8 @@ interface Store {
     areaChart: AreaChartI;
     videoTradeSidebar: AreaChartI
 }
+
+
 
 export const useChartStore = defineStore('chart', {
     state: (): Store =>( {
@@ -239,7 +242,13 @@ export const useChartStore = defineStore('chart', {
             [1361919600000, 39.6],
         ],
         videoTradeSidebar: [
-            [Date.now()]
+            [Date.now() , 50],
+            [Date.now() - yearMilliseconds * 2, 41],
+            [Date.now() - yearMilliseconds * 3, 45],
+            [Date.now() - yearMilliseconds * 4, 30],
+            [Date.now() - yearMilliseconds * 5, 8],
+            [Date.now() - yearMilliseconds * 6, 15],
+            [Date.now() - yearMilliseconds * 7, 0],
         ]
     })
 })

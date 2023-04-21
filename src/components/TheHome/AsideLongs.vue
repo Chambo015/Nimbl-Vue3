@@ -11,14 +11,14 @@
                 ><span class="text-xl">{{ tab }}</span>
                 </AppTabListItem>
                 </AppTabList> 
-                <TheHomeTable />
+                <ChannelListAside />
                 </div> 
 </template>
 
 <script setup lang="ts">
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
-import TheHomeTable from '@/components/TheHomeLeftAside.vue';
+import ChannelListAside from '@/components/TheHome/ChannelListAside.vue';
 import VideoPlayer from '@/components/AppVideoPlayer/VideoPlayer.vue';
 
 import type { TabCategoryType } from '@/types';

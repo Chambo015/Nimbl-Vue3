@@ -121,7 +121,7 @@ onUnmounted(() => {
             </div>
             <!-- --- -->
             <!-- Trade tab -->
-            <div v-if="activeSidebarTab === 'trade'" class="mr-[5px] pr-[10px] pb-height-navigation">
+            <div v-if="activeSidebarTab === 'trade'" class="mr-[5px] pr-[10px] pb-height-navigation overflow-y-scroll">
                 <TheTradeTab />
             </div>
             <!-- --- -->
