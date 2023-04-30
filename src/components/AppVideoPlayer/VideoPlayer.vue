@@ -219,11 +219,11 @@ const soundVolume = computed<SoundVolumeType>(() => {
                       class="pointer-events-none absolute inset-0 grid place-items-center bg-black bg-opacity-20">
                       <Controls.Spinner />
                   </div>
-      
+
                   <!-- Controls -->
                   <div
                       :class="[
-                          'absolute inset-x-0 bottom-0 z-20 flex h-1/2 flex-col justify-end bg-gradient-to-t from-black/70 via-black/30',
+                          'absolute inset-x-0 bottom-0 z-50 flex h-1/2 flex-col justify-end !bg-[linear-gradient(0deg,rgba(0,0,0,0.8)_0%,rgba(0,0,0,0.2)_63%,rgba(0,0,0,0)_100%)]',
                           !playing || visibleControls ? 'visible' : 'invisible',
                       ]">
                       <!-- заполнитель пространства  -->

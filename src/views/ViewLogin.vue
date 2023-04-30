@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppTabList from '@/components/AppTabList.vue';
 import AppTabListItem from '@/components/AppTabListItem.vue';
-import { IconSpinner } from '@/components/icons';
+import { IconSpinner, IconFacebook, IconGoogle } from '@/components/icons';
 
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -13,6 +13,7 @@ import type { ILoginForm } from '@/types';
 
 import { useMetamask } from '@/composables/useMetamask';
 import { useAuth } from '@/composables/useAuth';
+
 
 const router = useRouter();
 
@@ -153,13 +154,29 @@ onMounted(() => {
                             <p class="relative -top-3 text-sm text-red-400">{{ value.validateError }}</p>
                         </template>
                     </template>
-                    <div class="mt-2 flex flex-col gap-5">
+                    <div class="mt-2 flex flex-col gap-5 [&>button]:flex-shrink-0">
                         <button
                             key="buttonSubmit"
                             type="submit"
                             class="cursor-pointer flex border-none items-center justify-center bg-gradient-tab-list py-3 px-4 text-xl text-white">
                             <IconSpinner v-if="isLoadingAuth" />
                             {{ isSignUp ? 'Sign up' : 'Sign in' }}
+                        </button>
+                        <button
+                            key="buttonFacebook"
+                            type="button"
+                            class="cursor-pointer flex border-none items-center justify-center gap-4 bg-[#3E7EE8] h-[52px]  px-4 text-xl text-white">
+                            <IconSpinner v-if="isLoadingAuth" />
+                            <IconGoogle class="w-10 h-10" />
+                            <span>{{ isSignUp ? 'Sign up' : 'Sign in' }} with Google</span>
+                        </button>
+                        <button
+                            key="buttonFacebook"
+                            type="button"
+                            class="cursor-pointer flex border-none items-center justify-center gap-4 bg-[#1877F2] h-[52px]  px-4 text-xl text-white">
+                            <IconSpinner v-if="isLoadingAuth" />
+                            <IconFacebook class="w-10 h-10" />
+                            <span>{{ isSignUp ? 'Sign up' : 'Sign in' }} with Facebook</span>
                         </button>
                         <Transition
                             enter-active-class="duration-300"
