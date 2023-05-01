@@ -42,7 +42,7 @@ const routers = reactive([
         iconImg: CommunityIconImg
     },
     {
-        slug: '/marketplace/rankings',
+        slug: '/marketplace',
         name: 'marketplace',
         children: [
             'rankings'

@@ -34,6 +34,7 @@ import IconSubtitles from './IconSubtitles.vue';
 import IconVoice from './IconVoice.vue';
 import IconFacebook from './IconFacebook.vue';
 import IconGoogle from './IconGoogle.vue';
+import IconArrowSolid from './IconArrowSolid.vue';
 
 
 export {
@@ -72,5 +73,6 @@ export {
     IconSubtitles,
     IconVoice,
     IconFacebook,
-    IconGoogle
+    IconGoogle,
+    IconArrowSolid,
 }

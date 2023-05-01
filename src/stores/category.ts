@@ -13,6 +13,8 @@ interface CategoryWithStatus extends CategoryI{
 interface Store {
     categoryList: CategoryI[],
     homeCategoryList: CategoryWithStatus[],
+    marketplaceCategoryList: CategoryI[],
+    activeMarketplace: string
 }
 
 export const useCategoryStore = defineStore('category', {
@@ -66,7 +68,29 @@ export const useCategoryStore = defineStore('category', {
                 isActive: false
             }
         ],
-
+        marketplaceCategoryList: [
+            {
+                id: 1,
+                title: 'TOP VOLUME',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+            },
+            {
+                id: 2,
+                title: 'TOP TRENDING',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+            },
+            {
+                id: 3,
+                title: 'MINTS',
+                img: import.meta.env.BASE_URL +'img/category/mints.png',
+            },
+            {
+                id: 4,
+                title: 'PRE-SALE TOKENS',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+            }
+        ],
+        activeMarketplace: 'TOP VOLUME',
     }),
     getters: {
         getActiveHomeCategory(state): 'Clips' | 'Longs' {

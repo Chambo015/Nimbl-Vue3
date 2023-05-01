@@ -41,14 +41,7 @@ const router = createRouter({
                 {
                     path: '/marketplace',
                     name: 'marketplace',
-                    component: () => import('../layouts/LayoutMarketplace.vue'),
-                    children: [
-                        {
-                            path: 'rankings',
-                            name: 'rankings',
-                            component: () => import('@/views/ViewRankings.vue')
-                        }
-                    ]
+                    component: () => import('../views/ViewMarketplace.vue'),
                 },
                 {
                     path: '/:pathMatch(.*)*',

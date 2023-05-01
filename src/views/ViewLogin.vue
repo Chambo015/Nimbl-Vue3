@@ -89,6 +89,8 @@ const submitHandler = () => {
     }
 };
 
+const client = ref(null)
+
 /* Анимация  [" translate(0px, 0px) rotate(0deg)", " translate(-55px,-45px) rotate(180deg)", " translate(0px, 0px) rotate(360deg)"] */
 onMounted(() => {
     animate(
@@ -116,7 +118,33 @@ onMounted(() => {
         },
         { duration: 5, easing: 'linear', repeat: Infinity, direction: 'alternate' }
     );
+    //@ts-ignore
+    // eslint-disable-next-line no-undef
+    gapi.load('auth2', function() {
+        gapi.auth2.init({
+            client_id: '163160079944-kir559oc9er5jh7gqklpa6dr16dfpdhq.apps.googleusercontent.com'
+        });
+    });
+
 });
+
+
+// Функция запуска аутентификации
+function signIn() {
+  gapi.auth2.getAuthInstance().signIn().then(onSignIn);
+}
+
+// Функция обратного вызова после успешной аутентификации
+function onSignIn(googleUser) {
+    console.log( googleUser.getAuthResponse().id_token);
+//   var id_token = googleUser.getAuthResponse().id_token;
+  // Отправьте токен на сервер и выполните дополнительные действия с пользовательским профилем
+}
+
+// Функция завершения пользовательской сессии
+function signOut() {
+  gapi.auth2.getAuthInstance().signOut();
+}
 /* *** */
 </script>
 <template>
@@ -163,7 +191,8 @@ onMounted(() => {
                             {{ isSignUp ? 'Sign up' : 'Sign in' }}
                         </button>
                         <button
-                            key="buttonFacebook"
+                            @click="signIn"
+                            key="buttonGoogle"
                             type="button"
                             class="cursor-pointer flex border-none items-center justify-center gap-4 bg-[#3E7EE8] h-[52px]  px-4 text-xl text-white">
                             <IconSpinner v-if="isLoadingAuth" />

@@ -1,18 +1,18 @@
 <template>
-        <VideoPlayer class="aspect-video h-auto w-full" lite  />
-                <div class="mt-5 w-full overflow-hidden flex flex-col">
-                <AppTabList class="h-14 w-full" @change-tab="setActiveTabCategory" v-slot="{ onChange }">
-                <AppTabListItem
+    <VideoPlayer class="aspect-video h-auto w-full" lite />
+    <div class="mt-5 flex w-full flex-col overflow-hidden">
+        <AppTabList class="h-14 w-full" @change-tab="setActiveTabCategory" v-slot="{ onChange }">
+            <AppTabListItem
                 v-for="tab of tabCategoryArr"
                 :key="tab"
                 :value="tab"
                 :active-value="activeTabCategory"
                 @click="onChange(tab)"
                 ><span class="text-xl">{{ tab }}</span>
-                </AppTabListItem>
-                </AppTabList> 
-                <ChannelListAside />
-                </div> 
+            </AppTabListItem>
+        </AppTabList>
+        <ChannelListAside />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -31,6 +31,4 @@ const setActiveTabCategory = (tab: TabCategoryType): void => {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

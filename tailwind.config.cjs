@@ -28,7 +28,9 @@ module.exports = {
                 'gradient-text': 'linear-gradient(270deg, #60E2FF 0%, #8C98FF 50%, #CC61FF 100%)',
                 'gradient-text-v2': 'linear-gradient(90.24deg, #01EAF2 0.21%, #3B65FF 57.08%, #D70BDA 102.91%)',
                 'gradient-metamask-btn': 'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90.05deg, #6C71F7 -17.07%, rgba(151, 36, 164, 0.900001) 75.94%, rgba(234, 0, 154, 0.8) 145.22%)',
-                'gradient-mint-btn': 'linear-gradient(270deg, rgba(96, 226, 255, 0.7) 0%, rgba(140, 152, 255, 0.7) 50%, rgba(204, 97, 255, 0.7) 100%);'
+                'gradient-mint-btn': 'linear-gradient(270deg, rgba(96, 226, 255, 0.7) 0%, rgba(140, 152, 255, 0.7) 50%, rgba(204, 97, 255, 0.7) 100%);',
+                'gradient-line-right': 'linear-gradient(137deg,#D70BDA 0.5%,rgba(1,234,242,0) 50%)',
+                'gradient-line-left': 'linear-gradient(270deg,#D70BDA 0.5%,rgba(1,234,242,0) 50%)',
             },
             colors: {
                 'light-blue': '#53A2FF',
