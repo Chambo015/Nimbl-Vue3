@@ -121,7 +121,7 @@ onMounted(() => {
     //@ts-ignore
     // eslint-disable-next-line no-undef
     gapi.load('auth2', function() {
-        gapi.auth2.init({
+        window.gapi.auth2.init({
             client_id: '163160079944-kir559oc9er5jh7gqklpa6dr16dfpdhq.apps.googleusercontent.com'
         });
     });
@@ -131,11 +131,11 @@ onMounted(() => {
 
 // Функция запуска аутентификации
 function signIn() {
-  gapi.auth2.getAuthInstance().signIn().then(onSignIn);
+    window.gapi.auth2.getAuthInstance().signIn().then(onSignIn);
 }
 
 // Функция обратного вызова после успешной аутентификации
-function onSignIn(googleUser) {
+function onSignIn(googleUser: any) {
     console.log( googleUser.getAuthResponse().id_token);
 //   var id_token = googleUser.getAuthResponse().id_token;
   // Отправьте токен на сервер и выполните дополнительные действия с пользовательским профилем
@@ -143,7 +143,7 @@ function onSignIn(googleUser) {
 
 // Функция завершения пользовательской сессии
 function signOut() {
-  gapi.auth2.getAuthInstance().signOut();
+    window.gapi.auth2.getAuthInstance().signOut();
 }
 /* *** */
 </script>
