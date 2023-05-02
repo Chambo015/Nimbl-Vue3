@@ -91,6 +91,12 @@ const submitHandler = () => {
 
 const client = ref(null)
 
+declare global {
+  interface Window {
+    gapi: any; // 👈️ turn off type checking
+  }
+}
+
 /* Анимация  [" translate(0px, 0px) rotate(0deg)", " translate(-55px,-45px) rotate(180deg)", " translate(0px, 0px) rotate(360deg)"] */
 onMounted(() => {
     animate(
