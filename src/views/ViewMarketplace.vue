@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MarketplaceCategory from '@/components/AppCategories/MarketplaceCategory.vue';
+import CardGrid from '@/components/Marketplace/CardGrid.vue';
 import DropSlider from '@/components/Marketplace/DropSlider.vue';
 import FilterMarketplace from '@/components/Marketplace/FilterMarketplace.vue';
 
@@ -14,7 +15,7 @@ import FilterMarketplace from '@/components/Marketplace/FilterMarketplace.vue';
         </div>
         <div class="col-span-8 h-full flex flex-col overflow-hidden">
             <MarketplaceCategory class="pr-5 mb-10" />
-            <AppVideoGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
+            <CardGrid class="mr-[5px] overflow-y-scroll pr-[10px] pb-height-navigation" />
         </div> 
     </div>
 </template>

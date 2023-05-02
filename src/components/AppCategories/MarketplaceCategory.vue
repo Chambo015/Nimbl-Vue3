@@ -10,7 +10,8 @@ const { marketplaceCategoryList, activeMarketplace } = storeToRefs(categoryStore
     <div class="grid grid-cols-4 gap-5 ">
         <div v-for="category in marketplaceCategoryList" :key="category.id" :class="['card overflow-hidden relative',  category.title === activeMarketplace && 'active']" @click="activeMarketplace = category.title">
             <div class="group py-11 min-w-[290px] bg-clip-padding border border-transparent text-2xl font-tt-octosquares font-bold uppercase flex relative  before:bg-black/80 before:absolute before:inset-0 before:z-[-1] isolate  justify-center items-center cursor-pointer bg-custom-center hover:bg-[length:_105%_auto] hover:shadow-md hover:before:bg-black/40 before:transition-colors  transition-[background-size] duration-300 will-change-[background-size]" :style="{backgroundImage: `url(${category.img})`}">
-                <span v-for="(w, idx) of category.title" :key="w" class="transition-all group-hover:mx-[1.5px]" :style="{transitionDelay: idx * 50 + 'ms'}">{{ w }}</span>
+                <span v-for="(w, idx) of category.title.split(' ')[0]" :key="w" class="transition-all group-hover:mx-[1.5px]" :style="{transitionDelay: idx * 50 + 'ms'}">{{ w }}</span>
+                <template v-if="category.title.split(' ')[1]"><span class="mx-1"> </span><span v-for="(w, idx) of category.title.split(' ')[1]" :key="w" class="transition-all group-hover:mx-[1.5px]" :style="{transitionDelay: idx * 50 + 'ms'}">{{ w }}</span></template>
             </div>
             <div class="border_gradient"></div>
         </div>

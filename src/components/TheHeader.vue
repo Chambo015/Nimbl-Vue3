@@ -67,72 +67,9 @@ const logout = () => {
                 Airdrops <IconChevron />
             </div> -->
             <img :src="bellImg" alt="bell" class="h-12 w-12 cursor-pointer object-contain" />
-            <div class="relative flex h-[50px] w-[190px] items-center justify-between px-3 py-6">
-                <img :src="coinImg" alt="coin" class="mr-2 h-7 w-7" />
-                <p class="font-rollbox">22.554</p>
-                <IconPlus class="ml-5 -translate-y-[2px] cursor-pointer text-white/50" />
-                <svg
-                    width="190"
-                    height="50"
-                    viewBox="0 0 190 50"
-                    fill="none"
-                    class="pointer-events-none absolute inset-0"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 5.5V45" stroke="url(#paint0_linear_2263_33906)" />
-                    <path d="M188.5 5V45" stroke="url(#paint1_linear_2263_33906)" />
-                    <path
-                        d="M187.873 43C186.927 43 186.099 43.5878 185.863 44.3893H157.201L152.059 49.0382H37.882L32.7405 44.3893H4.07777C3.84138 43.5878 3.07331 43 2.06864 43C0.945783 43 0 43.855 0 44.8702C0 45.8855 0.945783 46.7404 2.06864 46.7404C3.01421 46.7404 3.84138 46.1527 4.07777 45.3512H32.3268L37.4682 50H152.532L157.674 45.3512H185.922C186.159 46.1527 186.927 46.7404 187.932 46.7404C189.055 46.7404 190 45.8855 190 44.8702C190 43.855 189.055 43 187.932 43H187.873Z"
-                        fill="url(#paint2_linear_2263_33906)" />
-                    <path
-                        d="M2.1278 7C3.07337 7 3.90054 6.41222 4.13693 5.61069H32.7996L37.9411 0.961836H152.118L157.26 5.61069H185.922C186.159 6.41222 186.927 7 187.932 7C189.055 7 190 6.14504 190 5.12978C190 4.11451 189.055 3.25955 187.932 3.25955C186.986 3.25955 186.159 3.84733 185.922 4.64886H157.674L152.532 0H37.4682L32.3268 4.64886H4.07777C3.84138 3.84733 3.07331 3.25955 2.06864 3.25955C0.945783 3.25955 0 4.11451 0 5.12978C0 6.14504 0.945783 7 2.06864 7H2.1278Z"
-                        fill="url(#paint3_linear_2263_33906)" />
-                    <defs>
-                        <linearGradient
-                            id="paint0_linear_2263_33906"
-                            x1="4"
-                            y1="25.25"
-                            x2="3"
-                            y2="25.25"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#60E2FF" />
-                            <stop offset="0.5" stop-color="#8C98FF" />
-                            <stop offset="1" stop-color="#CC61FF" />
-                        </linearGradient>
-                        <linearGradient
-                            id="paint1_linear_2263_33906"
-                            x1="189.5"
-                            y1="25"
-                            x2="188.5"
-                            y2="25"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#60E2FF" />
-                            <stop offset="0.5" stop-color="#8C98FF" />
-                            <stop offset="1" stop-color="#CC61FF" />
-                        </linearGradient>
-                        <linearGradient
-                            id="paint2_linear_2263_33906"
-                            x1="190"
-                            y1="46.5"
-                            x2="1.23627e-08"
-                            y2="46.5"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#60E2FF" />
-                            <stop offset="0.5" stop-color="#8C98FF" />
-                            <stop offset="1" stop-color="#CC61FF" />
-                        </linearGradient>
-                        <linearGradient
-                            id="paint3_linear_2263_33906"
-                            x1="190"
-                            y1="3.5"
-                            x2="1.23627e-08"
-                            y2="3.5"
-                            gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#60E2FF" />
-                            <stop offset="0.5" stop-color="#8C98FF" />
-                            <stop offset="1" stop-color="#CC61FF" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+            <div class="relative flex h-[50px] px-4 items-center justify-between cursor-pointer hover:bg-dark-glass transition-colors bg-default-glass">
+                <p class="font-rollbox leading-none translate-y-1">22.554 <span class="text-xs gradient-text uppercase">nimbl</span></p>
+                <IconPlus class="ml-5 cursor-pointer text-white/50" />
             </div>
             <!-- <IconBell notification class="h-6" /> -->
             <Popover class="relative">
