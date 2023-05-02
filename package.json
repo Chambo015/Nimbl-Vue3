@@ -13,6 +13,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.6",
     "@headlessui/vue": "^1.7.12",
+    "@types/gapi": "^0.0.44",
+    "@types/gapi.auth2": "^0.0.57",
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.13.0",
     "apexcharts": "^3.37.1",

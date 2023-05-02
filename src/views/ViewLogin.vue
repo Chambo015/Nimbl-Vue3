@@ -91,11 +91,6 @@ const submitHandler = () => {
 
 const client = ref(null)
 
-declare global {
-  interface Window {
-    gapi: any; // 👈️ turn off type checking
-  }
-}
 
 /* Анимация  [" translate(0px, 0px) rotate(0deg)", " translate(-55px,-45px) rotate(180deg)", " translate(0px, 0px) rotate(360deg)"] */
 onMounted(() => {
@@ -127,7 +122,8 @@ onMounted(() => {
     //@ts-ignore
     // eslint-disable-next-line no-undef
     gapi.load('auth2', function() {
-        window.gapi.auth2.init({
+        // eslint-disable-next-line no-undef
+        gapi.auth2.init({
             client_id: '163160079944-kir559oc9er5jh7gqklpa6dr16dfpdhq.apps.googleusercontent.com'
         });
     });
