@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {IconConfetti, IconHeadDiamond, IconLike} from '@/components/icons'
+import { useRankStore } from '@/stores/ranks';
 import type { IAnnouncement } from '@/types';
 import type { PropType } from 'vue';
 
@@ -9,6 +10,8 @@ defineProps({
         required: true,
     },
 });
+
+const rankStore =  useRankStore()
 </script>
 <!-- light-glass-mute -->
 <template>
@@ -29,21 +32,24 @@ defineProps({
                 <img :src="announcement.attachImg" alt="attach_img" class="block aspect-video h-auto w-full" />
             </div>
             <footer class="flex gap-4 text-white/50">
-                <div
+                <button
+                    @click="rankStore.addScoreBuffer(50)"
                     class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-light-blue">
                     <IconLike class="h-5 w-5" />
                     <div>{{ announcement.likeCount }}</div>
-                </div>
-                <div
+                </button>
+                <button 
+                    @click="rankStore.addScoreBuffer(35)"
                     class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-light-blue">
                     <IconConfetti class="h-5 w-5" />
                     <div>1480</div>
-                </div>
-                <div
+                </button>
+                <button
+                    @click="rankStore.addScoreBuffer(10)"
                     class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-light-blue">
                     <IconHeadDiamond class="h-5 w-5" />
                     <div>4250</div>
-                </div>
+                </button>
                 <div class="ml-auto">12.4k views</div>
             </footer>
         </div>

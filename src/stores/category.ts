@@ -24,22 +24,22 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 1,
                 title: 'Trending Videos',
-                img: import.meta.env.BASE_URL +'img/category/trending-videos.png',
+                img: import.meta.env.BASE_URL +'img/category/trending-videos-large.png',
             },
             {
                 id: 2,
                 title: 'Crypto News',
-                img: import.meta.env.BASE_URL +'img/category/crypto-news.png',
+                img: import.meta.env.BASE_URL +'img/category/crypto-news-large.png',
             },
             {
                 id: 3,
                 title: 'ETH NFTs',
-                img: import.meta.env.BASE_URL +'img/category/eth-nfts.png',
+                img: import.meta.env.BASE_URL +'img/category/eth-nfts-large.png',
             },
             {
                 id: 4,
                 title: 'Play2Earn',
-                img: import.meta.env.BASE_URL +'img/category/play2earn.png',
+                img: import.meta.env.BASE_URL +'img/category/play2earn-large.png',
             }
         ],
         homeCategoryList: [ 

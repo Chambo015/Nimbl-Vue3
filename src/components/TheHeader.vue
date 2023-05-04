@@ -67,13 +67,13 @@ const logout = () => {
                 Airdrops <IconChevron />
             </div> -->
             <img :src="bellImg" alt="bell" class="h-12 w-12 cursor-pointer object-contain" />
-            <div class="relative flex h-[50px] px-4 items-center justify-between cursor-pointer hover:bg-dark-glass transition-colors bg-default-glass">
+            <div class="relative shadow-[0px_1px_5px_2px_rgba(0,0,0,0.6)_inset] flex h-[50px] px-4 items-center justify-between cursor-pointer hover:bg-dark-glass transition-colors bg-default-glass">
                 <p class="font-rollbox leading-none translate-y-1">22.554 <span class="text-xs gradient-text uppercase">nimbl</span></p>
                 <IconPlus class="ml-5 cursor-pointer text-white/50" />
             </div>
             <!-- <IconBell notification class="h-6" /> -->
             <Popover class="relative">
-                <PopoverButton class="text-left">
+                <PopoverButton class="text-left outline-none">
                     <HeaderUserRank />
                 </PopoverButton>
                 <PopoverPanel
