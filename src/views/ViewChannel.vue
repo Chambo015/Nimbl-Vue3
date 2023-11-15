@@ -66,94 +66,88 @@ const baseUrl = import.meta.env.BASE_URL;
         <section class="col-span-4 flex h-full flex-col overflow-hidden pl-5">
             <VideoPlayer lite />
             <div class="mt-5 flex flex-col overflow-hidden bg-light-glass py-5 backdrop-blur-sm dark:bg-dark-glass">
-                <!--  -->
-                <!-- Transition Group сделаем анимацию для  -->
-                <TransitionGroup >
-                    <div class=" text-2xl font-ethnocentric px-2 mb-3">
-
-                    </div>
-                </TransitionGroup>
-                <div class="flex items-center gap-5 px-5 text-lg">
-                    <img
-                        :src="baseUrl + 'img/users/11.png'"
-                        alt="avatar"
-                        width="44"
-                        height="44"
-                        class="h-11 w-11 rounded-full object-cover" />
-                    <div class="flex flex-col justify-center gap-1">
-                        <h3 class="font-medium">Helen_NFT</h3>
-                        <span class="text-sm text-white/50">245,511 members</span>
-                    </div>
-                    <button class="ml-auto" @click="$router.push({ name: 'settings' })">
+               <TransitionGroup name="left_list">
+                    <div class="flex items-center gap-5 px-5 text-lg">
                         <img
-                            :src="settingsImg"
-                            width="45"
-                            height="45"
-                            alt="settings"
-                            class="h-12 w-12 object-contain" />
-                    </button>
-                </div>
-                <div class="px-5" v-if="!announceListHovered">
-                    <p class="mb-3 mt-4">
-                        Users who connect their crypto wallet are able to purchase NFTs and set them as their profile
-                        picture which will be displayed in a special hexagonal shape.
-                    </p>
-                    <div class="flex">
-                        <div class="mr-5 flex items-center gap-2">
-                            <IconLocationDot class="h-4 stroke-white/50 text-transparent" />
-                            <span class="text-xs text-white/50">New-York, USA</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <IconCalendar class="h-4 stroke-white/50 text-transparent" />
-                            <span class="text-xs text-white/50">Joined September 1, 2022</span>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                <div class="mb-5 flex items-center px-5">
-                    <h4 class="text-xl font-semibold">Announcements</h4>
-                    <button
-                        class="ml-auto bg-[linear-gradient(88.76deg,#393939_0.58%,#4D4D4D_98.96%)] px-5 py-1 text-lg font-medium">
-                        Share news
-                    </button>
-                </div>
-                <!-- Posts -->
-                <section ref="announceListElement" class="mr-[5px] space-y-3 overflow-y-scroll pb-7 pl-5 pr-[10px]">
-                    <article v-for="post in announcementList" :key="post.id" class="flex bg-light-glass-mute p-5">
-                        <img
-                            :src="post.author.avatar"
+                            :src="baseUrl + 'img/users/11.png'"
                             alt="avatar"
-                            width="32"
-                            height="32"
-                            class="sticky top-1 mr-3 h-8 w-8 rounded-full object-cover" />
-                        <div class="flex w-[500px] flex-col">
-                            <div class="mb-3 flex justify-between">
-                                <div>{{ post.author.name }}</div>
-                                <div class="text-sm text-white/50">01 feb 2023</div>
-                            </div>
-                            <p class="mb-5 text-sm">{{ post.text }}</p>
-                            <footer class="flex gap-4 text-white/50">
-                                <div
-                                    class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
-                                    <IconLike class="h-5 w-5" />
-                                    <div>{{ post.likeCount }}</div>
-                                </div>
-                                <div
-                                    class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
-                                    <IconConfetti class="h-5 w-5" />
-                                    <div>1480</div>
-                                </div>
-                                <div
-                                    class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
-                                    <IconHeadDiamond class="h-5 w-5" />
-                                    <div>4250</div>
-                                </div>
-                                <div class="ml-auto text-sm">12.4k views</div>
-                            </footer>
+                            width="44"
+                            height="44"
+                            class="h-11 w-11 rounded-full object-cover" />
+                        <div class="flex flex-col justify-center gap-1">
+                            <h3 class="font-medium">Helen_NFT</h3>
+                            <span class="text-sm text-white/50">245,511 members</span>
                         </div>
-                    </article>
-                </section>
-                <!--  -->
+                        <button class="ml-auto" @click="$router.push({ name: 'settings' })">
+                            <img
+                                :src="settingsImg"
+                                width="45"
+                                height="45"
+                                alt="settings"
+                                class="h-12 w-12 object-contain" />
+                        </button>
+                    </div>
+                    <div class="px-5" v-if="!announceListHovered">
+                        <p class="mb-3 mt-4">
+                            Users who connect their crypto wallet are able to purchase NFTs and set them as their profile
+                            picture which will be displayed in a special hexagonal shape.
+                        </p>
+                        <div class="flex">
+                            <div class="mr-5 flex items-center gap-2">
+                                <IconLocationDot class="h-4 stroke-white/50 text-transparent" />
+                                <span class="text-xs text-white/50">New-York, USA</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <IconCalendar class="h-4 stroke-white/50 text-transparent" />
+                                <span class="text-xs text-white/50">Joined September 1, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="my-5 flex items-center px-5">
+                        <h4 class="text-xl font-semibold">Announcements</h4>
+                        <button
+                            class="ml-auto bg-[linear-gradient(88.76deg,#393939_0.58%,#4D4D4D_98.96%)] px-5 py-1 text-lg font-medium">
+                            Share news
+                        </button>
+                    </div>
+                    <!-- Posts -->
+                    <section ref="announceListElement" class="mr-[5px] space-y-3 overflow-y-scroll pb-7 pl-5 pr-[10px]">
+                        <article v-for="post in announcementList" :key="post.id" class="flex bg-light-glass-mute p-5">
+                            <img
+                                :src="post.author.avatar"
+                                alt="avatar"
+                                width="32"
+                                height="32"
+                                class="sticky top-1 mr-3 h-8 w-8 rounded-full object-cover" />
+                            <div class="flex w-[500px] flex-col">
+                                <div class="mb-3 flex justify-between">
+                                    <div>{{ post.author.name }}</div>
+                                    <div class="text-sm text-white/50">01 feb 2023</div>
+                                </div>
+                                <p class="mb-5 text-sm">{{ post.text }}</p>
+                                <footer class="flex gap-4 text-white/50">
+                                    <div
+                                        class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
+                                        <IconLike class="h-5 w-5" />
+                                        <div>{{ post.likeCount }}</div>
+                                    </div>
+                                    <div
+                                        class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
+                                        <IconConfetti class="h-5 w-5" />
+                                        <div>1480</div>
+                                    </div>
+                                    <div
+                                        class="inline-flex cursor-pointer items-center gap-1 text-xs transition-colors hover:text-white">
+                                        <IconHeadDiamond class="h-5 w-5" />
+                                        <div>4250</div>
+                                    </div>
+                                    <div class="ml-auto text-sm">12.4k views</div>
+                                </footer>
+                            </div>
+                        </article>
+                    </section>
+                </TransitionGroup>
             </div>
         </section>
         <!--  -->
@@ -227,15 +221,21 @@ const baseUrl = import.meta.env.BASE_URL;
 
 <style scoped>
 /* we will explain what these classes do next! */
-.v-enter-active,
-.v-leave-active {
-    height: 100px;
-    transition: height 0.5s ease;
+.left_list-move, /* apply transition to moving elements */
+.left_list-enter-active,
+.left_list-leave-active {
+  transition: all 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
-    height: 0px;
-    opacity: 0;
+.left_list-enter-from,
+.left_list-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.left_list-leave-active {
+  position: absolute;
 }
 </style>

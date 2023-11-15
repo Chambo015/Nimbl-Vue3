@@ -133,8 +133,9 @@ onMounted(() => {
 
 // Функция запуска аутентификации
 function signIn() {
-    window.gapi.auth2.getAuthInstance().signIn().then(onSignIn);
+    gapi.auth2.getAuthInstance().signIn().then(onSignIn);
 }
+
 
 // Функция обратного вызова после успешной аутентификации
 function onSignIn(googleUser: any) {
@@ -145,7 +146,7 @@ function onSignIn(googleUser: any) {
 
 // Функция завершения пользовательской сессии
 function signOut() {
-    window.gapi.auth2.getAuthInstance().signOut();
+    gapi.auth2.getAuthInstance().signOut();
 }
 /* *** */
 </script>

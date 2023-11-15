@@ -4,7 +4,7 @@ import { useRankStore } from '@/stores/ranks';
 import { randomNumber } from '@/utils';
 import { gsap } from 'gsap';
 import { storeToRefs } from 'pinia';
-import { onMounted, ref , watch, computed} from 'vue';
+import {  ref , watch, computed} from 'vue';
 
 const rankImg = ref<HTMLImageElement | null>(null)
 const wrapRank = ref<HTMLElement | null>(null)
