@@ -38,7 +38,7 @@ const logout = () => {
     <div
         class="relative z-50 grid w-full grid-cols-12 items-center gap-5 bg-gradient-header px-[22px] dark:bg-dark-glass dark:bg-none">
         <div class="col-span-4 flex cursor-pointer items-center gap-2 h-full" @click="$router.push({ name: 'content' })">
-            <img src="/logo.png" alt="logo" loading="lazy" class="h-14 object-contain" />
+            <picture><source srcset="/logo.webp" type="image/webp" /><img src="/logo.png" alt="logo" loading="lazy" class="h-14 object-contain" /></picture>
             <span class="gradient-text font-ethnocentric text-2xl">NIMBL</span>
             <div class="self-stretch ml-16">
                 <button @click="$router.go(-1)" class="h-full bg-[#22202F] px-4" title="back">

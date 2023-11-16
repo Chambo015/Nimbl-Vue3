@@ -24,41 +24,41 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 1,
                 title: 'Trending Videos',
-                img: import.meta.env.BASE_URL +'img/category/trending-videos-large.png',
+                img: import.meta.env.BASE_URL +'img/category/trending-videos-large.webp',
             },
             {
                 id: 2,
                 title: 'Crypto News',
-                img: import.meta.env.BASE_URL +'img/category/crypto-news-large.png',
+                img: import.meta.env.BASE_URL +'img/category/crypto-news-large.webp',
             },
             {
                 id: 3,
                 title: 'ETH NFTs',
-                img: import.meta.env.BASE_URL +'img/category/eth-nfts-large.png',
+                img: import.meta.env.BASE_URL +'img/category/eth-nfts-large.webp',
             },
             {
                 id: 4,
                 title: 'Play2Earn',
-                img: import.meta.env.BASE_URL +'img/category/play2earn-large.png',
+                img: import.meta.env.BASE_URL +'img/category/play2earn-large.webp',
             }
         ],
         homeCategoryList: [ 
             {
                 id: 1,
                 title: 'Clips',
-                img: import.meta.env.BASE_URL +'img/category/clips.png',
+                img: import.meta.env.BASE_URL +'img/category/clips.webp',
                 isActive: false
             },
             {
                 id: 2,
                 title: 'Longs',
-                img: import.meta.env.BASE_URL +'img/category/longs.png',
+                img: import.meta.env.BASE_URL +'img/category/longs.webp',
                 isActive: true
             },
             {
                 id: 3,
                 title: 'Wallet',
-                img: import.meta.env.BASE_URL +'img/category/wallet.png',
+                img: import.meta.env.BASE_URL +'img/category/wallet.webp',
                 isActive: false
             },
             {
@@ -72,12 +72,12 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 1,
                 title: 'TOP VOLUME',
-                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.webp',
             },
             {
                 id: 2,
                 title: 'TOP TRENDING',
-                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.webp',
             },
             {
                 id: 3,
@@ -87,7 +87,7 @@ export const useCategoryStore = defineStore('category', {
             {
                 id: 4,
                 title: 'PRE-SALE TOKENS',
-                img: import.meta.env.BASE_URL +'img/category/top_volume.png',
+                img: import.meta.env.BASE_URL +'img/category/top_volume.webp',
             }
         ],
         activeMarketplace: 'TOP VOLUME',

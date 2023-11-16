@@ -161,7 +161,7 @@ function signOut() {
                     <div class="relative flex items-center justify-center">
                         <div
                             class="absolute inline-flex h-[60%] w-[60%] animate-ping rounded-full bg-gradient-tab-list-mute"></div>
-                        <img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain opacity-90" />
+                        <picture><source srcset="/logo.webp" type="image/webp" /><img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain opacity-90" /></picture>
                     </div>
                     <span class="gradient-text font-ethnocentric text-4xl">NIMBL</span>
                 </div>
