@@ -13,5 +13,19 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "@vueuse/core": ["@vueuse/core"],
+          "gsap": ['gsap'],
+          "@formkit/auto-animate": ['@formkit/auto-animate'],
+          "motion": ['motion'],
+          "vue3-apexcharts": ['vue3-apexcharts'],
+          "apexcharts": ['apexcharts'],
+      }
+      }
+    }
   }
 })

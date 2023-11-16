@@ -155,16 +155,17 @@ const visibleControls = computed(() => {
 });
 
 /* Звук видео */
+const differentBackgroundVolume = 0.6
 const scrubberVolume = ref(0.5)
 watch([scrubberVolume, currentVoiceSrc], () => {
     if(currentVoiceSrc.value) {
         volumeVoice.value = scrubberVolume.value
         if(scrubberVolume.value === 0) {
             volume.value = 0
-        } else if(scrubberVolume.value <= 0.6) {
+        } else if(scrubberVolume.value <= differentBackgroundVolume) {
             volume.value = 0.1
         } else {
-            volume.value = scrubberVolume.value - 0.6
+            volume.value = scrubberVolume.value - differentBackgroundVolume
         }
         
     } else {
