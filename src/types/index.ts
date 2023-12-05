@@ -87,7 +87,7 @@ export type TypeMessageGPT = {
     attachComponent?: Component
 };
 
-export type LanguagesType = 'en' | 'fr' | 'es' | 'zh' | 'it' | 'kk' | 'de'
+export type LanguagesType = 'en' | 'fr' | 'es' | 'zh' | 'it' | 'kk' | 'de' | 'tr'
 
 export interface  AudioTrackType  {
     language: LanguagesType,

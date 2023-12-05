@@ -147,6 +147,12 @@ export const useVideoStore = defineStore('video', {
                         src: '/video/Chinese/audio.mp3',
                         flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyMSIgZmlsbD0ibm9uZSIgdmlld0JveD0iMCAwIDI4IDIxIj48ZyBjbGlwLXBhdGg9InVybCgjYSkiPjxwYXRoIGZpbGw9IiNFRTFDMjUiIGQ9Ik0wIDBoMjh2MjFIMFYwWiIvPjxwYXRoIGZpbGw9IiNGRjAiIGQ9Ik0zLjM2IDcuNzcgNS4yNSAyLjFsMS44OSA1LjY3TDIuMSA0LjMwNWg2LjNMMy4zNiA3Ljc3Wm04LjE5Ny01LjU2MS0xLjk0NS40MyAxLjI5OC0xLjUxMS0uMTI3IDIuMDM1LTEuMDgtMS44MDIgMS44NTQuODQ4Wm0xLjk2MyAyLjQ4Ny0xLjk2LS4zNTcgMS43ODMtLjg5LS45MDcgMS44MjYtLjI5Ni0yLjA3OSAxLjM4IDEuNVptLS4yODYgMy40OTFMMTEuNTkxIDcuMDZsMS45OS0uMDg2LTEuNTczIDEuMjk4LjU3OC0yLjAyLjY0OCAxLjkzNFptLTIuNDcyIDIuMjhMOS42OCA4Ljc5NGwxLjg3LjY5LTEuOTUyLjU4OSAxLjMxMi0xLjY0LS4xNDggMi4wMzRaIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iYSI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgyOHYyMUgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==',
                     },
+                    {
+                        language: 'tr',
+                        label: 'Turkish',
+                        src: '/video/Turkish/audio.wav',
+                        flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NDAiIGhlaWdodD0iNDgwIiBmaWxsPSJub25lIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+PGcgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXBhdGg9InVybCgjYSkiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PHBhdGggZmlsbD0iI0UzMEExNyIgZD0iTTAgMGg2NDB2NDgwSDBWMFoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDA3IDI0Ny41YzAgNjYuMi01NC42IDExOS45LTEyMiAxMTkuOXMtMTIyLTUzLjctMTIyLTEyMCA1NC42LTExOS44IDEyMi0xMTkuOCAxMjIgNTMuNyAxMjIgMTE5LjlaIi8+PHBhdGggZmlsbD0iI0UzMEExNyIgZD0iTTQxMyAyNDcuNWMwIDUzLTQzLjYgOTUuOS05Ny41IDk1LjlzLTk3LjYtNDMtOTcuNi05NiA0My43LTk1LjggOTcuNi05NS44YzUzLjkgMCA5Ny42IDQyLjkgOTcuNiA5NS45aC0uMVoiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJtNDMwLjcgMTkxLjUtMSA0NC4zLTQxLjMgMTEuMiA0MC44IDE0LjUtMSA0MC43IDI2LjUtMzEuOCA0MC4yIDE0LTIzLjItMzQuMSAyOC4zLTMzLjktNDMuNSAxMi0yNS44LTM3di4xWiIvPjwvZz48ZGVmcz48Y2xpcFBhdGggaWQ9ImEiPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDBoNjQwdjQ4MEgweiIvPjwvY2xpcFBhdGg+PC9kZWZzPjwvc3ZnPg==',
+                    },
                 ],
                 subtitles: [
                     {
@@ -184,6 +190,12 @@ export const useVideoStore = defineStore('video', {
                         kind: 'subtitles',
                         label: 'Chinese',
                         srcLang: 'zh',
+                    },
+                    {
+                        src: '/video/Turkish/subtitles.vtt',
+                        kind: 'subtitles',
+                        label: 'Turkish',
+                        srcLang: 'tr',
                     },
                 ]
             },
