@@ -49,8 +49,7 @@ onUnmounted(() => {
     <div :class="['flex gap-5 py-3 px-5 backdrop-blur', message.isChatGPT ? bgColorGpt : bgColorUser]">
         <div :class="['self-center rounded-md', message.isChatGPT ? 'bg-[#4373f8] p-1' : '']">
             <!-- <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" /> -->
-            <div class="h-8 w-8 bg-[url('/logo-sm.png')] bg-cover" v-if="message.isChatGPT" >
-            </div>
+            <div class="h-8 w-8 bg-[url('/logo-sm.png')] bg-cover" v-if="message.isChatGPT" />
             <img
                 v-else
                 src="/img/users/1.png"
@@ -62,7 +61,7 @@ onUnmounted(() => {
         <div class="space-y-4 p-4 leading-normal">
             <span v-if="message.isChatGPT && !message.showStatus" ref="typingRef"></span>
             <template v-else>
-                <p v-for="item in message.text" :key="item">{{ item }}</p>
+                <p v-for="item in message.text" :key="item" v-html="item"></p>
             </template>
             <Transition
                 enter-active-class="transition duration-500 ease-out"

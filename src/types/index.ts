@@ -24,14 +24,14 @@ export interface VideoI {
     avatar: string;
     poster: string;
     /* Свойства для видео аудио и субтитров */
-    videoSrc?: string,
-    audioSrc? : AudioTrackType[],
+    videoSrc?: string;
+    audioSrc?: AudioTrackType[];
     subtitles?: {
-        src: string,
-        kind: 'subtitles',
-        label: string,
-        srcLang: LanguagesType,
-    }[]
+        src: string;
+        kind: 'subtitles';
+        label: string;
+        srcLang: LanguagesType;
+    }[];
 }
 
 export interface IAnnouncement {
@@ -84,14 +84,15 @@ export type TypeMessageGPT = {
     isChatGPT: boolean;
     showStatus: boolean;
     delayToResponse?: number;
-    attachComponent?: Component
+    attachComponent?: Component;
+    onCompleteTyping?: () => void;
 };
 
-export type LanguagesType = 'en' | 'fr' | 'es' | 'zh' | 'it' | 'kk' | 'de' | 'tr'
+export type LanguagesType = 'en' | 'fr' | 'es' | 'zh' | 'it' | 'kk' | 'de' | 'tr';
 
-export interface  AudioTrackType  {
-    language: LanguagesType,
-    src: string,
-    label: string,
-    flag: string
+export interface AudioTrackType {
+    language: LanguagesType;
+    src: string;
+    label: string;
+    flag: string;
 }

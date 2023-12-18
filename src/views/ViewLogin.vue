@@ -31,8 +31,6 @@ useDark({
     initialValue: 'dark',
 });
 
-
-
 const form = reactive<ILoginForm>({
     email: {
         value: '',
@@ -70,8 +68,8 @@ const submitHandler = () => {
         createUser(form.email.value, form.password.value)
             .then((user) => {
                 console.log(user, 'user');
-                enterFullscreen()
-                router.replace({name: 'content'})
+                enterFullscreen();
+                router.replace({ name: 'content' });
             })
             .catch((error) => {
                 console.error(error);
@@ -80,8 +78,8 @@ const submitHandler = () => {
         loginUser(form.email.value, form.password.value)
             .then((user) => {
                 console.log(user, 'user');
-                enterFullscreen()
-                router.replace({name: 'content'})
+                enterFullscreen();
+                router.replace({ name: 'content' });
             })
             .catch((error) => {
                 console.error(error);
@@ -89,8 +87,7 @@ const submitHandler = () => {
     }
 };
 
-const client = ref(null)
-
+const client = ref(null);
 
 /* Анимация  [" translate(0px, 0px) rotate(0deg)", " translate(-55px,-45px) rotate(180deg)", " translate(0px, 0px) rotate(360deg)"] */
 onMounted(() => {
@@ -121,32 +118,29 @@ onMounted(() => {
     );
     //@ts-ignore
     // eslint-disable-next-line no-undef
-    gapi.load('auth2', function() {
+    gapi.load('auth2', function () {
         // eslint-disable-next-line no-undef
         gapi.auth2.init({
-            client_id: '163160079944-kir559oc9er5jh7gqklpa6dr16dfpdhq.apps.googleusercontent.com'
+            client_id: '163160079944-kir559oc9er5jh7gqklpa6dr16dfpdhq.apps.googleusercontent.com',
         });
     });
-
 });
-
 
 // Функция запуска аутентификации
 function signIn() {
-    gapi.auth2.getAuthInstance().signIn().then(onSignIn);
+    window.gapi.auth2.getAuthInstance().signIn().then(onSignIn);
 }
-
 
 // Функция обратного вызова после успешной аутентификации
 function onSignIn(googleUser: any) {
-    console.log( googleUser.getAuthResponse().id_token);
-//   var id_token = googleUser.getAuthResponse().id_token;
-  // Отправьте токен на сервер и выполните дополнительные действия с пользовательским профилем
+    console.log(googleUser.getAuthResponse().id_token);
+    //   var id_token = googleUser.getAuthResponse().id_token;
+    // Отправьте токен на сервер и выполните дополнительные действия с пользовательским профилем
 }
 
 // Функция завершения пользовательской сессии
 function signOut() {
-    gapi.auth2.getAuthInstance().signOut();
+    window.gapi.auth2.getAuthInstance().signOut();
 }
 /* *** */
 </script>
@@ -161,7 +155,10 @@ function signOut() {
                     <div class="relative flex items-center justify-center">
                         <div
                             class="absolute inline-flex h-[60%] w-[60%] animate-ping rounded-full bg-gradient-tab-list-mute"></div>
-                        <picture><source srcset="/logo.webp" type="image/webp" /><img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain opacity-90" /></picture>
+                        <picture
+                            ><source srcset="/logo.webp" type="image/webp" />
+                            <img src="/logo.png" alt="logo" loading="lazy" class="h-[100px] object-contain opacity-90"
+                        /></picture>
                     </div>
                     <span class="gradient-text font-ethnocentric text-4xl">NIMBL</span>
                 </div>
@@ -189,7 +186,7 @@ function signOut() {
                         <button
                             key="buttonSubmit"
                             type="submit"
-                            class="cursor-pointer flex border-none items-center justify-center bg-gradient-tab-list py-3 px-4 text-xl text-white">
+                            class="flex cursor-pointer items-center justify-center border-none bg-gradient-tab-list px-4 py-3 text-xl text-white">
                             <IconSpinner v-if="isLoadingAuth" />
                             {{ isSignUp ? 'Sign up' : 'Sign in' }}
                         </button>
@@ -197,17 +194,17 @@ function signOut() {
                             @click="signIn"
                             key="buttonGoogle"
                             type="button"
-                            class="cursor-pointer flex border-none items-center justify-center gap-4 bg-[#3E7EE8] h-[52px]  px-4 text-xl text-white">
+                            class="flex h-[52px] cursor-pointer items-center justify-center gap-4 border-none bg-[#3E7EE8] px-4 text-xl text-white">
                             <IconSpinner v-if="isLoadingAuth" />
-                            <IconGoogle class="w-10 h-10" />
+                            <IconGoogle class="h-10 w-10" />
                             <span>{{ isSignUp ? 'Sign up' : 'Sign in' }} with Google</span>
                         </button>
                         <button
                             key="buttonFacebook"
                             type="button"
-                            class="cursor-pointer flex border-none items-center justify-center gap-4 bg-[#1877F2] h-[52px]  px-4 text-xl text-white">
+                            class="flex h-[52px] cursor-pointer items-center justify-center gap-4 border-none bg-[#1877F2] px-4 text-xl text-white">
                             <IconSpinner v-if="isLoadingAuth" />
-                            <IconFacebook class="w-10 h-10" />
+                            <IconFacebook class="h-10 w-10" />
                             <span>{{ isSignUp ? 'Sign up' : 'Sign in' }} with Facebook</span>
                         </button>
                         <Transition
@@ -221,12 +218,16 @@ function signOut() {
                                 type="button"
                                 @click="connectMetaMask"
                                 :disabled="!hasMetaMaskExt"
-                                class="flex cursor-pointer items-center justify-center border-none bg-gradient-metamask-btn py-3 px-4 text-xl text-white disabled:opacity-50 disabled:cursor-not-allowed">
+                                class="flex cursor-pointer items-center justify-center border-none bg-gradient-metamask-btn px-4 py-3 text-xl text-white disabled:cursor-not-allowed disabled:opacity-50">
                                 <IconSpinner v-if="isLoadingMetaMask" />
-                                {{ hasMetaMaskExt ? "Sign in with MetaMask": 'Install MetaMask extension'}}
+                                {{ hasMetaMaskExt ? 'Sign in with MetaMask' : 'Install MetaMask extension' }}
                             </button>
                         </Transition>
-                        <p class="relative -top-2 text-center text-red-400" v-if="(errorMetaMask && !isSignUp) || errorAuth.message">{{ errorMetaMask || errorAuth.message }}</p>
+                        <p
+                            class="relative -top-2 text-center text-red-400"
+                            v-if="(errorMetaMask && !isSignUp) || errorAuth.message">
+                            {{ errorMetaMask || errorAuth.message }}
+                        </p>
                     </div>
                 </form>
             </div>
@@ -299,6 +300,6 @@ label {
 
 input,
 textarea {
-    @apply mb-4 resize-y border border-none bg-light-glass py-2 px-5 text-xl text-white autofill:bg-light-glass;
+    @apply mb-4 resize-y border border-none bg-light-glass px-5 py-2 text-xl text-white autofill:bg-light-glass;
 }
 </style>
