@@ -115,7 +115,7 @@ export const useVideoStore = defineStore('video', {
                 price: 988,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/22.png',
-                videoSrc: '/video/English/index.mp4',
+                videoSrc: 'https://d2n3zca7e0phmo.cloudfront.net/index.mp4',
                 audioSrc: [
                     {
                         language: 'it',
@@ -206,7 +206,7 @@ export const useVideoStore = defineStore('video', {
                 price: 988,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/23.webp',
-                videoSrc: '/video2/Russian/index.mp4',
+                videoSrc: 'https://d2n3zca7e0phmo.cloudfront.net/index1.mp4',
                 audioSrc: [
                     {
                         language: 'en',
