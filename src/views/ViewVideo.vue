@@ -87,7 +87,8 @@ onUnmounted(() => {
                         <span class="text-lg leading-none">Trade</span>
                     </AppTabListItem>
                     <AppTabListItem value="chatGpt" :active-value="activeSidebarTab" @click="() => onChange('chatGpt')">
-                        <IconChatGPT class="h-5 w-5" />
+                        <!-- <IconChatGPT class="h-5 w-5" /> -->
+                        <div class="h-8 w-8 bg-[url('/logo-sm.png')] bg-cover" />
                     </AppTabListItem>
                 </AppTabList>
             </div>
