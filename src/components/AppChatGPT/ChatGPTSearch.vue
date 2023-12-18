@@ -36,7 +36,7 @@ const typed = ref<Typed | null>(null)
 onMounted(() => {
     if (inputRef.value) {
         typed.value = new Typed(inputRef.value, {
-            strings: ['GPT Search Channels', 'GPT Search Channels', 'GPT Search Videos', 'GPT Search NFTs', 'GPT Search'],
+            strings: ['NimblAI Search Channels', 'NimblAI Search Channels', 'NimblAI Search Videos', 'NimblAI Search NFTs', 'NimblAI Search'],
             typeSpeed: 50,
             backSpeed: 0,
             loop: false,
@@ -57,7 +57,7 @@ onUnmounted(() => typed.value?.destroy())
                 ref="inputRef"
                 type="search"
                 class="relative z-50 w-full bg-[rgba(34,32,47,0.40)] py-2 pr-2 pl-12"
-                placeholder="GPT Search"
+                placeholder="NimblAI Search"
                 @keydown.enter="sendMessageHandle"
                 @focus="openPopover"
                 @input="inputHandler"
@@ -87,7 +87,7 @@ onUnmounted(() => typed.value?.destroy())
     <div
         v-if="isOpenPopover"
         aria-hidden="true"
-        class="fixed inset-0 -z-10 backdrop-blur-sm"
+        class="fixed inset-0 -z-10 bg-black/50 backdrop-blur-sm"
         @click.prevent="closePopover"></div>
 </template>
 

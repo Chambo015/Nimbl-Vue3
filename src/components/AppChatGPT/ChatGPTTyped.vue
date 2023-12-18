@@ -47,8 +47,10 @@ onUnmounted(() => {
 
 <template>
     <div :class="['flex gap-5 py-3 px-5 backdrop-blur', message.isChatGPT ? bgColorGpt : bgColorUser]">
-        <div :class="['self-center ', message.isChatGPT ? 'bg-[#11A37F] p-1' : '']">
-            <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" />
+        <div :class="['self-center rounded-md', message.isChatGPT ? 'bg-[#4373f8] p-1' : '']">
+            <!-- <IconChatGPT class="h-8 w-8" v-if="message.isChatGPT" /> -->
+            <div class="h-8 w-8 bg-[url('/logo-sm.png')] bg-cover" v-if="message.isChatGPT" >
+            </div>
             <img
                 v-else
                 src="/img/users/1.png"

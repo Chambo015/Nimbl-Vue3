@@ -27,7 +27,7 @@ export const useChatGPTStore = defineStore('chatGPT', {
             {
                 id: 0,
                 text: [
-                    "Welcome to Nimbl, I'm ChatGPT, your AI assistant for knowledge discovery.",
+                    "Welcome to Nimbl, I'm NimblAI, your AI assistant for knowledge discovery.",
                     "I'll do my best to provide you with personalized results.",
                 ],
                 isChatGPT: true,
