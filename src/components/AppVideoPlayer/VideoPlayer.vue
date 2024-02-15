@@ -24,7 +24,7 @@ const props = defineProps({
     lite: Boolean,
     videoSrc: {
         type: String,
-        default: 'https://d2n3zca7e0phmo.cloudfront.net/NFTsVideo.mp4',
+        default: '/NFTsVideo.mp4',
     },
     subtitles: {
         type: Array as PropType<UseMediaTextTrackSource[]>,
