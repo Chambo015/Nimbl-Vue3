@@ -115,7 +115,7 @@ export const useVideoStore = defineStore('video', {
                 price: 988,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/22.png',
-                videoSrc: '/video/English/index.mp4',
+                videoSrc: 'https://ff97b1fb2d2768d3158b0505a87b8202a9b1b4aec44601e1e2b6283-apidata.googleusercontent.com/download/storage/v1/b/nimbls/o/index1.mp4?jk=ATxpoHd9f3jmxCyODkSL5mYb-8fagkXG90xrNXO3p2xeCLjcElAoBRtvADTaspXuYeORJOrsC_54o9BYOzjj7r8NHxNelhgX4Z0XCH3wJYULIcPwAUODftv6EbGCn0pL7eTj1cWYPzC0P8MwCXS2zfkicB8Mh1WufLozLcRjrk5gmHSmE6RR7ZKp40z7DpPv8wsvm_yrncjuajFh6Pa8xyRvFj3nFNht78F1Dla0Q616LtVsiYKCTX69bumpc6FUx5JpIu1M5mmsctuljVdFmnxeuQpaBc5d865364pK6KF9bwZQHWvANv9I-egbECEJLQegPx4mfQtJaLG4i1G_stsNs4ZJk_tFaFbSmudq7LhS8XcdPvF6fCJjWgYE_FlyMrIR0xIdXSNceMmIV5MoULlF9S-NYFaAZm1wVrSFL_AFfPqRblPZXJ7wsgaCe7m7YiCaSwsnajk8jiDPEgISCowTaSiS-FYLm_yFXUViyncLBPRw0KJz9Fl5sq1D66u3D_GHxA2I0cj8ZunaMOsmE5KT3SKAR4joCLrvcE2jV7SlWLxSWRqeRC3z3eRcXU-OBtdUsrcxaj3-zwk6T9n6SwDBxbmahF3HlDyFPxVQiRf27Y82jTpWj9HtznY5tpVE-rwkQc072DirgC2rlzW7IZuL_7M5BcpjaIKnk8au0cr4KqXNaeSjUUVEkSTE40pYPcqvSyni1E2KmKZu3w5aO1dyt62NKWzvjBUUhm9aciHpL6fNRZbGHJ8yzeuuRtTMJGRe8qzH5EMI4g39cOyQAWlHmr0THeahtqP1ZGpBZt2G2gc9i-ut_HeYwBQ5sOgbf9cEXXRdgbNHUa5YU_zFTjhXD2uzPmrXHrKimM2t_WR1VbFn6n1_Rk3y9xC1XpI7aJtWqWFeBZMj-OIN-AXNTYA5e-50zVmIWw2A6eCl7lS80cV-CQbJ_e3jW4vACK5MApg8so2ChQYRTmXN7HKyL8JJlPJfLa-P7IbqNtV3czCwaci1jSq-MQd5TLHVi5PRZQlrsbx0X9U1f5RqZZJul4WgbhoPZMWalggkOdZwl2rRrSuVEUNTestSmp5mNY28-6RsK-P_UoiW6A1hM2-RimeZaEw_Sp8d24T7CjfPyql-ikAAFW4tt2ot&isca=1',
                 audioSrc: [
                     {
                         language: 'it',
@@ -206,7 +206,7 @@ export const useVideoStore = defineStore('video', {
                 price: 988,
                 avatar: import.meta.env.BASE_URL + 'img/users/3.png',
                 poster: import.meta.env.BASE_URL + 'img/video-card/23.webp',
-                videoSrc: '/video2/Russian/index.mp4',
+                videoSrc: 'https://ffa652610efbe99cd126beb57e112048c5dd48297755f24f65e2f88-apidata.googleusercontent.com/download/storage/v1/b/nimbls/o/index.mp4?jk=ATxpoHdd0PyYsfWpBiQqJVbvzzEtSXaJmuHkUytLdjDiMI_tXm2dSCzvAGh6XrU_fBcNG5JHHWTEDYoNlQ0v-lDvXpndVUw509FayCMPpBlsAfNyz8pSdaaA1EekTpqQ_gvTZA-eDZgM-eTYcy4J6woG82zERhgXw3w9ud7maitn3-NaLkee2GBH43ZgrgPLt7u0-Iocj1BL1t0hP0nxf0cCn0MnszVhWpQ0tm229ge2cpCuLz-cMM5Uzzes6O_OhewRN2PBb8-ZKe-TJRIhyj_lO1L-hfbbaP_jV_PrLaxu_tmWglj88N-QZM7-3BaDHvi2k10RVTzEvyzWGBvsS3Ne8WoS05zj9ezcHxIhhkuw3DMS2PyLUq7bPYfbo_A2XUIDJFpFDu5bfOVN3Ybg-VpPU3ucL69TsZug-rovxWe-U0s9YFLNj-_h_VPVocYBXXYP0U-RXFuEXwZQ1aVZURDjSjCoqZs9HfkHeaJlOOTa45lEBN-t5cQiz1C3DXLX8mQPyJMq_pLXawH6N-2Me2v2rSVWDbA0TBlG2eXz_KbhuQvSbc2zgYJjHvvT0XfdI_4Zyd2vYFrkp7T9YrjUtBbkQhsdHHT0LNo62GkTeiE_mdksPnzAq7JuXp7Fd0VMJYD3rITzMZp1JfwhWnT7Gth-e02erkI2GAvMOsb3zs6-6pjT_pwGKZ2UR6AMxKWI91F05HPE3AUIWSqEq41fFqZjkHC3wHRXouspEyUXfW_j6gciwRegaQDDSFzAWsb9hWoOEJKaUmPXhvAvuWWfMvnwPnre1y3qLGrIwahPy0mWzUuwNCqS6qTosBLz-gv3x42pv2uelaFkM8IYMdRLLt7ye0d1HGjqdEJi50fkMXeSak4ao-IyTGNwyE4IsPp8TGsfnKQuKjnKUTbVYzV9ehMFQkl6B8NeW8R_CWZdbzJ88UZx91L2SdqEYGkZIsw8k8fDm8z8DievaSF_rZdHyk8dzxh5riZCyFXs1SME9o4wR-WzHFCP6FAPhfZ3rHQq6VlHIg5DIzY29PzuWyDmzfA2srHcQeVuRjqjoGiWp_DuDgwRkhpXAQE25NFvLhM_V6iU5bB7we9kMalA6TLlZ8o4ejpeH5S0aiTGMbl_ki8gKKY-FEtDuJA&isca=1',
                 audioSrc: [
                     {
                         language: 'en',
